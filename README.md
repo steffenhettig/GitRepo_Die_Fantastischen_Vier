@@ -1,4 +1,4 @@
-# GitRepo_Die_Fantastischen_Vier
+## GitRepo_Die_Fantastischen_Vier
 
 Gruppenmitglieder:
 Maximilian Schleif, Lukas Grühl, Steffen Hettig
