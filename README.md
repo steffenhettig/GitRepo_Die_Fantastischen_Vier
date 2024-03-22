@@ -1,4 +1,4 @@
 ## Teamname: Die Fantastischen Vier
 
 Gruppenmitglieder:
-Maximilian Schleif, Lukas Grühl, Steffen Hettig(Teamverantwortlicher)
+Maximilian Schleif, Lukas Grühl, Joshua Bühler, Steffen Hettig(Teamverantwortlicher)
