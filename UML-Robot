@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+actor "Mensch" as h
+actor "Fahrstrecke" as f
+
+rectangle System-Roboter {
+  usecase "Rennen fahren" as UC1
+  usecase "System überwachen" as UC2
+  usecase "Strecke erkennen" as UC3
+  usecase "Bestzeit erreichen" as UC4
+  
+h --> UC1 : startet
+UC1 --> f
+UC3 --> f
+
+UC3 .> UC1 : extends
+UC4 .> UC1 : extends
+UC2 .> UC1 : includes
+ 
+}
+
+
+@enduml 
