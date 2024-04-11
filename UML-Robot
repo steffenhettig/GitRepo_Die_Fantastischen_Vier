@@ -1,22 +1,22 @@
 @startuml
 left to right direction
-actor "Mensch" as h
-actor "Fahrstrecke" as f
+actor "user" as h
+actor "track" as t
 
-rectangle System-Roboter {
-  usecase "Rennen fahren" as UC1
-  usecase "System überwachen" as UC2
-  usecase "Strecke erkennen" as UC3
-  usecase "Bestzeit erreichen" as UC4
+rectangle System-Robot {
+  usecase "driving race" as UC1
+  usecase "select parameters" as UC2
+  usecase "sensor calibration" as UC3
+  usecase "output information" as UC4
   
-h --> UC1 : startet
-UC1 --> f
-UC3 --> f
+h --> UC1 : starts
+UC4 --> h
+h --> UC2
+UC1 --> t
 
-UC3 .> UC1 : extends
-UC4 .> UC1 : extends
-UC2 .> UC1 : includes
- 
+t --> UC3
+h --> UC3
+
 }
 
 
