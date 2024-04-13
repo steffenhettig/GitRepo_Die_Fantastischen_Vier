@@ -1,0 +1,42 @@
+@startuml statediagramm
+header Line-Follower software \n for Pololu Zumo32U4
+footer DieFantastischenVier
+
+title State Diagram
+
+/'[*]-->Init : [PowerOn] or \n [Reset] 
+
+Init-->SystemStart'/
+[*]-->SystemStart : [PowerOn] or \n [Reset]
+SystemStart-->Wait : [timer = 2 s]
+SystemStart : On Entry \ Start timer \n On Exit \Stop timer
+
+Wait-->Calibration : [pushbutton C] 
+
+Wait-->ModeSwitch : [pushbutton B]
+
+/'ModeSwitch-->ModeSwitch : [pushbutton B]'/
+
+ModeSwitch-->Error : [Loading parameters failed]
+
+ModeSwitch-->Wait : [driving Mode switched]
+
+Calibration-->Wait : [Calibration done]
+
+Calibration-->Error : [Calibration failed]
+
+Wait--> StartRace : [pushbutton A]
+
+StartRace--> RunRace : [Startline detected] and \n [timer ≤ 3 s]
+
+StartRace--> Error : [timer > 3 s]
+
+RunRace-->RaceDone : [Endline detected]
+
+RunRace-->Error : [track lost] or \n [timer > 20 s]
+
+StartRace : On Entry / Start timer \n On exit / Stop timer
+
+RunRace : On Entry / Start timer \n On exit / Stop timer
+
+@enduml
