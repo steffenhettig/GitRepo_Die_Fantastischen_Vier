@@ -14,19 +14,42 @@ package App
   }
   package States
   {
-    interface AbstractState
+    class SystemStart
+    {
+        +startTimer(): void
+        +stopTimer(): void
+    }
+    class Wait
     {
     
     }
-    class StateX
+    class Calibration
     {
-        +process(): void
+    
     }
-
-    note top of StateX
-        The controller decides whether the
-        LED is off or on, depend on button state.
-    end note
+    class ModeSwitch
+    {
+    
+    }
+    class StartRace
+    {
+        +startTimer(): void
+        +stopTimer(): void
+    }
+    class RunRace
+    {
+        +startTimer(): void
+        +stopTimer(): void
+    }
+    class RaceDone
+    {
+        +startTimer(): void
+        +stopTimer(): void
+    }
+    class Error
+    {
+      
+    }
   }
     
 }
@@ -107,6 +130,8 @@ package Service
     +get_Time: Int8
     +set_Time: Int8
     +reset_Time: Int8
+    +start_Measurement: void
+    +stop_Measurement: void
   }
   note top of Clock
     provides methods for the time measurement; 
@@ -149,10 +174,36 @@ package HAL
     +init(): void
   }
 }
+StateHandler --> SystemStart
+StateHandler --> Wait
+StateHandler --> Calibration
+StateHandler --> ModeSwitch
+StateHandler --> StartRace
+StateHandler --> RunRace
+StateHandler --> RaceDone
+StateHandler --> Error
 
-Controller ..> Buzzer : <<uses>>
-Controller ..> LED : <<uses>>
-StateHandler --> AbstractState
+SystemStart --> Clock
+SystemStart --> Display
+LineSensor --> Calibration
+PushButtonC --> Calibration
+PushButtonB --> ModeSwitch
+StartRace --> Clock
+StartRace --> Buzzer
+StartRace --> MotorLeft
+StartRace --> MotorRight
+PushButtonA --> StartRace
+RunRace --> Clock
+RunRace --> MotorLeft
+RunRace --> MotorRight
+RaceDone --> Clock
+RaceDone --> Buzzer
+RaceDone --> MotorLeft
+RaceDone --> MotorRight
+RaceDone --> Display
+Error --> Buzzer
+Error --> Clock
+
 Main --> StateHandler
 PushButtonA --> GPIO
 PushButtonB --> GPIO
@@ -171,6 +222,7 @@ MotorLeft --> PWM_Timer1
 MotorRight --> PWM_Timer1
 LineSensor --> GPIO
 Clock --> AVRTimer0
+
 
 note top of App
     REQ-1: If the button state is toggled, the LED shall toggle its state.
