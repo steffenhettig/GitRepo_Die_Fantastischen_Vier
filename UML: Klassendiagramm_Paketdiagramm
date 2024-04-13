@@ -1,0 +1,180 @@
+@startuml
+
+top to bottom direction
+
+package App 
+{
+  class StateHandler
+  {
+    
+  }
+  class Main
+  {
+      
+  }
+  package States
+  {
+    interface AbstractState
+    {
+    
+    }
+    class StateX
+    {
+        +process(): void
+    }
+
+    note top of StateX
+        The controller decides whether the
+        LED is off or on, depend on button state.
+    end note
+  }
+    
+}
+
+package Service
+{
+    interface PushButton
+    {
+      +getState(): Int8
+    }
+    class PushButtonA
+    {
+    }
+    class PushButtonB
+    {
+    }
+    class PushButtonC
+    {
+    }
+
+    class LED
+    {
+        +setState(): void
+    }
+
+    class Buzzer
+    {
+      +init_Buzzer(): Int8
+      +set_AlarmTone(): void
+      +set_StandardTone(): void
+      +clear_Buzzer(): void
+    }    
+    
+    class Display
+    {
+      +init_Display(): void
+      +output_Display(): void
+      +reset_Display(): void
+    }
+    
+    class LineSensor
+    {
+      
+    }
+    interface Motor
+    {
+      +set_TurningDirection(): Int8
+      +get_TurningDirection(): Int8
+      +set_MotorSpeed(): Int8
+      +get_MotorSpeed(): Int8
+    }
+    note top of Motor
+        Provides methods to use the motors;
+        return value is used for error handling
+  end note
+    class MotorLeft
+    {
+  
+    }
+    class MotorRight
+    {
+  
+    }
+    
+  note top of LED
+        Provides methods to enable/disable
+        the LED, via I/O.
+    end note
+    
+  note top of PushButton
+        Provides the button state,
+        derived from I/O.
+  end note
+  
+
+  class Clock
+  {
+    +get_Time: Int8
+    +set_Time: Int8
+    +reset_Time: Int8
+  }
+  note top of Clock
+    provides methods for the time measurement; 
+    return value is used for error handling
+  end note
+}
+
+package HAL
+{
+  class GPIO
+  {
+    +GPIO_Init(): void
+    +GPIO_Write(): void
+    +GPIO_Read(): void
+  }
+  class SPI
+  {
+    +SPI_Init(): void
+    +SPI_Transmit(): void
+    +SPI_Receive(): void
+  }
+  class AVRTimer0
+  {
+    +init(): void
+    millis(): void
+  }
+  note bottom of AVRTimer0
+    is used for timing-related functions
+  end note
+  class AVRTimer4
+  {
+    +init(): void
+  }
+  note bottom of AVRTimer4
+    is used for controlling the buzzer
+  end note
+  
+  class PWM_Timer1
+  {
+    +init(): void
+  }
+}
+
+Controller ..> Buzzer : <<uses>>
+Controller ..> LED : <<uses>>
+StateHandler --> AbstractState
+Main --> StateHandler
+PushButtonA --> GPIO
+PushButtonB --> GPIO
+PushButtonC --> GPIO
+LED --> GPIO
+PushButtonA --|> PushButton
+PushButtonB --|> PushButton
+PushButtonC --|> PushButton
+Display --> SPI
+Buzzer --> AVRTimer4
+MotorLeft --|> Motor
+MotorRight --|> Motor
+MotorLeft --> GPIO
+MotorRight --> GPIO
+MotorLeft --> PWM_Timer1
+MotorRight --> PWM_Timer1
+LineSensor --> GPIO
+Clock --> AVRTimer0
+
+note top of App
+    REQ-1: If the button state is toggled, the LED shall toggle its state.
+end note
+
+
+@enduml
