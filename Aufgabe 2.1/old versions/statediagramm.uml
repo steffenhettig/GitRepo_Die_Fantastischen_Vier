@@ -4,22 +4,23 @@ footer DieFantastischenVier
 
 title State Diagram
 
-/'[*]-->Init : [PowerOn] or \n [Reset] 
 
-Init-->SystemStart'/
-[*]-->SystemStart : [PowerOn] or \n [Reset]
-SystemStart-->Wait : [timer = 2 s]
-SystemStart : On Entry \ Start timer \n On Exit \Stop timer
+[*]-->SystemStart : [Inital]
 
-Wait-->Calibration : [pushbutton C] 
+SystemStart-->Calibration : [timer = 2 s]
+
+
+SystemStart : On Entry \ Start timer \n and show team name\n On Exit \Stop timer
+
+Wait-->Calibration : [pushbutton C]
 
 Wait-->ModeSwitch : [pushbutton B]
 
-/'ModeSwitch-->ModeSwitch : [pushbutton B]'/
 
 ModeSwitch-->Error : [Loading parameters failed]
 
-ModeSwitch-->Wait : [driving Mode switched]
+ModeSwitch-->Wait : [changed parameters]
+
 
 Calibration-->Wait : [Calibration done]
 
@@ -27,16 +28,29 @@ Calibration-->Error : [Calibration failed]
 
 Wait--> StartRace : [pushbutton A]
 
-StartRace--> RunRace : [Startline detected] and \n [timer ≤ 3 s]
 
-StartRace--> Error : [timer > 3 s]
+StartRace--> RunRace : [Startline detected]
+
+StartRace--> Error : [Startline timer > 2 s]
 
 RunRace-->RaceDone : [Endline detected]
 
-RunRace-->Error : [track lost] or \n [timer > 20 s]
+RunRace-->RedetectTrack : [track lost]
 
-StartRace : On Entry / Start timer \n On exit / Stop timer
+RedetectTrack-->Error : [timer > 5 s]
 
-RunRace : On Entry / Start timer \n On exit / Stop timer
+RedetectTrack : On Entry / Start timer \n do / search track \n On Exit / Stop timer
+
+RedetectTrack-->RunRace : [track redeteckted]
+
+RunRace-->Error :[timer for racetime > 20 s]
+
+StartRace : On Entry / wait 3 s \n do / start driving \n do / start Startline timer\n On exit / Start timer for racetime \n + notify user with buzzer \n + Stop Starline timer
+
+RunRace : follow track
+Error : On Entry / Stop all movements \n do / notify user with alarm tone \n do / display Error reason
+
+RaceDone : On Entry / Stop timer for racetime \n do / Stop all movements \n do / Notify unser with notification sound \n do / display value of timer for racetime 
+
 
 @enduml
