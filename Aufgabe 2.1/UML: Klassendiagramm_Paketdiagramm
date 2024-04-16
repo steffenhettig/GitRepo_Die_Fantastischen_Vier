@@ -8,110 +8,132 @@ package App
   {
     
   }
+  note top of StateHandler
+    Main can't call StateHandler if there aren't
+    any functions to call.
+
+    Think about the Single Responsibility Principle (SRP) and 
+    data encapsulation for your stateHandler to have all related
+    logic collected in one module.
+
+    What should be the exact purpose of your StateHandler?
+    What functions do you need to inform the StateHandler about whats happening?
+    What functions are really needed to be provided to other modules?
+  end note
   class Main
   {
       
   }
   package States
   {
-    class SystemStart
+    class SystemStart_Handler
     {
         +startTimer(): void
         +stopTimer(): void
     }
-    class Wait
+    class Wait_Handler
     {
     
     }
-    class Calibration
+    note top of Wait_Handler
+      Shouldn't Wait use all the buttons and then
+      communicate the correcte state Change to StateHandler?
+      How does ModeSwitch use the button or the other way around,
+      how is the ModeSwitch used by the button?
+
+      Do you intend using interrupts with callbacks?
+      No according classes and functions are defined here.
+
+      How about polling the button states in Wait and going
+      from there?
+    end note
+    class Calibration_Handler
     {
     
     }
-    class ModeSwitch
+    class ModeSwitch_Handler
     {
     
     }
-    class StartRace
+    note top of ModeSwitch_Handler
+      Just to give you an example. ModeSwitch
+      could need a function:
+      ModeSwitch_SwitchToNextParameterSet(void) : void
+    end note
+    class StartRace_Handler
     {
         +startTimer(): void
         +stopTimer(): void
     }
-    class RunRace
+    note top of StartRace_Handler
+      Start Race would need to implement a algorithm to follow the line.
+      Same applies for RunRace.
+
+      So the same functionality would need to exist (and maintained) in
+      two different states. Maybe a additional module in charge of
+      driving would be needed or some state handlers could be merged and
+      simplified.
+
+      Remember DRY (Don't repeat yourself) and SRP (Single responsability principle).
+    end note
+    class RunRace_Handler
     {
         +startTimer(): void
         +stopTimer(): void
     }
-    class RaceDone
+    class RaceDone_Handler
     {
         +startTimer(): void
         +stopTimer(): void
     }
-    class Error
+    class Error_Handler
     {
       
     }
   }
-    
 }
 
 package Service
 {
-    interface PushButton
+    class PushButton
     {
-      +getState(): Int8
-    }
-    class PushButtonA
-    {
-    }
-    class PushButtonB
-    {
-    }
-    class PushButtonC
-    {
+      +get_ButtonState(enum button): Int8
     }
 
     class LED
     {
-        +setState(): void
+        +setState(Int8 state): void
     }
+    note top of LED
+      Which LED?
+    end note
 
     class Buzzer
     {
-      +init_Buzzer(): Int8
-      +set_AlarmTone(): void
-      +set_StandardTone(): void
-      +clear_Buzzer(): void
-    }    
+      +init_Buzzer(void): Int8
+      +set_AlarmTone(void): void
+      +set_StandardTone(void): void
+    }
     
     class Display
     {
-      +init_Display(): void
-      +output_Display(): void
-      +reset_Display(): void
+      +init_Display(void): void
+      +output_Display(char* TeamName, char* MeasuredTime): void
+      +reset_Display(void): void
     }
     
     class LineSensor
     {
-      
+      IsVerticalLineDetected(void): BOOL
+      IsStartStopLineDetected(void): BOOL
     }
-    interface Motor
+
+    class Motor
     {
-      +set_TurningDirection(): Int8
-      +get_TurningDirection(): Int8
-      +set_MotorSpeed(): Int8
-      +get_MotorSpeed(): Int8
-    }
-    note top of Motor
-        Provides methods to use the motors;
-        return value is used for error handling
-  end note
-    class MotorLeft
-    {
-  
-    }
-    class MotorRight
-    {
-  
+      +set_TurningDirection(enum motor, enum direction): Int8
+      +get_TurningDirection(void): enum direction
+      +set_MotorSpeed(enum motor, enum direction): Int8
+      +get_MotorSpeed(void): enum direction
     }
     
   note top of LED
@@ -127,43 +149,41 @@ package Service
 
   class Clock
   {
-    +get_Time: Int8
-    +set_Time: Int8
-    +reset_Time: Int8
-    +start_Measurement: void
-    +stop_Measurement: void
+    +get_Time(void): Int8
+    +set_Time(Int8 minutes, Int8 seconds, Int8 milliseconds): Int8
+    +reset_Time(void): Int8
+    +start_Measurement(void): void
+    +stop_Measurement(void): void
   }
-  note top of Clock
-    provides methods for the time measurement; 
-    return value is used for error handling
-  end note
+
 }
 
 package HAL
 {
   class GPIO
   {
-    +GPIO_Init(): void
-    +GPIO_Write(): void
-    +GPIO_Read(): void
+    +GPIO_Init(Int8 port, Int8 pin): void
+    +GPIO_Write(Int8 port, Int8 pin, Int8 state): void
+    +GPIO_Read(Int8 port, Int8 pin): void
   }
   class SPI
   {
-    +SPI_Init(): void
+    +SPI_Init(void): void
     +SPI_Transmit(): void
     +SPI_Receive(): void
   }
   class AVRTimer0
   {
-    +init(): void
-    millis(): void
+    +init(void): void
+    millis(void): void
   }
   note bottom of AVRTimer0
     is used for timing-related functions
   end note
   class AVRTimer4
   {
-    +init(): void
+    +init(void): void
+    +set_SoundFrequency(Int8 frequency): void
   }
   note bottom of AVRTimer4
     is used for controlling the buzzer
@@ -171,7 +191,8 @@ package HAL
   
   class PWM_Timer1
   {
-    +init(): void
+    +init(void): void
+    +set_PWMFreq(Int8 frequency): void
   }
 }
 StateHandler --> SystemStart
@@ -185,14 +206,14 @@ StateHandler --> Error
 
 SystemStart --> Clock
 SystemStart --> Display
-LineSensor --> Calibration
-PushButtonC --> Calibration
-PushButtonB --> ModeSwitch
+Calibration --> LineSensor 
+Calibration --> PushButton
+ModeSwitch --> PushButton
 StartRace --> Clock
 StartRace --> Buzzer
 StartRace --> MotorLeft
 StartRace --> MotorRight
-PushButtonA --> StartRace
+StartRace --> PushButton 
 RunRace --> Clock
 RunRace --> MotorLeft
 RunRace --> MotorRight
@@ -205,28 +226,25 @@ Error --> Buzzer
 Error --> Clock
 
 Main --> StateHandler
-PushButtonA --> GPIO
-PushButtonB --> GPIO
-PushButtonC --> GPIO
+PushButton --> GPIO
+PushButton --> GPIO
+PushButton --> GPIO
 LED --> GPIO
-PushButtonA --|> PushButton
-PushButtonB --|> PushButton
-PushButtonC --|> PushButton
+PushButton --|> PushButton
+PushButton --|> PushButton
+PushButton --|> PushButton
 Display --> SPI
 Buzzer --> AVRTimer4
-MotorLeft --|> Motor
-MotorRight --|> Motor
-MotorLeft --> GPIO
-MotorRight --> GPIO
-MotorLeft --> PWM_Timer1
-MotorRight --> PWM_Timer1
+Motor --|> Motor
+Motor --|> Motor
+Motor --> GPIO
+Motor --> GPIO
+Motor --> PWM_Timer1
+Motor --> PWM_Timer1
 LineSensor --> GPIO
 Clock --> AVRTimer0
+Display --> GPIO
 
-
-note top of App
-    REQ-1: If the button state is toggled, the LED shall toggle its state.
-end note
 
 
 @enduml
