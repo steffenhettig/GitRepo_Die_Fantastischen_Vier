@@ -6,89 +6,50 @@ package App
 {
   class StateHandler
   {
-    
+    StateHandler_init(void): void
+    StateHandler_EnterState(enum state): void
   }
-  note top of StateHandler
-    Main can't call StateHandler if there aren't
-    any functions to call.
-
-    Think about the Single Responsibility Principle (SRP) and 
-    data encapsulation for your stateHandler to have all related
-    logic collected in one module.
-
-    What should be the exact purpose of your StateHandler?
-    What functions do you need to inform the StateHandler about whats happening?
-    What functions are really needed to be provided to other modules?
-  end note
   class Main
   {
-      
+      Enter_StateHandler(void): void
+  }
+  class Driving
+  {
+    FollowingLine(void): void
   }
   package States
   {
     class SystemStart_Handler
     {
-        +startTimer(): void
-        +stopTimer(): void
+    
     }
     class Wait_Handler
     {
-    
+      Wait_NotifyStateHandler(void): void
     }
-    note top of Wait_Handler
-      Shouldn't Wait use all the buttons and then
-      communicate the correcte state Change to StateHandler?
-      How does ModeSwitch use the button or the other way around,
-      how is the ModeSwitch used by the button?
-
-      Do you intend using interrupts with callbacks?
-      No according classes and functions are defined here.
-
-      How about polling the button states in Wait and going
-      from there?
-    end note
     class Calibration_Handler
     {
-    
+      Calibration_Process(void): void
     }
     class ModeSwitch_Handler
     {
-    
-    }
-    note top of ModeSwitch_Handler
-      Just to give you an example. ModeSwitch
-      could need a function:
       ModeSwitch_SwitchToNextParameterSet(void) : void
-    end note
+    }
     class StartRace_Handler
     {
-        +startTimer(): void
-        +stopTimer(): void
+      StartRace_Process(void): void
     }
-    note top of StartRace_Handler
-      Start Race would need to implement a algorithm to follow the line.
-      Same applies for RunRace.
-
-      So the same functionality would need to exist (and maintained) in
-      two different states. Maybe a additional module in charge of
-      driving would be needed or some state handlers could be merged and
-      simplified.
-
-      Remember DRY (Don't repeat yourself) and SRP (Single responsability principle).
-    end note
     class RunRace_Handler
     {
-        +startTimer(): void
-        +stopTimer(): void
+      RunRace_Process(void): void
     }
     class RaceDone_Handler
     {
-        +startTimer(): void
-        +stopTimer(): void
+      RaceDone_Process(void): void
     }
     class Error_Handler
     {
-      
+      Error_Process(void): void
     }
   }
 }
@@ -102,11 +63,8 @@ package Service
 
     class LED
     {
-        +setState(Int8 state): void
+        +setState(enum led, Int8 state): void
     }
-    note top of LED
-      Which LED?
-    end note
 
     class Buzzer
     {
@@ -195,56 +153,50 @@ package HAL
     +set_PWMFreq(Int8 frequency): void
   }
 }
-StateHandler --> SystemStart
-StateHandler --> Wait
-StateHandler --> Calibration
-StateHandler --> ModeSwitch
-StateHandler --> StartRace
-StateHandler --> RunRace
-StateHandler --> RaceDone
-StateHandler --> Error
+StateHandler --> SystemStart_Handler
+StateHandler --> Wait_Handler
+StateHandler --> Calibration_Handler
+StateHandler --> ModeSwitch_Handler
+StateHandler --> StartRace_Handler
+StateHandler --> RunRace_Handler
+StateHandler --> RaceDone_Handler
+StateHandler --> Error_Handler
 
-SystemStart --> Clock
-SystemStart --> Display
-Calibration --> LineSensor 
-Calibration --> PushButton
-ModeSwitch --> PushButton
-StartRace --> Clock
-StartRace --> Buzzer
-StartRace --> MotorLeft
-StartRace --> MotorRight
-StartRace --> PushButton 
-RunRace --> Clock
-RunRace --> MotorLeft
-RunRace --> MotorRight
-RaceDone --> Clock
-RaceDone --> Buzzer
-RaceDone --> MotorLeft
-RaceDone --> MotorRight
-RaceDone --> Display
-Error --> Buzzer
-Error --> Clock
+SystemStart_Handler --> Clock
+SystemStart_Handler --> Display
+Calibration_Handler --> LineSensor 
+Calibration_Handler --> PushButton
+ModeSwitch_Handler --> PushButton
+StartRace_Handler --> Clock
+StartRace_Handler --> Buzzer
+StartRace_Handler --> Motor
+StartRace_Handler --> PushButton 
+RunRace_Handler --> Clock
+RunRace_Handler --> Motor
+RaceDone_Handler --> Clock
+RaceDone_Handler --> Buzzer
+RaceDone_Handler --> Motor
+RaceDone_Handler --> Display
+Error_Handler --> Buzzer
+Error_Handler --> Clock
+Wait_Handler --> PushButton
 
 Main --> StateHandler
 PushButton --> GPIO
-PushButton --> GPIO
-PushButton --> GPIO
 LED --> GPIO
-PushButton --|> PushButton
-PushButton --|> PushButton
-PushButton --|> PushButton
 Display --> SPI
 Buzzer --> AVRTimer4
-Motor --|> Motor
-Motor --|> Motor
 Motor --> GPIO
-Motor --> GPIO
-Motor --> PWM_Timer1
 Motor --> PWM_Timer1
 LineSensor --> GPIO
 Clock --> AVRTimer0
 Display --> GPIO
+StartRace_Handler --> LineSensor
+RunRace_Handler --> LineSensor
+RaceDone_Handler --> LineSensor
 
+StartRace_Handler --> Driving
+RunRace_Handler --> Driving
 
 
 @enduml
