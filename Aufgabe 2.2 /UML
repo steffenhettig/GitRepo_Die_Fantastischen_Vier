@@ -13,7 +13,7 @@ package "OS" #DDDDDD {
         + Task_init(Task*, TaskWorkCallback, TaskState, void*) : Task_Ret
     }
 
-package States
+package Application/States
   {
    
     class Wait_Handler
@@ -204,4 +204,3 @@ Scheduler ..> Task
 Scheduler ..> IRQ
 
 @enduml
-
