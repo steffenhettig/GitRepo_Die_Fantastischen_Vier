@@ -13,7 +13,7 @@ package "OS" #DDDDDD {
         + Task_init(Task*, TaskWorkCallback, TaskState, void*) : Task_Ret
     }
 
-package Application/States
+package Application
   {
    
     class Wait_Handler
@@ -200,6 +200,20 @@ Task ..> Calibration_Handler
 Task ..> RunRace_Handler
 Task ..> StartRace_Handler
 Task ..> RaceDone_Handler
+Calibration_Handler --> LineSensor 
+Calibration_Handler --> Button
+ModeSwitch_Handler --> Button
+StartRace_Handler --> TickTimer
+StartRace_Handler --> Buzzer
+StartRace_Handler --> DriveControl
+StartRace_Handler --> Button 
+RunRace_Handler --> TickTimer
+RunRace_Handler --> DriveControl
+RaceDone_Handler --> TickTimer
+RaceDone_Handler --> Buzzer
+RaceDone_Handler --> DriveControl
+RaceDone_Handler --> Display
+Wait_Handler --> Button
 Scheduler ..> Task
 Scheduler ..> IRQ
 
