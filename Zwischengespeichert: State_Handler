@@ -1,0 +1,157 @@
+/***************************************************************************************************
+  (c) NewTec GmbH 2024   -   www.newtec.de
+***************************************************************************************************/
+/**
+ * @file       StateHandler.c
+ *
+ *    Decides which states are called next depending on the returned events  
+ */
+/**************************************************************************************************/
+
+enum states {
+    state_init,
+    state_wait,
+    state_mode_switch,
+    state_calibration,
+    state_run_race,
+    state_start_race,
+    state_race_done,
+    state_error,
+    state_redetect_track,
+    };
+
+enum events{
+    event_NO_EVENT,
+    event_calibration_successful,
+    event_mode_switch_successful,
+    event_startline_detected,
+    event_endline_detected,
+    event_track_lost,
+    event_track_redetected,
+    event_push_button_A_pressed,
+    event_push_button_B_pressed,
+    event_push_button_C_pressed,
+};
+
+enum error{
+    error_parameter,
+    error_startline_timer,
+    error_racetime,
+    error_redetect_line,
+    error_calibration,
+};
+
+/* VARIABLES **************************************************************************************/
+enum states current_state;
+
+/* hiermit möchte ich externe events abfragen können, und dann sowas wie...
+current_event = event_NO_EVENT;
+if(button A pressed == 1)
+{
+    current_event = event_push_button_A_pressed;
+} */
+enum events current_event; 
+enum errror errorID;
+
+/* EXTERNAL FUNCTIONS *****************************************************************************/
+enum events calibration_process(void);
+enum events mode_switch_process(void);
+enum events start_race_process(void);
+enum events run_race_process(void);
+enum events redetect_track_process(void);
+
+void StateHandler_process(void)
+{
+    switch (current_state)
+    { 
+    case state_init: 
+        init_process(); //---------
+        current_state = state_calibration;
+        break;
+
+    case state_wait:
+        wait_process(); //---------
+        if(event_push_button_B_pressed == current_event)
+        {
+            current_state = state_mode_switch;
+        }
+        if(event_push_button_A_pressed == current_event)
+        {
+            current_state = state_start_race;
+        }
+        if(event_push_button_C_pressed == current_event)
+        {
+            current_state = state_calibration;
+        }
+        break;
+
+    case state_mode_switch:
+        if(mode_switch_process() == event_mode_switch_successful)//---------hier Rückgabewerte: mode_switch_successful
+        {
+            current_state = state_wait;
+        }
+        else
+        {
+            current_state = state_error;
+        }
+        break;
+
+    case state_calibration:
+        if(calibration_process() == event_calibration_successful)//---------hier Rückgabewerte: calibration_successful
+        {
+            current_state = state_wait;
+        }
+        else
+        {
+            current_state = state_error;
+        }
+        break;
+
+    case state_run_race: 
+        switch (run_race_process())
+        {
+            case event_endline_detected:
+                current_state = state_race_done;
+
+            case event_track_lost:
+                current_state = state_redetect_track;
+
+            default:
+                current_state = state_error;
+        }     
+        break;
+
+    case state_start_race:
+        if(start_race_process() == event_startline_detected)//---------hier Rückgabewerte: event_startline_detected
+        {
+            current_state = state_run_race;
+        }
+        else
+        {
+            current_state = state_error;
+        }
+        break;
+
+    case state_race_done:
+        race_done_process();//---------
+      break;
+
+    case state_error:
+        error_process();//---------
+        break;
+
+    case state_redetect_track:
+        if(redetect_track_process() == event_track_redetected)//---------hier Rückgabewerte: event_track_redetected
+        {
+            current_state = state_run_race;
+        }
+        else
+        {
+            current_state = state_error;
+        }
+        break;
+
+    default:
+        break;
+  }
+}
