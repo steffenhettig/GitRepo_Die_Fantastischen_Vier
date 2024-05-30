@@ -1,0 +1,5 @@
+<map id="OS_init" name="OS_init">
+<area shape="rect" id="node2" href="$_scheduler_8c.html#a54f0b21668ad0d2c4d08e91a4a9577bf" title="Initialize the scheduler module. " alt="" coords="150,5,254,32"/>
+<area shape="rect" id="node3" href="$_soft_timer_8c.html#a66e135f2168b6d86cb842fad599dd139" title="Initialize the soft timer handler. " alt="" coords="129,56,275,83"/>
+<area shape="rect" id="node4" href="$_soft_timer_8c.html#a158d51a820ff74bc56473d9f695f2531" title="Update all registered soft timer (interrupt context!). " alt="" coords="119,107,285,133"/>
+</map>
