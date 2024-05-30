@@ -2,14 +2,14 @@
   (c) NewTec GmbH 2024   -   www.newtec.de
 ***************************************************************************************************/
 /**
-@addtogroup app
-@{
-@file       Calibration_Handler.c
-
-Functions to calibrate the 5 Line sensors on the Pololu Zumo. For a detailed discription look at Calibration_Handler.h
-
-@version    %$Id: Calibration_Handler.c Buehler
-* @}
+ * @addtogroup app
+ * @{
+ * @file       Calibration_Handler.c
+ *
+ * Functions to calibrate the 5 Line sensors on the Pololu Zumo. For a detailed discription look at Calibration_Handler.h
+ *
+ * @version    %$Id: Calibration_Handler.c Buehler
+ * @}
  */
  /**************************************************************************************************/
 
