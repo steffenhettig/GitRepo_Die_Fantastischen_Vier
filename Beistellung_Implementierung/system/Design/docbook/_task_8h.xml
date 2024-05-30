@@ -1,0 +1,108 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_task_8h">
+    <title>Task.h File Reference</title>
+    <programlisting>#include &quot;Types.h&quot;</programlisting>
+        <simplesect>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structtag___task">tag_Task</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Defines</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_task_8h_1a1b1454a97d564dca99542ba060801e30">TASK_GET_STATE</link> (task)-&gt;state<para><emphasis>Get state of  a given task.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_task_8h_1a4b05cd5351328ecb3a9ec9cbebd2ac77">TASK_SET_STATE</link> (task)-&gt;state = (newState)<para><emphasis>Set state of given task.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_task_8h_1abab652c9af371c87e7a775e161ea80c5">TASK_EXECUTE</link> (task)-&gt;workCallback((task-&gt;instanceData))<para><emphasis>Execute the task work cycle function.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="_task_8h_1a37f1bd0af944415ae4fa0cf9574d3ad5">Task_Ret</link>{<link linkend="_task_8h_1a37f1bd0af944415ae4fa0cf9574d3ad5ac6eaa84301a1ab2a52c6101b44c8a5d8">TASK_RET_FAIL</link>== 0, <link linkend="_task_8h_1a37f1bd0af944415ae4fa0cf9574d3ad5a455a96c47d66f1cc26b316d2d05ace28">TASK_RET_SUCCESS</link>}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="_task_8h_1a729b795ce2389deacd8fbee97626723f">tag_TaskState</link>{<link linkend="_task_8h_1a729b795ce2389deacd8fbee97626723fac47ca944190c8714014acf6e55800747">TASK_STATE_SUSPENDED</link>== 0, <link linkend="_task_8h_1a729b795ce2389deacd8fbee97626723fa169adc0116f5c61af55d2dd88709ea4e">TASK_STATE_RUNNING</link>}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef enum <link linkend="_task_8h_1a729b795ce2389deacd8fbee97626723f">tag_TaskState</link>  <link linkend="_task_8h_1a72a5e74cf680503ec09223c3cfdbf4e3">TaskState</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef void(*  <link linkend="_task_8h_1a8f3c61c0430299673ab83bf936073184">TaskWorkCallback</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structtag___task">tag_Task</link>  <link linkend="_task_8h_1a77bbd51a2c7d34bd2aa764baadfb4b83">Task</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_task_8h_1a37f1bd0af944415ae4fa0cf9574d3ad5">Task_Ret</link> <link linkend="_task_8h_1a4b074cf85d0db22ecd5abd511c33a2c4">Task_init</link> (
+<link linkend="_task_8h_1a77bbd51a2c7d34bd2aa764baadfb4b83">Task</link> * task, <link linkend="_task_8h_1a8f3c61c0430299673ab83bf936073184">TaskWorkCallback</link> callback, <link linkend="_task_8h_1a72a5e74cf680503ec09223c3cfdbf4e3">TaskState</link> state, void * data)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>Enter short description here. </para>
+
+<para>Enter detailed description here.</para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _task_8h.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/os/Task.h</para>
+    </simplesect>
+</section>

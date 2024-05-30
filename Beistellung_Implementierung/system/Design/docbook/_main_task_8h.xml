@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_task_8h">
+    <title>MainTask.h File Reference</title>
+    <programlisting>#include &quot;Types.h&quot;</programlisting>
+    <programlisting>#include &quot;os/Task.h&quot;</programlisting>
+        <simplesect>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="_main_task_8h_1a5c7f6fc98960ac3da07fc301f50b5e2f">MainTask_Ret</link>{<link linkend="_main_task_8h_1a5c7f6fc98960ac3da07fc301f50b5e2fa0f8f7dc07e85f8a1c4f57e8fd0d39939">MAINTASK_RET_SUCCESS</link>== 0, <link linkend="_main_task_8h_1a5c7f6fc98960ac3da07fc301f50b5e2fa0fb7c34347448a2bef05bcab5eee480c">MAINTASK_RET_INIT_TASK_FAIL</link>, <link linkend="_main_task_8h_1a5c7f6fc98960ac3da07fc301f50b5e2fa3fe7c66208c7817195196210efb61417">MAINTASK_RET_ADD_TASK_FAIL</link>, <link linkend="_main_task_8h_1a5c7f6fc98960ac3da07fc301f50b5e2fa3066967e43ffd5681eb7153ff306b060">MAINTASK_RET_INTERNAL_ERROR</link>}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_main_task_8h_1a5c7f6fc98960ac3da07fc301f50b5e2f">MainTask_Ret</link> <link linkend="_main_task_8h_1a6184313b8eacbe1ebb0850cfc01c7d18">MainTask_init</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>The main application task. </para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _main_task_8h.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/app/MainTask.h</para>
+    </simplesect>
+</section>

@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<chapter xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title></title>
+
+<para>Version: !!!0.12</para>
+
+<para><formalpara><title>Customer</title></formalpara>
+</para>
+
+<para>!!!Customer2
+<literallayout>
+</literallayout>
+!!!Customer department2
+<literallayout>
+</literallayout>
+!!!Customer Street 12
+<literallayout>
+</literallayout>
+!!!Customer location2
+<literallayout>
+</literallayout>
+!!!Germany2</para>
+
+<para><formalpara><title>Author</title></formalpara>
+</para>
+
+<para>NewTec GmbH
+<literallayout>
+</literallayout>
+Buchenweg 3
+<literallayout>
+</literallayout>
+89284 Pfaffenhofen a. d. Roth
+<literallayout>
+</literallayout>
+DEUTSCHLAND </para>
+
+</chapter>

@@ -1,0 +1,52 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_main_task_8c">
+    <title>MainTask.c File Reference</title>
+    <programlisting>#include &quot;app/MainTask.h&quot;</programlisting>
+    <programlisting>#include &quot;os/ErrorHandler.h&quot;</programlisting>
+    <programlisting>#include &quot;os/Task.h&quot;</programlisting>
+    <programlisting>#include &quot;os/Scheduler.h&quot;</programlisting>
+    <programlisting>#include &quot;service/Button.h&quot;</programlisting>
+        <simplesect>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static <link linkend="_task_8h_1a77bbd51a2c7d34bd2aa764baadfb4b83">Task</link> <link linkend="_main_task_8c_1a37a3ca04862999347692900b158bb273">gMainTask</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="_main_task_8c_1aaaf09fd9a9da6fbc717599567132c38c">mainTaskWork</link> (
+void * data)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_main_task_8h_1a5c7f6fc98960ac3da07fc301f50b5e2f">MainTask_Ret</link> <link linkend="_main_task_8c_1a6184313b8eacbe1ebb0850cfc01c7d18">MainTask_init</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>Main Application task. </para>
+
+<para>For a detailed description see the detailed description in <link linkend="_main_task_8h">MainTask.h</link>.</para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _main_task_8c.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/app/MainTask.c</para>
+    </simplesect>
+</section>

@@ -1,0 +1,229 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_types_8h">
+    <title>Types.h File Reference</title>
+        <simplesect>
+            <title>Defines</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_types_8h_1a070d2ce7b6bb7e5c05602aa8c308d0c4">NULL</link> ((void *) 0)<para><emphasis>NULL.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="_types_8h_1a39db6982619d623273fad8a383489309">Bool</link>{<link linkend="_types_8h_1a39db6982619d623273fad8a383489309aa1e095cc966dbecf6a0d8aad75348d1a">FALSE</link>== 0, <link linkend="_types_8h_1a39db6982619d623273fad8a383489309aa82764c3079aea4e60c80e45befbb839">TRUE</link>== 1}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef unsigned char  <link linkend="_types_8h_1ae3a497195d617519e5353ea7b417940f">Byte</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef unsigned char  <link linkend="_types_8h_1a5a0fa7fd26bf95968c50ea6c1dc48825">UChar</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef signed char  <link linkend="_types_8h_1aa141593bc2edcab4eba2fb880aad19b2">Char</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef signed char  <link linkend="_types_8h_1a7e31ca7716b8d85dd473450a5c5e5a97">Int8</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef unsigned char  <link linkend="_types_8h_1a9b66271558bfa5abc5095791246b540d">UInt8</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef volatile unsigned char  <link linkend="_types_8h_1a6848f29a2fa83032f12605820b27b9f0">VUInt8</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef volatile signed char  <link linkend="_types_8h_1a47bfd492cc0c523df1f3b5e4c749156e">VInt8</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef signed int  <link linkend="_types_8h_1a659ce9e5eb6571f9984ffc7caad2660a">Int16</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef unsigned int  <link linkend="_types_8h_1aad0fc9943ec46ed9388d30c8ebe52b77">UInt16</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef volatile unsigned int  <link linkend="_types_8h_1ae10a43dba9efad58e7c36513375ba0f9">VUInt16</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef volatile signed int  <link linkend="_types_8h_1ab14c94b9f07750cee9b162c101ee68f5">VInt16</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef signed long  <link linkend="_types_8h_1a184d0ff2424cf4b81c68ce9538481a04">Int32</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef unsigned long  <link linkend="_types_8h_1aff6f5ee5b7d4f374428d4a853d976f94">UInt32</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef volatile unsigned long  <link linkend="_types_8h_1ae63080690e6ebce3fd1b7b9a1ead4b98">VUInt32</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef volatile signed long  <link linkend="_types_8h_1a41ac7dbc589c972dd189993b87273336">VInt32</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef signed long long  <link linkend="_types_8h_1a56afe571a9be7582d493be2b31aed0ea">Int64</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef unsigned long long  <link linkend="_types_8h_1aa1d7d331b6d522d6d9840fece27108d8">UInt64</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef volatile unsigned long long  <link linkend="_types_8h_1a39add53053b29a922c621524b5fdbbc9">VUInt64</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef volatile signed long long  <link linkend="_types_8h_1acc0858a2f0a3df5399e5d7b963eb5241">VInt64</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef float  <link linkend="_types_8h_1a87d38f886e617ced2698fc55afa07637">Float32</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef volatile float  <link linkend="_types_8h_1a81c86892a6bccf31d9154453da060386">VFloat32</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef long double  <link linkend="_types_8h_1ac618847877068404a9c47b29e51f6cda">Float64</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef volatile long double  <link linkend="_types_8h_1ab63916734ec8149263baae3331375fa4">VFloat64</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef <link linkend="_types_8h_1a6848f29a2fa83032f12605820b27b9f0">VUInt8</link>  <link linkend="_types_8h_1acb2cafebbc492a8f4e0758e9cd14a623">Reg8</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef <link linkend="_types_8h_1ae10a43dba9efad58e7c36513375ba0f9">VUInt16</link>  <link linkend="_types_8h_1a347323846f4104fb7393e9aa6c0e4ef4">Reg16</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef <link linkend="_types_8h_1ae63080690e6ebce3fd1b7b9a1ead4b98">VUInt32</link>  <link linkend="_types_8h_1a88f9ce72faa4a644db59b0880bf2b0ff">Reg32</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef <link linkend="_types_8h_1a39add53053b29a922c621524b5fdbbc9">VUInt64</link>  <link linkend="_types_8h_1ae95f4e33ca147189a6cf24a018a2e00b">Reg64</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>Basic types definition for ATmega128. </para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _types_8h.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/Common/Types.h</para>
+    </simplesect>
+</section>

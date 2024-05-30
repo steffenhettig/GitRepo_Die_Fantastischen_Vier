@@ -1,0 +1,76 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_scheduler_8h">
+    <title>Scheduler.h File Reference</title>
+    <programlisting>#include &quot;Types.h&quot;</programlisting>
+    <programlisting>#include &quot;Task.h&quot;</programlisting>
+        <simplesect>
+            <title>Defines</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_scheduler_8h_1af12cab9399b7b23dbe9fe6037e633cc8">SCHEDULER_MAX_TASKS</link> (10)<para><emphasis>Maximum number of tasks that can be handled by the scheduler.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5">Scheduler_Ret</link>{<link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5a223c921c8a64ab80e8e2f086ae39037a">SCHEDULER_RET_SUCCESS</link>== 0, <link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5a722e14e81de2cd34ac141dd765b39fb4">SCHEDULER_RET_FAIL</link>, <link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5a3ec86ed9827b2bb857f861b3dfb5cf5a">SCHEDULER_RET_NOMORETASKS</link>, <link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5a47071a842cf6ee2ec5e3165f70ef48c6">SCHEDULER_RET_TASKADDEDTWICE</link>, <link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5ad54312bce669278f7efec7ad9743e860">SCHEDULER_RET_UNKNOWNTASK</link>}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5">Scheduler_Ret</link> <link linkend="_scheduler_8h_1a54f0b21668ad0d2c4d08e91a4a9577bf">Scheduler_init</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_scheduler_8h_1ac8b5914b94644528eb5212cded91576b">Scheduler_execute</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5">Scheduler_Ret</link> <link linkend="_scheduler_8h_1a2010cdfa7c29f432542d6842f7e8d527">Scheduler_addTask</link> (
+<link linkend="_task_8h_1a77bbd51a2c7d34bd2aa764baadfb4b83">Task</link> * task)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5">Scheduler_Ret</link> <link linkend="_scheduler_8h_1aa3171ba992feb30e29945f03da6a3a11">Scheduler_removeTask</link> (
+<link linkend="_task_8h_1a77bbd51a2c7d34bd2aa764baadfb4b83">Task</link> * task)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>Cooperative Round-Robin Scheduler. </para>
+
+<para>A simple task scheduler that manages a fixed number of Tasks. Scheduling is cooperative, meaning task execution is done by calling a work cycle function that must return into the scheduler as fast as possible. Tasks in running state are called round-robion sequentially.</para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _scheduler_8h.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/os/Scheduler.h</para>
+    </simplesect>
+</section>

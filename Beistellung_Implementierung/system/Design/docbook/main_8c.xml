@@ -1,0 +1,33 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="main_8c">
+    <title>main.c File Reference</title>
+    <programlisting>#include &quot;os/Os.h&quot;</programlisting>
+    <programlisting>#include &quot;hal/Hal.h&quot;</programlisting>
+    <programlisting>#include &quot;Service/Service.h&quot;</programlisting>
+    <programlisting>#include &quot;os/Scheduler.h&quot;</programlisting>
+    <programlisting>#include &quot;os/ErrorHandler.h&quot;</programlisting>
+    <programlisting>#include &quot;app/MainTask.h&quot;</programlisting>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>int <link linkend="main_8c_1a840291bc02cba5474a4cb46a9b9566fe">main</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>Main function for pololu Line follower. </para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: main_8c.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/main.c</para>
+    </simplesect>
+</section>

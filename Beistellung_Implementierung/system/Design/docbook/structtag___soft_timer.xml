@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="structtag___soft_timer">
+<title>tag_SoftTimer struct Reference</title>
+<para>
+    <programlisting>#include <link linkend="_soft_timer_8h">&lt;SoftTimer.h&gt;</link></programlisting>
+</para>
+        <simplesect>
+            <title>Public Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>SoftTimerState state<para><emphasis>SoftTimer state.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>volatile UInt16 counter<para><emphasis>The countdown counter.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>UInt16 threshHold<para><emphasis>The countdown start value.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Brief Description</title>
+
+<para>SoftTimer data structure. </para>
+    </simplesect>
+        <simplesect>
+            <title>Member Documentation</title>
+            <simplesect>
+                <title>SoftTimerState tag_SoftTimer::state</title>                
+                <para>Definition at line 65 of file SoftTimer.h</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>SoftTimer.h</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>volatile UInt16 tag_SoftTimer::counter</title>                
+                <para>Definition at line 66 of file SoftTimer.h</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>SoftTimer.h</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>UInt16 tag_SoftTimer::threshHold</title>                
+                <para>Definition at line 67 of file SoftTimer.h</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>SoftTimer.h</para></listitem></itemizedlist></para>
+            </simplesect>
+        </simplesect>
+</section>

@@ -1,0 +1,88 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_error_handler_8h">
+    <title>ErrorHandler.h File Reference</title>
+    <programlisting>#include &quot;Types.h&quot;</programlisting>
+        <simplesect>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480">tag_ErrorCode</link>{<link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480ab24e43d2d31b755eb736c4846dbac6de">ERRORHANDLER_MAIN_SCHEDULER_EXIT</link>==   1, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480ae7049eee5952a4e52b1cd9329c41af0e">ERRORHANDLER_MAINTASK_INIT_FAIL</link>== 100, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a3b616e54406bc97e2bec31267fd58b77">ERRORHANDLER_STARTUP_INIT_FAIL</link>== 110, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a4b16e262ad88b9d9e5d0c761e4305a8e">ERRORHANDLER_STARTUP_UNINIT_FAIL</link>== 111, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480af34d5c411ff67c67f3d9e7c2b4a98b1b">ERRORHANDLER_CALIBRATE_TIMER_INIT_FAIL</link>== 200, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a2678e9801b48c03ecce001f65ed34dd5">ERRORHANDLER_CALIBRATE_ALOGRITMIC_FAIL</link>== 201, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a2ac914139148792059834a854f3dc214">ERRORHANDLER_CALIBRATE_TIMEOUT</link>== 202, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480abfe5652152b4db6eb7b3c2c7c1264b1a">ERRORHANDLER_CALIBRATE_TIMER_UNINIT_FAIL</link>== 203, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a9d4f2e6f37e527ac811a3f18bc4c2a2c">ERRORHANDLER_RELEASETRACK_TIMER_INIT_FAIL</link>== 250, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480ac940f33530cc3432c615279895c2b8b2">ERRORHANDLER_RELEASETRACK_TIMER_UNINIT_FAIL</link>== 251, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a4f441078fb4b0d942dad6e85c33e7d12">ERRORHANDLER_RELEASETRACK_TIMER_START_FAIL</link>== 252, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a69ae5caed44b248c9adeb9d123d464a9">ERRORHANDLER_DRIVING_TIMER_INIT_FAIL</link>== 300, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a55534f5d3bad3885f2a9dab46d024c1f">ERRORHANDLER_DRIVING_TIMER_UNINIT_FAIL</link>== 301, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a0986eeba358181e426764905a15a0e7d">ERRORHANDLER_DRIVING_TIMER_START_FAIL</link>== 302, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a3fd7fd0ef59ff3108d6ac689aa0ad1c5">ERRORHANDLER_DRIVING_TIMEOUT</link>== 303, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a77c9fde664ff1b37fa91827dd18e9f41">ERRORHANDLER_LINELOST_TIMEOUT</link>== 304, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480ae7ab86ad77a859a4c59c5fd8276c325e">ERRORHANDLER_FINISH_TIMER_INIT_FAIL</link>== 400, <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480a1dfa16f6298b0d21006a20065d65cb95">ERRORHANDLER_FINISH_TIMER_UNINIT_FAIL</link>== 401}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef enum <link linkend="_error_handler_8h_1ad1141f86ec521af1f274aeb9b73a7480">tag_ErrorCode</link>  <link linkend="_error_handler_8h_1aed7d97b22f3571652032b3136460f314">ErrorHandlerErrorCode</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef void(*  <link linkend="_error_handler_8h_1a675699c57a733118f4641f24541892aa">PrintCallback</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef void(*  <link linkend="_error_handler_8h_1a2e96a0567c5de834b9d8fcfe70c2cc55">ErrorCallback</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_error_handler_8h_1a7a5a812a13a9c76e57887ce64ddd7e18">ErrorHandler_halt</link> (
+<link linkend="_error_handler_8h_1aed7d97b22f3571652032b3136460f314">ErrorHandlerErrorCode</link> errorCode)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_error_handler_8h_1a9356b0c8efca0c26f7b118582087e9e3">ErrorHandler_show</link> (
+<link linkend="_error_handler_8h_1aed7d97b22f3571652032b3136460f314">ErrorHandlerErrorCode</link> errorCode)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_error_handler_8h_1acc05881f1c6f1090dd9d1d88d32e2d88">ErrorHandler_setPrintCallback</link> (
+<link linkend="_error_handler_8h_1a675699c57a733118f4641f24541892aa">PrintCallback</link> callback)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_error_handler_8h_1a7acf566cf4c47dc7d15895e92608eda9">ErrorHandler_setErrorCallback</link> (
+<link linkend="_error_handler_8h_1a2e96a0567c5de834b9d8fcfe70c2cc55">ErrorCallback</link> callback)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>Enter short description here. </para>
+
+<para>Enter detailed description here.</para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _error_handler_8h.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/os/ErrorHandler.h</para>
+    </simplesect>
+</section>

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="structtag___task">
+<title>tag_Task struct Reference</title>
+<para>
+    <programlisting>#include <link linkend="_task_8h">&lt;Task.h&gt;</link></programlisting>
+</para>
+        <simplesect>
+            <title>Public Attributes</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>TaskState state<para><emphasis>Task status.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void * instanceData<para><emphasis>Task context, passed to work function.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>TaskWorkCallback workCallback<para><emphasis>Task work cycle function.</emphasis></para></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Brief Description</title>
+
+<para>Task Structure. </para>
+    </simplesect>
+        <simplesect>
+            <title>Member Documentation</title>
+            <simplesect>
+                <title>TaskState tag_Task::state</title>                
+                <para>Definition at line 78 of file Task.h</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Task.h</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>void* tag_Task::instanceData</title>                
+                <para>Definition at line 79 of file Task.h</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Task.h</para></listitem></itemizedlist></para>
+            </simplesect>
+            <simplesect>
+                <title>TaskWorkCallback tag_Task::workCallback</title>                
+                <para>Definition at line 80 of file Task.h</para>
+                <para>The Documentation for this struct was generated from the following file: </para>
+                <para><itemizedlist><listitem><para>Task.h</para></listitem></itemizedlist></para>
+            </simplesect>
+        </simplesect>
+</section>

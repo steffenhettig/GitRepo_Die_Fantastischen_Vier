@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_scheduler_8c">
+    <title>Scheduler.c File Reference</title>
+    <programlisting>#include &quot;os/Scheduler.h&quot;</programlisting>
+    <programlisting>#include &quot;os/Task.h&quot;</programlisting>
+    <programlisting>#include &quot;hal/Irq.h&quot;</programlisting>
+        <simplesect>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static <link linkend="_task_8h_1a77bbd51a2c7d34bd2aa764baadfb4b83">Task</link> * <link linkend="_scheduler_8c_1ae0524f4e5e181947882c7f1015fa8a43">gTasks</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5">Scheduler_Ret</link> <link linkend="_scheduler_8c_1a54f0b21668ad0d2c4d08e91a4a9577bf">Scheduler_init</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_scheduler_8c_1ac8b5914b94644528eb5212cded91576b">Scheduler_execute</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5">Scheduler_Ret</link> <link linkend="_scheduler_8c_1ab4e5be8ef348eae3a0ce316a8fe07bef">Scheduler_addTask</link> (
+<link linkend="_task_8h_1a77bbd51a2c7d34bd2aa764baadfb4b83">Task</link> * task)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_scheduler_8h_1a4986e815f32ca6e968f160f11807f3b5">Scheduler_Ret</link> <link linkend="_scheduler_8c_1af000216881be045d8a8d4b934c7caf67">Scheduler_removeTask</link> (
+<link linkend="_task_8h_1a77bbd51a2c7d34bd2aa764baadfb4b83">Task</link> * task)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>Simple task scheduler. </para>
+
+<para>For a detailed description see the detailed description in <link linkend="_scheduler_8h">Scheduler.h</link>.</para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _scheduler_8c.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/os/Scheduler.c</para>
+    </simplesect>
+</section>

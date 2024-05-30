@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <info>
+    <title>Beistellung SW-Basisschulung</title>
+    </info>
+        <xi:include href="mainpage.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <chapter>
+        <title>Module Documentation</title>
+        <xi:include href="group___app.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="group___global__group.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="group___os.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>Class Documentation</title>
+        <xi:include href="structtag___soft_timer.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="structtag___task.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>File Documentation</title>
+        <xi:include href="_main_task_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_main_task_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_types_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="main_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_error_handler_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_error_handler_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_os_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_os_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_scheduler_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_scheduler_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_soft_timer_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_soft_timer_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_task_8c.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="_task_8h.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="110012__00992__00882___d_o_c-_mainpage_8md.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+    <chapter>
+        <title>Directory Documentation</title>
+        <xi:include href="dir_5194e5fea318fda12687127c23f8aba1.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="dir_ba210d1fa67db7bee1bb22e0a3c11d9f.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="dir_a71443761d886d6152d96ebd3fda63af.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+        <xi:include href="dir_68267d1309a1af8e8297ef4c3efbcdba.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    </chapter>
+</book>

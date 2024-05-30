@@ -1,0 +1,165 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_soft_timer_8h">
+    <title>SoftTimer.h File Reference</title>
+    <programlisting>#include &quot;Types.h&quot;</programlisting>
+        <simplesect>
+            <title> Classes </title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>struct <link linkend="structtag___soft_timer">tag_SoftTimer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Defines</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>#define <link linkend="_soft_timer_8h_1a8f3ce7bf0fd80a03ad7db9c9ae3434f9">SOFTTIMER_IS_EXPIRED</link> ((0 == (pSoftTimer)-&gt;counter) &amp;&amp; (<link linkend="_soft_timer_8h_1a745a4fd97331b42edaf70d71b104ff8faba08b201c54c6665952281a5d21bae4b">SOFT_TIMER_RUNNING</link> == (pSoftTimer)-&gt;state))<para><emphasis>Check if timer is expired.</emphasis></para>
+</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Enumerations</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204">SoftTimer_Ret</link>{<link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204af209b166592ce7700937bfc2c6f4b7c8">SOFTTIMER_RET_SUCCESS</link>== 0, <link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204afe7599247a4e64c9bf9f33e5eb4cdd3a">SOFTTIMER_RET_FAIL</link>, <link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204a1b1880e425115e61c03b6fe4936dec1e">SOFTTIMER_RET_NOMORETIMERS</link>, <link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204a224721c1ab3ae00c474fa5691406c2b7">SOFTTIMER_RET_UNKNOWNTIMER</link>, <link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204a2cc22debd063b9ffed80557c25c588d9">SOFTTIMER_RET_ALREADYREGISTERED</link>, <link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204a3e59e4ff6243dda2654e91c27b2e7a79">SOFTTIMER_RET_NOTREGISTERED</link>}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>enum <link linkend="_soft_timer_8h_1a745a4fd97331b42edaf70d71b104ff8f">tag_SoftTimerState</link>{<link linkend="_soft_timer_8h_1a745a4fd97331b42edaf70d71b104ff8fa9f44fef296f11747e45ed9e44adc3a24">SOFT_TIMER_UNREGISTERED</link>== 0, <link linkend="_soft_timer_8h_1a745a4fd97331b42edaf70d71b104ff8fab96a4e8b74b9adb07c757cc81c06fe22">SOFT_TIMER_STOPPED</link>, <link linkend="_soft_timer_8h_1a745a4fd97331b42edaf70d71b104ff8faba08b201c54c6665952281a5d21bae4b">SOFT_TIMER_RUNNING</link>}</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Typedefs</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef enum <link linkend="_soft_timer_8h_1a745a4fd97331b42edaf70d71b104ff8f">tag_SoftTimerState</link>  <link linkend="_soft_timer_8h_1a7f078e1503ae2d931bfbc6ada2145fed">SoftTimerState</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                            <para>typedef struct <link linkend="structtag___soft_timer">tag_SoftTimer</link>  <link linkend="_soft_timer_8h_1a5e4ffe7f5109549a43b9971bafa8f614">SoftTimer</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_soft_timer_8h_1a7dc718cbe43429746a7bb831c867fbdc">SoftTimer_init</link> (
+<link linkend="_soft_timer_8h_1a5e4ffe7f5109549a43b9971bafa8f614">SoftTimer</link> * pSoftTimer)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204">SoftTimer_Ret</link> <link linkend="_soft_timer_8h_1afa63b52bac28804a7a67a0aaebf1c182">SoftTimer_start</link> (
+<link linkend="_soft_timer_8h_1a5e4ffe7f5109549a43b9971bafa8f614">SoftTimer</link> * pSoftTimer, <link linkend="_types_8h_1aad0fc9943ec46ed9388d30c8ebe52b77">UInt16</link> thresHold)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204">SoftTimer_Ret</link> <link linkend="_soft_timer_8h_1a9169331d10ecae626b4884804df30b61">SoftTimer_Stop</link> (
+<link linkend="_soft_timer_8h_1a5e4ffe7f5109549a43b9971bafa8f614">SoftTimer</link> * pSoftTimer)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_soft_timer_8h_1a43d0fbf6361bd5b7d5d67bc8879f068d">SoftTimer_Update</link> (
+<link linkend="_soft_timer_8h_1a5e4ffe7f5109549a43b9971bafa8f614">SoftTimer</link> * pSoftTimer)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204">SoftTimer_Ret</link> <link linkend="_soft_timer_8h_1af65202ec6e69ab0744e2a942b001419c">SoftTimer_restart</link> (
+<link linkend="_soft_timer_8h_1a5e4ffe7f5109549a43b9971bafa8f614">SoftTimer</link> * pSoftTimer)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_types_8h_1aad0fc9943ec46ed9388d30c8ebe52b77">UInt16</link> <link linkend="_soft_timer_8h_1a3ebeed43ab2994f280616c02f0232a79">SoftTimer_get</link> (
+<link linkend="_soft_timer_8h_1a5e4ffe7f5109549a43b9971bafa8f614">SoftTimer</link> * pSoftTimer)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_soft_timer_8h_1a15e765af07b229a5925e5159c315fb52">SoftTimerHandler_init</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204">SoftTimer_Ret</link> <link linkend="_soft_timer_8h_1abe69cfc7d0e2b37de4ef7b58aae4eded">SoftTimerHandler_register</link> (
+<link linkend="_soft_timer_8h_1a5e4ffe7f5109549a43b9971bafa8f614">SoftTimer</link> * pSoftTimer)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_soft_timer_8h_1a58342871750337e1b043e19e4e565204">SoftTimer_Ret</link> <link linkend="_soft_timer_8h_1ab16250c90877e1284f842847c6aefefb">SoftTimerHandler_unRegister</link> (
+<link linkend="_soft_timer_8h_1a5e4ffe7f5109549a43b9971bafa8f614">SoftTimer</link> * pSoftTimer)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_soft_timer_8h_1a1cbbe3ecc12c3d921bc3f6b2798ba2cb">SoftTimerHandler_update</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_types_8h_1aa1d7d331b6d522d6d9840fece27108d8">UInt64</link> <link linkend="_soft_timer_8h_1a6f037f88705d2c2c5ffc621b9fd85722">SoftTimer_getTimestampMs</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>SoftTimer definiton. </para>
+
+<para>A soft timer is a countdown Object that can be in state running or stopped. The countdown value is decremented in running state during every hardware timer tick until zero is reached to indicate an expired timer.</para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _soft_timer_8h.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/os/SoftTimer.h</para>
+    </simplesect>
+</section>

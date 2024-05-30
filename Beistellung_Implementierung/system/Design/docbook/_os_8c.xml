@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_os_8c">
+    <title>Os.c File Reference</title>
+    <programlisting>#include &quot;os/Os.h&quot;</programlisting>
+    <programlisting>#include &quot;os/Scheduler.h&quot;</programlisting>
+    <programlisting>#include &quot;os/SoftTimer.h&quot;</programlisting>
+    <programlisting>#include &quot;hal/TickTimer.h&quot;</programlisting>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_os_8c_1a9d68ac34142fe199f938dcdedd74318d">OS_init</link> (
+void )</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>OS main module. </para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _os_8c.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/os/Os.c</para>
+    </simplesect>
+</section>

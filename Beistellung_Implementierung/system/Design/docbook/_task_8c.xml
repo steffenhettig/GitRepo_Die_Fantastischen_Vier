@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_task_8c">
+    <title>Task.c File Reference</title>
+    <programlisting>#include &lt;string.h&gt;</programlisting>
+    <programlisting>#include &quot;os/Task.h&quot;</programlisting>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para><link linkend="_task_8h_1a37f1bd0af944415ae4fa0cf9574d3ad5">Task_Ret</link> <link linkend="_task_8c_1a7826f67d79e978d4771d581421ba4210">Task_init</link> (
+<link linkend="_task_8h_1a77bbd51a2c7d34bd2aa764baadfb4b83">Task</link> * task, <link linkend="_task_8h_1a8f3c61c0430299673ab83bf936073184">TaskWorkCallback</link> callback, <link linkend="_task_8h_1a72a5e74cf680503ec09223c3cfdbf4e3">TaskState</link> state, void * data)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>Simple task scheduler. </para>
+
+<para>For a detailed description see the detailed description in <link linkend="_scheduler_8h">Scheduler.h</link>.</para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _task_8c.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/os/Task.c</para>
+    </simplesect>
+</section>

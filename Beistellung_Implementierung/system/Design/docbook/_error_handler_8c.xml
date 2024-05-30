@@ -1,0 +1,78 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_error_handler_8c">
+    <title>ErrorHandler.c File Reference</title>
+    <programlisting>#include &quot;os/ErrorHandler.h&quot;</programlisting>
+    <programlisting>#include &quot;hal/Hal.h&quot;</programlisting>
+        <simplesect>
+            <title>Variables</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static <link linkend="_error_handler_8h_1a675699c57a733118f4641f24541892aa">PrintCallback</link> <link linkend="_error_handler_8c_1a385a7cdcc37a87bfde7f17854ab1e3bf">gPrintCallback</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static <link linkend="_error_handler_8h_1a2e96a0567c5de834b9d8fcfe70c2cc55">ErrorCallback</link> <link linkend="_error_handler_8c_1a1d9c369e18e2b6e36768eca23296e7fa">gErrorCallback</link></para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+        <simplesect>
+            <title>Functions</title>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>static void <link linkend="_error_handler_8c_1a66bd9d8dfe59f89a5c372765fc0188d0">handleError</link> (
+<link linkend="_error_handler_8h_1aed7d97b22f3571652032b3136460f314">ErrorHandlerErrorCode</link> errorCode, bool halt)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_error_handler_8c_1acc05881f1c6f1090dd9d1d88d32e2d88">ErrorHandler_setPrintCallback</link> (
+<link linkend="_error_handler_8h_1a675699c57a733118f4641f24541892aa">PrintCallback</link> callback)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_error_handler_8c_1a7acf566cf4c47dc7d15895e92608eda9">ErrorHandler_setErrorCallback</link> (
+<link linkend="_error_handler_8h_1a2e96a0567c5de834b9d8fcfe70c2cc55">ErrorCallback</link> callback)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_error_handler_8c_1a9356b0c8efca0c26f7b118582087e9e3">ErrorHandler_show</link> (
+<link linkend="_error_handler_8h_1aed7d97b22f3571652032b3136460f314">ErrorHandlerErrorCode</link> errorCode)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+            <para>
+                <itemizedlist>
+                    <listitem>
+                        <para>void <link linkend="_error_handler_8c_1a7a5a812a13a9c76e57887ce64ddd7e18">ErrorHandler_halt</link> (
+<link linkend="_error_handler_8h_1aed7d97b22f3571652032b3136460f314">ErrorHandlerErrorCode</link> errorCode)</para>
+                    </listitem>
+                </itemizedlist>
+            </para>
+        </simplesect>
+    <simplesect>
+        <title>Detailed Description</title>
+
+<para>ErrorHandler for all error processing. </para>
+
+<para><formalpara><title>Version: </title>
+
+<para>$Id: _error_handler_8c.xml 300 2024-02-01 12:58:40Z leglaz $ </para>
+</formalpara>
+</para>
+    <para>Definition in file C:/NewTec/SW-Einführungsschulung/system/50_Implementierung/Projekte/Linienfolger/20_Beistellung/Coding/src/os/ErrorHandler.c</para>
+    </simplesect>
+</section>
