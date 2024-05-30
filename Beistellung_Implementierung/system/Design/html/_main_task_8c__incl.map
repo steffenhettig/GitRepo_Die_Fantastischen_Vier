@@ -1,0 +1,7 @@
+<map id="src/app/MainTask.c" name="src/app/MainTask.c">
+<area shape="rect" id="node2" href="$_main_task_8h.html" title="The main application task. " alt="" coords="5,80,120,107"/>
+<area shape="rect" id="node4" href="$_task_8h.html" title="Enter short description here. " alt="" coords="119,155,198,181"/>
+<area shape="rect" id="node5" href="$_error_handler_8h.html" title="Enter short description here. " alt="" coords="279,155,401,181"/>
+<area shape="rect" id="node6" href="$_scheduler_8h.html" title="Cooperative Round&#45;Robin Scheduler. " alt="" coords="195,80,304,107"/>
+<area shape="rect" id="node3" href="$_types_8h.html" title="Basic types definition for ATmega128. " alt="" coords="163,229,231,256"/>
+</map>
