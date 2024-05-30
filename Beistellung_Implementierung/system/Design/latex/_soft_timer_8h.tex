@@ -1,0 +1,378 @@
+\hypertarget{_soft_timer_8h}{\section{src/os/\+Soft\+Timer.h File Reference}
+\label{_soft_timer_8h}\index{src/os/\+Soft\+Timer.\+h@{src/os/\+Soft\+Timer.\+h}}
+}
+
+
+Soft\+Timer definiton.  
+
+
+{\ttfamily \#include \char`\"{}Types.\+h\char`\"{}}\\*
+Include dependency graph for Soft\+Timer.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=176pt]{_soft_timer_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=262pt]{_soft_timer_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtag___soft_timer}{tag\+\_\+\+Soft\+Timer}
+\begin{DoxyCompactList}\small\item\em Soft\+Timer data structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_soft_timer_8h_a8f3ce7bf0fd80a03ad7db9c9ae3434f9}{\#define \hyperlink{_soft_timer_8h_a8f3ce7bf0fd80a03ad7db9c9ae3434f9}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+I\+S\+\_\+\+E\+X\+P\+I\+R\+E\+D}(p\+Soft\+Timer)~((0 == (p\+Soft\+Timer)-\/$>$counter) \&\& (\hyperlink{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8faba08b201c54c6665952281a5d21bae4b}{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+R\+U\+N\+N\+I\+N\+G} == (p\+Soft\+Timer)-\/$>$state))}\label{_soft_timer_8h_a8f3ce7bf0fd80a03ad7db9c9ae3434f9}
+
+\begin{DoxyCompactList}\small\item\em Check if timer is expired. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_soft_timer_8h_a7f078e1503ae2d931bfbc6ada2145fed}{typedef enum \hyperlink{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8f}{tag\+\_\+\+Soft\+Timer\+State} \hyperlink{_soft_timer_8h_a7f078e1503ae2d931bfbc6ada2145fed}{Soft\+Timer\+State}}\label{_soft_timer_8h_a7f078e1503ae2d931bfbc6ada2145fed}
+
+\begin{DoxyCompactList}\small\item\em Soft\+Timer states. \end{DoxyCompactList}\item 
+\hypertarget{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}{typedef struct \hyperlink{structtag___soft_timer}{tag\+\_\+\+Soft\+Timer} \hyperlink{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}{Soft\+Timer}}\label{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}
+
+\begin{DoxyCompactList}\small\item\em Soft\+Timer data structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204}{Soft\+Timer\+\_\+\+Ret} \{ \\*
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204af209b166592ce7700937bfc2c6f4b7c8}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S} = 0, 
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204afe7599247a4e64c9bf9f33e5eb4cdd3a}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L}, 
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204a1b1880e425115e61c03b6fe4936dec1e}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+M\+O\+R\+E\+T\+I\+M\+E\+R\+S}, 
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204a224721c1ab3ae00c474fa5691406c2b7}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N\+T\+I\+M\+E\+R}, 
+\\*
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204a2cc22debd063b9ffed80557c25c588d9}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}, 
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204a3e59e4ff6243dda2654e91c27b2e7a79}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+T\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}
+ \}
+\begin{DoxyCompactList}\small\item\em Statuses of the soft timer api. \end{DoxyCompactList}\item 
+enum \hyperlink{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8f}{tag\+\_\+\+Soft\+Timer\+State} \{ \hyperlink{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8fa9f44fef296f11747e45ed9e44adc3a24}{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D} = 0, 
+\hyperlink{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8fab96a4e8b74b9adb07c757cc81c06fe22}{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+O\+P\+P\+E\+D}, 
+\hyperlink{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8faba08b201c54c6665952281a5d21bae4b}{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+R\+U\+N\+N\+I\+N\+G}
+ \}
+\begin{DoxyCompactList}\small\item\em Soft\+Timer states. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_soft_timer_8h_a7dc718cbe43429746a7bb831c867fbdc}{Soft\+Timer\+\_\+init} (\hyperlink{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}{Soft\+Timer} $\ast$p\+Soft\+Timer)
+\begin{DoxyCompactList}\small\item\em Initialize a soft timer structure. \end{DoxyCompactList}\item 
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204}{Soft\+Timer\+\_\+\+Ret} \hyperlink{_soft_timer_8h_afa63b52bac28804a7a67a0aaebf1c182}{Soft\+Timer\+\_\+start} (\hyperlink{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}{Soft\+Timer} $\ast$p\+Soft\+Timer, \hyperlink{_types_8h_aad0fc9943ec46ed9388d30c8ebe52b77}{U\+Int16} thres\+Hold)
+\begin{DoxyCompactList}\small\item\em Start a soft timer with a countdown value. \end{DoxyCompactList}\item 
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204}{Soft\+Timer\+\_\+\+Ret} \hyperlink{_soft_timer_8h_a9169331d10ecae626b4884804df30b61}{Soft\+Timer\+\_\+\+Stop} (\hyperlink{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}{Soft\+Timer} $\ast$p\+Soft\+Timer)
+\begin{DoxyCompactList}\small\item\em Update a soft timer (interrupt context!). \end{DoxyCompactList}\item 
+void \hyperlink{_soft_timer_8h_a43d0fbf6361bd5b7d5d67bc8879f068d}{Soft\+Timer\+\_\+\+Update} (\hyperlink{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}{Soft\+Timer} $\ast$p\+Soft\+Timer)
+\begin{DoxyCompactList}\small\item\em Update a soft timer (interrupt context!). \end{DoxyCompactList}\item 
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204}{Soft\+Timer\+\_\+\+Ret} \hyperlink{_soft_timer_8h_af65202ec6e69ab0744e2a942b001419c}{Soft\+Timer\+\_\+restart} (\hyperlink{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}{Soft\+Timer} $\ast$p\+Soft\+Timer)
+\begin{DoxyCompactList}\small\item\em Update a soft timer with thresh\+Hold from former start call. \end{DoxyCompactList}\item 
+\hyperlink{_types_8h_aad0fc9943ec46ed9388d30c8ebe52b77}{U\+Int16} \hyperlink{_soft_timer_8h_a3ebeed43ab2994f280616c02f0232a79}{Soft\+Timer\+\_\+get} (\hyperlink{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}{Soft\+Timer} $\ast$p\+Soft\+Timer)
+\begin{DoxyCompactList}\small\item\em Get current countdown value of a soft timer. \end{DoxyCompactList}\item 
+\hypertarget{_soft_timer_8h_a15e765af07b229a5925e5159c315fb52}{void \hyperlink{_soft_timer_8h_a15e765af07b229a5925e5159c315fb52}{Soft\+Timer\+Handler\+\_\+init} (void)}\label{_soft_timer_8h_a15e765af07b229a5925e5159c315fb52}
+
+\begin{DoxyCompactList}\small\item\em Initialize the soft timer handler. \end{DoxyCompactList}\item 
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204}{Soft\+Timer\+\_\+\+Ret} \hyperlink{_soft_timer_8h_abe69cfc7d0e2b37de4ef7b58aae4eded}{Soft\+Timer\+Handler\+\_\+register} (\hyperlink{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}{Soft\+Timer} $\ast$p\+Soft\+Timer)
+\begin{DoxyCompactList}\small\item\em Register a soft timer with the handler. \end{DoxyCompactList}\item 
+\hyperlink{_soft_timer_8h_a58342871750337e1b043e19e4e565204}{Soft\+Timer\+\_\+\+Ret} \hyperlink{_soft_timer_8h_ab16250c90877e1284f842847c6aefefb}{Soft\+Timer\+Handler\+\_\+un\+Register} (\hyperlink{_soft_timer_8h_a5e4ffe7f5109549a43b9971bafa8f614}{Soft\+Timer} $\ast$p\+Soft\+Timer)
+\begin{DoxyCompactList}\small\item\em De-\/\+Register a soft timer from the handler. \end{DoxyCompactList}\item 
+void \hyperlink{_soft_timer_8h_a1cbbe3ecc12c3d921bc3f6b2798ba2cb}{Soft\+Timer\+Handler\+\_\+update} (void)
+\begin{DoxyCompactList}\small\item\em Update all registered soft timer (interrupt context!). \end{DoxyCompactList}\item 
+\hyperlink{_types_8h_aa1d7d331b6d522d6d9840fece27108d8}{U\+Int64} \hyperlink{_soft_timer_8h_a6f037f88705d2c2c5ffc621b9fd85722}{Soft\+Timer\+\_\+get\+Timestamp\+Ms} (void)
+\begin{DoxyCompactList}\small\item\em Get the current value of the tick Counter in micro seconds since startup. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Soft\+Timer definiton. 
+
+A soft timer is a countdown Object that can be in state running or stopped. The countdown value is decremented in running state during every hardware timer tick until zero is reached to indicate an expired timer.
+
+\begin{DoxyVersion}{Version}
+\$\+Id\+: \hyperlink{_soft_timer_8h}{Soft\+Timer.\+h} 281 2024-\/01-\/12 12\+:09\+:03\+Z leglaz \$ 
+\end{DoxyVersion}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_soft_timer_8h_a58342871750337e1b043e19e4e565204}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+\_\+\+Ret@{Soft\+Timer\+\_\+\+Ret}}
+\index{Soft\+Timer\+\_\+\+Ret@{Soft\+Timer\+\_\+\+Ret}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+\_\+\+Ret}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Soft\+Timer\+\_\+\+Ret}}}\label{_soft_timer_8h_a58342871750337e1b043e19e4e565204}
+
+
+Statuses of the soft timer api. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S}}\item[{\em 
+\hypertarget{_soft_timer_8h_a58342871750337e1b043e19e4e565204af209b166592ce7700937bfc2c6f4b7c8}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S}\label{_soft_timer_8h_a58342871750337e1b043e19e4e565204af209b166592ce7700937bfc2c6f4b7c8}
+}]Operation succesful. \index{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_soft_timer_8h_a58342871750337e1b043e19e4e565204afe7599247a4e64c9bf9f33e5eb4cdd3a}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L}\label{_soft_timer_8h_a58342871750337e1b043e19e4e565204afe7599247a4e64c9bf9f33e5eb4cdd3a}
+}]Operation failed. \index{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+M\+O\+R\+E\+T\+I\+M\+E\+R\+S@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+M\+O\+R\+E\+T\+I\+M\+E\+R\+S}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+M\+O\+R\+E\+T\+I\+M\+E\+R\+S@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+M\+O\+R\+E\+T\+I\+M\+E\+R\+S}}\item[{\em 
+\hypertarget{_soft_timer_8h_a58342871750337e1b043e19e4e565204a1b1880e425115e61c03b6fe4936dec1e}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+M\+O\+R\+E\+T\+I\+M\+E\+R\+S}\label{_soft_timer_8h_a58342871750337e1b043e19e4e565204a1b1880e425115e61c03b6fe4936dec1e}
+}]Maximum number of registered timers reached. \index{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N\+T\+I\+M\+E\+R@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N\+T\+I\+M\+E\+R}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N\+T\+I\+M\+E\+R@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N\+T\+I\+M\+E\+R}}\item[{\em 
+\hypertarget{_soft_timer_8h_a58342871750337e1b043e19e4e565204a224721c1ab3ae00c474fa5691406c2b7}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N\+T\+I\+M\+E\+R}\label{_soft_timer_8h_a58342871750337e1b043e19e4e565204a224721c1ab3ae00c474fa5691406c2b7}
+}]Timer is not known. \index{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}}\item[{\em 
+\hypertarget{_soft_timer_8h_a58342871750337e1b043e19e4e565204a2cc22debd063b9ffed80557c25c588d9}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}\label{_soft_timer_8h_a58342871750337e1b043e19e4e565204a2cc22debd063b9ffed80557c25c588d9}
+}]Timer is already registered. \index{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+T\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+T\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+T\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D@{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+T\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}}\item[{\em 
+\hypertarget{_soft_timer_8h_a58342871750337e1b043e19e4e565204a3e59e4ff6243dda2654e91c27b2e7a79}{S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+T\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}\label{_soft_timer_8h_a58342871750337e1b043e19e4e565204a3e59e4ff6243dda2654e91c27b2e7a79}
+}]Timer is not registered. \end{description}
+\end{Desc}
+\hypertarget{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8f}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!tag\+\_\+\+Soft\+Timer\+State@{tag\+\_\+\+Soft\+Timer\+State}}
+\index{tag\+\_\+\+Soft\+Timer\+State@{tag\+\_\+\+Soft\+Timer\+State}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{tag\+\_\+\+Soft\+Timer\+State}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf tag\+\_\+\+Soft\+Timer\+State}}}\label{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8f}
+
+
+Soft\+Timer states. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D@{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D@{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}}\item[{\em 
+\hypertarget{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8fa9f44fef296f11747e45ed9e44adc3a24}{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D}\label{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8fa9f44fef296f11747e45ed9e44adc3a24}
+}]State unregistered. \index{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+O\+P\+P\+E\+D@{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+O\+P\+P\+E\+D}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+O\+P\+P\+E\+D@{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+O\+P\+P\+E\+D}}\item[{\em 
+\hypertarget{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8fab96a4e8b74b9adb07c757cc81c06fe22}{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+O\+P\+P\+E\+D}\label{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8fab96a4e8b74b9adb07c757cc81c06fe22}
+}]State stopped. \index{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+R\+U\+N\+N\+I\+N\+G@{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+R\+U\+N\+N\+I\+N\+G}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+R\+U\+N\+N\+I\+N\+G@{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+R\+U\+N\+N\+I\+N\+G}}\item[{\em 
+\hypertarget{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8faba08b201c54c6665952281a5d21bae4b}{S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+R\+U\+N\+N\+I\+N\+G}\label{_soft_timer_8h_a745a4fd97331b42edaf70d71b104ff8faba08b201c54c6665952281a5d21bae4b}
+}]State running. \end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{_soft_timer_8h_a3ebeed43ab2994f280616c02f0232a79}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+\_\+get@{Soft\+Timer\+\_\+get}}
+\index{Soft\+Timer\+\_\+get@{Soft\+Timer\+\_\+get}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+\_\+get}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\+Int16} Soft\+Timer\+\_\+get (
+\begin{DoxyParamCaption}
+\item[{{\bf Soft\+Timer} $\ast$}]{p\+Soft\+Timer}
+\end{DoxyParamCaption}
+)}}\label{_soft_timer_8h_a3ebeed43ab2994f280616c02f0232a79}
+
+
+Get current countdown value of a soft timer. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em p\+Soft\+Timer} & A soft timer structure. \\
+\hline
+\end{DoxyParams}
+
+
+References tag\+\_\+\+Soft\+Timer\+::counter.
+
+\hypertarget{_soft_timer_8h_a6f037f88705d2c2c5ffc621b9fd85722}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+\_\+get\+Timestamp\+Ms@{Soft\+Timer\+\_\+get\+Timestamp\+Ms}}
+\index{Soft\+Timer\+\_\+get\+Timestamp\+Ms@{Soft\+Timer\+\_\+get\+Timestamp\+Ms}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+\_\+get\+Timestamp\+Ms}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\+Int64} Soft\+Timer\+\_\+get\+Timestamp\+Ms (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_soft_timer_8h_a6f037f88705d2c2c5ffc621b9fd85722}
+
+
+Get the current value of the tick Counter in micro seconds since startup. 
+
+\begin{DoxyReturn}{Returns}
+tick counter value in microseconds. 
+\end{DoxyReturn}
+\hypertarget{_soft_timer_8h_a7dc718cbe43429746a7bb831c867fbdc}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+\_\+init@{Soft\+Timer\+\_\+init}}
+\index{Soft\+Timer\+\_\+init@{Soft\+Timer\+\_\+init}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}void Soft\+Timer\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{{\bf Soft\+Timer} $\ast$}]{p\+Soft\+Timer}
+\end{DoxyParamCaption}
+)}}\label{_soft_timer_8h_a7dc718cbe43429746a7bb831c867fbdc}
+
+
+Initialize a soft timer structure. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em p\+Soft\+Timer} & A soft timer structure. \\
+\hline
+\end{DoxyParams}
+
+
+References tag\+\_\+\+Soft\+Timer\+::counter, S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D, tag\+\_\+\+Soft\+Timer\+::state, and tag\+\_\+\+Soft\+Timer\+::thresh\+Hold.
+
+\hypertarget{_soft_timer_8h_af65202ec6e69ab0744e2a942b001419c}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+\_\+restart@{Soft\+Timer\+\_\+restart}}
+\index{Soft\+Timer\+\_\+restart@{Soft\+Timer\+\_\+restart}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+\_\+restart}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soft\+Timer\+\_\+\+Ret} Soft\+Timer\+\_\+restart (
+\begin{DoxyParamCaption}
+\item[{{\bf Soft\+Timer} $\ast$}]{p\+Soft\+Timer}
+\end{DoxyParamCaption}
+)}}\label{_soft_timer_8h_af65202ec6e69ab0744e2a942b001419c}
+
+
+Update a soft timer with thresh\+Hold from former start call. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em p\+Soft\+Timer} & A soft timer structure. \\
+\hline
+\end{DoxyParams}
+
+
+References Soft\+Timer\+\_\+start(), and tag\+\_\+\+Soft\+Timer\+::thresh\+Hold.
+
+
+
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{_soft_timer_8h_af65202ec6e69ab0744e2a942b001419c_cgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{_soft_timer_8h_afa63b52bac28804a7a67a0aaebf1c182}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+\_\+start@{Soft\+Timer\+\_\+start}}
+\index{Soft\+Timer\+\_\+start@{Soft\+Timer\+\_\+start}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+\_\+start}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soft\+Timer\+\_\+\+Ret} Soft\+Timer\+\_\+start (
+\begin{DoxyParamCaption}
+\item[{{\bf Soft\+Timer} $\ast$}]{p\+Soft\+Timer, }
+\item[{{\bf U\+Int16}}]{thres\+Hold}
+\end{DoxyParamCaption}
+)}}\label{_soft_timer_8h_afa63b52bac28804a7a67a0aaebf1c182}
+
+
+Start a soft timer with a countdown value. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em p\+Soft\+Timer} & A soft timer structure. \\
+\hline
+\mbox{\tt in}  & {\em thres\+Hold} & The start value of the count down. \\
+\hline
+\end{DoxyParams}
+
+
+References tag\+\_\+\+Soft\+Timer\+::counter, S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+R\+U\+N\+N\+I\+N\+G, S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D, S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+T\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D, S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S, tag\+\_\+\+Soft\+Timer\+::state, and tag\+\_\+\+Soft\+Timer\+::thresh\+Hold.
+
+
+
+Referenced by Soft\+Timer\+\_\+restart().
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{_soft_timer_8h_afa63b52bac28804a7a67a0aaebf1c182_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{_soft_timer_8h_a9169331d10ecae626b4884804df30b61}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+\_\+\+Stop@{Soft\+Timer\+\_\+\+Stop}}
+\index{Soft\+Timer\+\_\+\+Stop@{Soft\+Timer\+\_\+\+Stop}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+\_\+\+Stop}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soft\+Timer\+\_\+\+Ret} Soft\+Timer\+\_\+\+Stop (
+\begin{DoxyParamCaption}
+\item[{{\bf Soft\+Timer} $\ast$}]{p\+Soft\+Timer}
+\end{DoxyParamCaption}
+)}}\label{_soft_timer_8h_a9169331d10ecae626b4884804df30b61}
+
+
+Update a soft timer (interrupt context!). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em p\+Soft\+Timer} & A soft timer structure. \\
+\hline
+\end{DoxyParams}
+
+
+References S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+O\+P\+P\+E\+D, S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D, S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+T\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D, S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S, and tag\+\_\+\+Soft\+Timer\+::state.
+
+\hypertarget{_soft_timer_8h_a43d0fbf6361bd5b7d5d67bc8879f068d}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+\_\+\+Update@{Soft\+Timer\+\_\+\+Update}}
+\index{Soft\+Timer\+\_\+\+Update@{Soft\+Timer\+\_\+\+Update}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+\_\+\+Update}]{\setlength{\rightskip}{0pt plus 5cm}void Soft\+Timer\+\_\+\+Update (
+\begin{DoxyParamCaption}
+\item[{{\bf Soft\+Timer} $\ast$}]{p\+Soft\+Timer}
+\end{DoxyParamCaption}
+)}}\label{_soft_timer_8h_a43d0fbf6361bd5b7d5d67bc8879f068d}
+
+
+Update a soft timer (interrupt context!). 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em p\+Soft\+Timer} & A soft timer structure. \\
+\hline
+\end{DoxyParams}
+
+
+References tag\+\_\+\+Soft\+Timer\+::counter, S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+R\+U\+N\+N\+I\+N\+G, and tag\+\_\+\+Soft\+Timer\+::state.
+
+\hypertarget{_soft_timer_8h_abe69cfc7d0e2b37de4ef7b58aae4eded}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+Handler\+\_\+register@{Soft\+Timer\+Handler\+\_\+register}}
+\index{Soft\+Timer\+Handler\+\_\+register@{Soft\+Timer\+Handler\+\_\+register}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+Handler\+\_\+register}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soft\+Timer\+\_\+\+Ret} Soft\+Timer\+Handler\+\_\+register (
+\begin{DoxyParamCaption}
+\item[{{\bf Soft\+Timer} $\ast$}]{p\+Soft\+Timer}
+\end{DoxyParamCaption}
+)}}\label{_soft_timer_8h_abe69cfc7d0e2b37de4ef7b58aae4eded}
+
+
+Register a soft timer with the handler. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em p\+Soft\+Timer} & A soft timer structure. \\
+\hline
+\end{DoxyParams}
+
+
+References N\+U\+L\+L, S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+M\+A\+X\+\_\+\+T\+I\+M\+E\+R, S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+O\+P\+P\+E\+D, S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+A\+L\+R\+E\+A\+D\+Y\+R\+E\+G\+I\+S\+T\+E\+R\+E\+D, S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+M\+O\+R\+E\+T\+I\+M\+E\+R\+S, S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S, and tag\+\_\+\+Soft\+Timer\+::state.
+
+\hypertarget{_soft_timer_8h_ab16250c90877e1284f842847c6aefefb}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+Handler\+\_\+un\+Register@{Soft\+Timer\+Handler\+\_\+un\+Register}}
+\index{Soft\+Timer\+Handler\+\_\+un\+Register@{Soft\+Timer\+Handler\+\_\+un\+Register}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+Handler\+\_\+un\+Register}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soft\+Timer\+\_\+\+Ret} Soft\+Timer\+Handler\+\_\+un\+Register (
+\begin{DoxyParamCaption}
+\item[{{\bf Soft\+Timer} $\ast$}]{p\+Soft\+Timer}
+\end{DoxyParamCaption}
+)}}\label{_soft_timer_8h_ab16250c90877e1284f842847c6aefefb}
+
+
+De-\/\+Register a soft timer from the handler. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em p\+Soft\+Timer} & A soft timer structure. \\
+\hline
+\end{DoxyParams}
+
+
+References N\+U\+L\+L, S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+M\+A\+X\+\_\+\+T\+I\+M\+E\+R, S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S, and S\+O\+F\+T\+T\+I\+M\+E\+R\+\_\+\+R\+E\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N\+T\+I\+M\+E\+R.
+
+\hypertarget{_soft_timer_8h_a1cbbe3ecc12c3d921bc3f6b2798ba2cb}{\index{Soft\+Timer.\+h@{Soft\+Timer.\+h}!Soft\+Timer\+Handler\+\_\+update@{Soft\+Timer\+Handler\+\_\+update}}
+\index{Soft\+Timer\+Handler\+\_\+update@{Soft\+Timer\+Handler\+\_\+update}!Soft\+Timer.\+h@{Soft\+Timer.\+h}}
+\subsubsection[{Soft\+Timer\+Handler\+\_\+update}]{\setlength{\rightskip}{0pt plus 5cm}void Soft\+Timer\+Handler\+\_\+update (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_soft_timer_8h_a1cbbe3ecc12c3d921bc3f6b2798ba2cb}
+
+
+Update all registered soft timer (interrupt context!). 
+
+
+
+References tag\+\_\+\+Soft\+Timer\+::counter, N\+U\+L\+L, S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+M\+A\+X\+\_\+\+T\+I\+M\+E\+R, S\+O\+F\+T\+\_\+\+T\+I\+M\+E\+R\+\_\+\+R\+U\+N\+N\+I\+N\+G, and tag\+\_\+\+Soft\+Timer\+::state.
+
+
+
+Referenced by O\+S\+\_\+init().
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=290pt]{_soft_timer_8h_a1cbbe3ecc12c3d921bc3f6b2798ba2cb_icgraph}
+\end{center}
+\end{figure}
+
+

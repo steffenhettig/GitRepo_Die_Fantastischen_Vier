@@ -1,0 +1,103 @@
+\hypertarget{_error_handler_8c}{\section{src/os/\+Error\+Handler.c File Reference}
+\label{_error_handler_8c}\index{src/os/\+Error\+Handler.\+c@{src/os/\+Error\+Handler.\+c}}
+}
+
+
+Error\+Handler for all error processing.  
+
+
+{\ttfamily \#include \char`\"{}os/\+Error\+Handler.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}hal/\+Hal.\+h\char`\"{}}\\*
+Include dependency graph for Error\+Handler.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=246pt]{_error_handler_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_error_handler_8c_acc05881f1c6f1090dd9d1d88d32e2d88}{Error\+Handler\+\_\+set\+Print\+Callback} (\hyperlink{_error_handler_8h_a675699c57a733118f4641f24541892aa}{Print\+Callback} callback)
+\begin{DoxyCompactList}\small\item\em Install error message output handler via callback interface. \end{DoxyCompactList}\item 
+void \hyperlink{_error_handler_8c_a7acf566cf4c47dc7d15895e92608eda9}{Error\+Handler\+\_\+set\+Error\+Callback} (\hyperlink{_error_handler_8h_a2e96a0567c5de834b9d8fcfe70c2cc55}{Error\+Callback} callback)
+\begin{DoxyCompactList}\small\item\em Install application error handler. \end{DoxyCompactList}\item 
+void \hyperlink{_error_handler_8c_a9356b0c8efca0c26f7b118582087e9e3}{Error\+Handler\+\_\+show} (\hyperlink{_error_handler_8h_aed7d97b22f3571652032b3136460f314}{Error\+Handler\+Error\+Code} error\+Code)
+\begin{DoxyCompactList}\small\item\em Show error code and return. \end{DoxyCompactList}\item 
+void \hyperlink{_error_handler_8c_a7a5a812a13a9c76e57887ce64ddd7e18}{Error\+Handler\+\_\+halt} (\hyperlink{_error_handler_8h_aed7d97b22f3571652032b3136460f314}{Error\+Handler\+Error\+Code} error\+Code)
+\begin{DoxyCompactList}\small\item\em Show error code and halt system. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Error\+Handler for all error processing. 
+
+\begin{DoxyVersion}{Version}
+\$\+Id\+: \hyperlink{_error_handler_8c}{Error\+Handler.\+c} 294 2024-\/01-\/30 10\+:28\+:46\+Z leglaz \$ 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{_error_handler_8c_a7a5a812a13a9c76e57887ce64ddd7e18}{\index{Error\+Handler.\+c@{Error\+Handler.\+c}!Error\+Handler\+\_\+halt@{Error\+Handler\+\_\+halt}}
+\index{Error\+Handler\+\_\+halt@{Error\+Handler\+\_\+halt}!Error\+Handler.\+c@{Error\+Handler.\+c}}
+\subsubsection[{Error\+Handler\+\_\+halt}]{\setlength{\rightskip}{0pt plus 5cm}void Error\+Handler\+\_\+halt (
+\begin{DoxyParamCaption}
+\item[{{\bf Error\+Handler\+Error\+Code}}]{error\+Code}
+\end{DoxyParamCaption}
+)}}\label{_error_handler_8c_a7a5a812a13a9c76e57887ce64ddd7e18}
+
+
+Show error code and halt system. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em error\+Code} & Numeric error code to display. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_error_handler_8c_a7acf566cf4c47dc7d15895e92608eda9}{\index{Error\+Handler.\+c@{Error\+Handler.\+c}!Error\+Handler\+\_\+set\+Error\+Callback@{Error\+Handler\+\_\+set\+Error\+Callback}}
+\index{Error\+Handler\+\_\+set\+Error\+Callback@{Error\+Handler\+\_\+set\+Error\+Callback}!Error\+Handler.\+c@{Error\+Handler.\+c}}
+\subsubsection[{Error\+Handler\+\_\+set\+Error\+Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Error\+Handler\+\_\+set\+Error\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf Error\+Callback}}]{callback}
+\end{DoxyParamCaption}
+)}}\label{_error_handler_8c_a7acf566cf4c47dc7d15895e92608eda9}
+
+
+Install application error handler. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em callback} & callback function error handling. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_error_handler_8c_acc05881f1c6f1090dd9d1d88d32e2d88}{\index{Error\+Handler.\+c@{Error\+Handler.\+c}!Error\+Handler\+\_\+set\+Print\+Callback@{Error\+Handler\+\_\+set\+Print\+Callback}}
+\index{Error\+Handler\+\_\+set\+Print\+Callback@{Error\+Handler\+\_\+set\+Print\+Callback}!Error\+Handler.\+c@{Error\+Handler.\+c}}
+\subsubsection[{Error\+Handler\+\_\+set\+Print\+Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Error\+Handler\+\_\+set\+Print\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf Print\+Callback}}]{callback}
+\end{DoxyParamCaption}
+)}}\label{_error_handler_8c_acc05881f1c6f1090dd9d1d88d32e2d88}
+
+
+Install error message output handler via callback interface. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em callback} & callback function for displaying error message. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_error_handler_8c_a9356b0c8efca0c26f7b118582087e9e3}{\index{Error\+Handler.\+c@{Error\+Handler.\+c}!Error\+Handler\+\_\+show@{Error\+Handler\+\_\+show}}
+\index{Error\+Handler\+\_\+show@{Error\+Handler\+\_\+show}!Error\+Handler.\+c@{Error\+Handler.\+c}}
+\subsubsection[{Error\+Handler\+\_\+show}]{\setlength{\rightskip}{0pt plus 5cm}void Error\+Handler\+\_\+show (
+\begin{DoxyParamCaption}
+\item[{{\bf Error\+Handler\+Error\+Code}}]{error\+Code}
+\end{DoxyParamCaption}
+)}}\label{_error_handler_8c_a9356b0c8efca0c26f7b118582087e9e3}
+
+
+Show error code and return. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em error\+Code} & Numeric error code to display. \\
+\hline
+\end{DoxyParams}

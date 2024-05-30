@@ -1,0 +1,220 @@
+\hypertarget{_error_handler_8h}{\section{src/os/\+Error\+Handler.h File Reference}
+\label{_error_handler_8h}\index{src/os/\+Error\+Handler.\+h@{src/os/\+Error\+Handler.\+h}}
+}
+
+
+Enter short description here.  
+
+
+{\ttfamily \#include \char`\"{}Types.\+h\char`\"{}}\\*
+Include dependency graph for Error\+Handler.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=189pt]{_error_handler_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=310pt]{_error_handler_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef enum \hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480}{tag\+\_\+\+Error\+Code} \hyperlink{_error_handler_8h_aed7d97b22f3571652032b3136460f314}{Error\+Handler\+Error\+Code}
+\begin{DoxyCompactList}\small\item\em All error codes. \end{DoxyCompactList}\item 
+typedef void($\ast$ \hyperlink{_error_handler_8h_a675699c57a733118f4641f24541892aa}{Print\+Callback} )(const char $\ast$line1, const char $\ast$line2)
+\begin{DoxyCompactList}\small\item\em Callback function type for showing errror codes \char`\"{}somewhere\char`\"{}. \end{DoxyCompactList}\item 
+\hypertarget{_error_handler_8h_a2e96a0567c5de834b9d8fcfe70c2cc55}{typedef void($\ast$ \hyperlink{_error_handler_8h_a2e96a0567c5de834b9d8fcfe70c2cc55}{Error\+Callback} )(\hyperlink{_error_handler_8h_aed7d97b22f3571652032b3136460f314}{Error\+Handler\+Error\+Code} errorcode)}\label{_error_handler_8h_a2e96a0567c5de834b9d8fcfe70c2cc55}
+
+\begin{DoxyCompactList}\small\item\em Callback function type for app specific error handling. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480}{tag\+\_\+\+Error\+Code} \{ \\*
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ab24e43d2d31b755eb736c4846dbac6de}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+E\+X\+I\+T} = 1, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ae7049eee5952a4e52b1cd9329c41af0e}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+T\+A\+S\+K\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 100, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a3b616e54406bc97e2bec31267fd58b77}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 110, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a4b16e262ad88b9d9e5d0c761e4305a8e}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 111, 
+\\*
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480af34d5c411ff67c67f3d9e7c2b4a98b1b}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 200, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a2678e9801b48c03ecce001f65ed34dd5}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+A\+L\+O\+G\+R\+I\+T\+M\+I\+C\+\_\+\+F\+A\+I\+L} = 201, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a2ac914139148792059834a854f3dc214}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T} = 202, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480abfe5652152b4db6eb7b3c2c7c1264b1a}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 203, 
+\\*
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a9d4f2e6f37e527ac811a3f18bc4c2a2c}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 250, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ac940f33530cc3432c615279895c2b8b2}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 251, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a4f441078fb4b0d942dad6e85c33e7d12}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L} = 252, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a69ae5caed44b248c9adeb9d123d464a9}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 300, 
+\\*
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a55534f5d3bad3885f2a9dab46d024c1f}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 301, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a0986eeba358181e426764905a15a0e7d}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L} = 302, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a3fd7fd0ef59ff3108d6ac689aa0ad1c5}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T} = 303, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a77c9fde664ff1b37fa91827dd18e9f41}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+L\+I\+N\+E\+L\+O\+S\+T\+\_\+\+T\+I\+M\+E\+O\+U\+T} = 304, 
+\\*
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ae7ab86ad77a859a4c59c5fd8276c325e}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 400, 
+\hyperlink{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a1dfa16f6298b0d21006a20065d65cb95}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L} = 401
+ \}
+\begin{DoxyCompactList}\small\item\em All error codes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{_error_handler_8h_a7a5a812a13a9c76e57887ce64ddd7e18}{Error\+Handler\+\_\+halt} (\hyperlink{_error_handler_8h_aed7d97b22f3571652032b3136460f314}{Error\+Handler\+Error\+Code} error\+Code)
+\begin{DoxyCompactList}\small\item\em Show error code and halt system. \end{DoxyCompactList}\item 
+void \hyperlink{_error_handler_8h_a9356b0c8efca0c26f7b118582087e9e3}{Error\+Handler\+\_\+show} (\hyperlink{_error_handler_8h_aed7d97b22f3571652032b3136460f314}{Error\+Handler\+Error\+Code} error\+Code)
+\begin{DoxyCompactList}\small\item\em Show error code and return. \end{DoxyCompactList}\item 
+void \hyperlink{_error_handler_8h_acc05881f1c6f1090dd9d1d88d32e2d88}{Error\+Handler\+\_\+set\+Print\+Callback} (\hyperlink{_error_handler_8h_a675699c57a733118f4641f24541892aa}{Print\+Callback} callback)
+\begin{DoxyCompactList}\small\item\em Install error message output handler via callback interface. \end{DoxyCompactList}\item 
+void \hyperlink{_error_handler_8h_a7acf566cf4c47dc7d15895e92608eda9}{Error\+Handler\+\_\+set\+Error\+Callback} (\hyperlink{_error_handler_8h_a2e96a0567c5de834b9d8fcfe70c2cc55}{Error\+Callback} callback)
+\begin{DoxyCompactList}\small\item\em Install application error handler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Enter short description here. 
+
+Enter detailed description here.
+
+\begin{DoxyVersion}{Version}
+\$\+Id\+: \hyperlink{_error_handler_8h}{Error\+Handler.\+h} 281 2024-\/01-\/12 12\+:09\+:03\+Z leglaz \$ 
+\end{DoxyVersion}
+
+
+\subsection{Typedef Documentation}
+\hypertarget{_error_handler_8h_aed7d97b22f3571652032b3136460f314}{\index{Error\+Handler.\+h@{Error\+Handler.\+h}!Error\+Handler\+Error\+Code@{Error\+Handler\+Error\+Code}}
+\index{Error\+Handler\+Error\+Code@{Error\+Handler\+Error\+Code}!Error\+Handler.\+h@{Error\+Handler.\+h}}
+\subsubsection[{Error\+Handler\+Error\+Code}]{\setlength{\rightskip}{0pt plus 5cm}typedef enum {\bf tag\+\_\+\+Error\+Code}  {\bf Error\+Handler\+Error\+Code}}}\label{_error_handler_8h_aed7d97b22f3571652032b3136460f314}
+
+
+All error codes. 
+
+\hypertarget{_error_handler_8h_a675699c57a733118f4641f24541892aa}{\index{Error\+Handler.\+h@{Error\+Handler.\+h}!Print\+Callback@{Print\+Callback}}
+\index{Print\+Callback@{Print\+Callback}!Error\+Handler.\+h@{Error\+Handler.\+h}}
+\subsubsection[{Print\+Callback}]{\setlength{\rightskip}{0pt plus 5cm}typedef void($\ast$ Print\+Callback)(const char $\ast$line1, const char $\ast$line2)}}\label{_error_handler_8h_a675699c57a733118f4641f24541892aa}
+
+
+Callback function type for showing errror codes \char`\"{}somewhere\char`\"{}. 
+
+Assume 2 lines auf output is possible (\begin{DoxySeeAlso}{See also}
+Display). 
+\end{DoxySeeAlso}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480}{\index{Error\+Handler.\+h@{Error\+Handler.\+h}!tag\+\_\+\+Error\+Code@{tag\+\_\+\+Error\+Code}}
+\index{tag\+\_\+\+Error\+Code@{tag\+\_\+\+Error\+Code}!Error\+Handler.\+h@{Error\+Handler.\+h}}
+\subsubsection[{tag\+\_\+\+Error\+Code}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf tag\+\_\+\+Error\+Code}}}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480}
+
+
+All error codes. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+E\+X\+I\+T@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+E\+X\+I\+T}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+E\+X\+I\+T@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+E\+X\+I\+T}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ab24e43d2d31b755eb736c4846dbac6de}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+\_\+\+S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+E\+X\+I\+T}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ab24e43d2d31b755eb736c4846dbac6de}
+}]Unexpected scheduler return. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+T\+A\+S\+K\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+T\+A\+S\+K\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+T\+A\+S\+K\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+T\+A\+S\+K\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ae7049eee5952a4e52b1cd9329c41af0e}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+M\+A\+I\+N\+T\+A\+S\+K\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ae7049eee5952a4e52b1cd9329c41af0e}
+}]Initialization of main task failed. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a3b616e54406bc97e2bec31267fd58b77}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a3b616e54406bc97e2bec31267fd58b77}
+}]Startup state init error. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a4b16e262ad88b9d9e5d0c761e4305a8e}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+S\+T\+A\+R\+T\+U\+P\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a4b16e262ad88b9d9e5d0c761e4305a8e}
+}]Startup state unint error. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480af34d5c411ff67c67f3d9e7c2b4a98b1b}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480af34d5c411ff67c67f3d9e7c2b4a98b1b}
+}]Timer initialization in state C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N failed. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+A\+L\+O\+G\+R\+I\+T\+M\+I\+C\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+A\+L\+O\+G\+R\+I\+T\+M\+I\+C\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+A\+L\+O\+G\+R\+I\+T\+M\+I\+C\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+A\+L\+O\+G\+R\+I\+T\+M\+I\+C\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a2678e9801b48c03ecce001f65ed34dd5}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+A\+L\+O\+G\+R\+I\+T\+M\+I\+C\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a2678e9801b48c03ecce001f65ed34dd5}
+}]Logical failure in state C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a2ac914139148792059834a854f3dc214}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+O\+U\+T}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a2ac914139148792059834a854f3dc214}
+}]Timeout in state C\+A\+L\+I\+B\+R\+A\+T\+I\+I\+O\+N. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480abfe5652152b4db6eb7b3c2c7c1264b1a}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+C\+A\+L\+I\+B\+R\+A\+T\+E\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480abfe5652152b4db6eb7b3c2c7c1264b1a}
+}]Timer uninitialization failed in state C\+A\+L\+I\+B\+R\+A\+T\+I\+O\+N. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a9d4f2e6f37e527ac811a3f18bc4c2a2c}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a9d4f2e6f37e527ac811a3f18bc4c2a2c}
+}]Timer initialization in state R\+E\+L\+E\+A\+S\+E\+\_\+\+T\+R\+A\+C\+K failed. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ac940f33530cc3432c615279895c2b8b2}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ac940f33530cc3432c615279895c2b8b2}
+}]Timer uninitialization failed in state R\+E\+L\+E\+A\+S\+E\+\_\+\+T\+R\+A\+C\+K. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a4f441078fb4b0d942dad6e85c33e7d12}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+R\+E\+L\+E\+A\+S\+E\+T\+R\+A\+C\+K\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a4f441078fb4b0d942dad6e85c33e7d12}
+}]Timer start failed in state R\+E\+L\+E\+A\+S\+E\+\_\+\+T\+R\+A\+C\+K. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a69ae5caed44b248c9adeb9d123d464a9}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a69ae5caed44b248c9adeb9d123d464a9}
+}]Timer initialization in state D\+R\+I\+V\+I\+N\+G failed. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a55534f5d3bad3885f2a9dab46d024c1f}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a55534f5d3bad3885f2a9dab46d024c1f}
+}]Timer uninitialization failed in state D\+R\+I\+V\+I\+N\+G. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a0986eeba358181e426764905a15a0e7d}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+R\+\_\+\+S\+T\+A\+R\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a0986eeba358181e426764905a15a0e7d}
+}]Timer start failed in state D\+R\+I\+V\+I\+N\+G. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a3fd7fd0ef59ff3108d6ac689aa0ad1c5}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+D\+R\+I\+V\+I\+N\+G\+\_\+\+T\+I\+M\+E\+O\+U\+T}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a3fd7fd0ef59ff3108d6ac689aa0ad1c5}
+}]Timeout in state D\+R\+I\+V\+I\+N\+G. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+L\+I\+N\+E\+L\+O\+S\+T\+\_\+\+T\+I\+M\+E\+O\+U\+T@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+L\+I\+N\+E\+L\+O\+S\+T\+\_\+\+T\+I\+M\+E\+O\+U\+T}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+L\+I\+N\+E\+L\+O\+S\+T\+\_\+\+T\+I\+M\+E\+O\+U\+T@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+L\+I\+N\+E\+L\+O\+S\+T\+\_\+\+T\+I\+M\+E\+O\+U\+T}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a77c9fde664ff1b37fa91827dd18e9f41}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+L\+I\+N\+E\+L\+O\+S\+T\+\_\+\+T\+I\+M\+E\+O\+U\+T}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a77c9fde664ff1b37fa91827dd18e9f41}
+}]Timeout in state L\+I\+N\+E L\+O\+S\+T. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ae7ab86ad77a859a4c59c5fd8276c325e}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480ae7ab86ad77a859a4c59c5fd8276c325e}
+}]Finish state timer register error. \index{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}!Error\+Handler.\+h@{Error\+Handler.\+h}}\index{Error\+Handler.\+h@{Error\+Handler.\+h}!E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L@{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a1dfa16f6298b0d21006a20065d65cb95}{E\+R\+R\+O\+R\+H\+A\+N\+D\+L\+E\+R\+\_\+\+F\+I\+N\+I\+S\+H\+\_\+\+T\+I\+M\+E\+R\+\_\+\+U\+N\+I\+N\+I\+T\+\_\+\+F\+A\+I\+L}\label{_error_handler_8h_ad1141f86ec521af1f274aeb9b73a7480a1dfa16f6298b0d21006a20065d65cb95}
+}]Finish state timer un-\/register error. \end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{_error_handler_8h_a7a5a812a13a9c76e57887ce64ddd7e18}{\index{Error\+Handler.\+h@{Error\+Handler.\+h}!Error\+Handler\+\_\+halt@{Error\+Handler\+\_\+halt}}
+\index{Error\+Handler\+\_\+halt@{Error\+Handler\+\_\+halt}!Error\+Handler.\+h@{Error\+Handler.\+h}}
+\subsubsection[{Error\+Handler\+\_\+halt}]{\setlength{\rightskip}{0pt plus 5cm}void Error\+Handler\+\_\+halt (
+\begin{DoxyParamCaption}
+\item[{{\bf Error\+Handler\+Error\+Code}}]{error\+Code}
+\end{DoxyParamCaption}
+)}}\label{_error_handler_8h_a7a5a812a13a9c76e57887ce64ddd7e18}
+
+
+Show error code and halt system. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em error\+Code} & Numeric error code to display. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_error_handler_8h_a7acf566cf4c47dc7d15895e92608eda9}{\index{Error\+Handler.\+h@{Error\+Handler.\+h}!Error\+Handler\+\_\+set\+Error\+Callback@{Error\+Handler\+\_\+set\+Error\+Callback}}
+\index{Error\+Handler\+\_\+set\+Error\+Callback@{Error\+Handler\+\_\+set\+Error\+Callback}!Error\+Handler.\+h@{Error\+Handler.\+h}}
+\subsubsection[{Error\+Handler\+\_\+set\+Error\+Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Error\+Handler\+\_\+set\+Error\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf Error\+Callback}}]{callback}
+\end{DoxyParamCaption}
+)}}\label{_error_handler_8h_a7acf566cf4c47dc7d15895e92608eda9}
+
+
+Install application error handler. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em callback} & callback function error handling. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_error_handler_8h_acc05881f1c6f1090dd9d1d88d32e2d88}{\index{Error\+Handler.\+h@{Error\+Handler.\+h}!Error\+Handler\+\_\+set\+Print\+Callback@{Error\+Handler\+\_\+set\+Print\+Callback}}
+\index{Error\+Handler\+\_\+set\+Print\+Callback@{Error\+Handler\+\_\+set\+Print\+Callback}!Error\+Handler.\+h@{Error\+Handler.\+h}}
+\subsubsection[{Error\+Handler\+\_\+set\+Print\+Callback}]{\setlength{\rightskip}{0pt plus 5cm}void Error\+Handler\+\_\+set\+Print\+Callback (
+\begin{DoxyParamCaption}
+\item[{{\bf Print\+Callback}}]{callback}
+\end{DoxyParamCaption}
+)}}\label{_error_handler_8h_acc05881f1c6f1090dd9d1d88d32e2d88}
+
+
+Install error message output handler via callback interface. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em callback} & callback function for displaying error message. \\
+\hline
+\end{DoxyParams}
+\hypertarget{_error_handler_8h_a9356b0c8efca0c26f7b118582087e9e3}{\index{Error\+Handler.\+h@{Error\+Handler.\+h}!Error\+Handler\+\_\+show@{Error\+Handler\+\_\+show}}
+\index{Error\+Handler\+\_\+show@{Error\+Handler\+\_\+show}!Error\+Handler.\+h@{Error\+Handler.\+h}}
+\subsubsection[{Error\+Handler\+\_\+show}]{\setlength{\rightskip}{0pt plus 5cm}void Error\+Handler\+\_\+show (
+\begin{DoxyParamCaption}
+\item[{{\bf Error\+Handler\+Error\+Code}}]{error\+Code}
+\end{DoxyParamCaption}
+)}}\label{_error_handler_8h_a9356b0c8efca0c26f7b118582087e9e3}
+
+
+Show error code and return. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em error\+Code} & Numeric error code to display. \\
+\hline
+\end{DoxyParams}

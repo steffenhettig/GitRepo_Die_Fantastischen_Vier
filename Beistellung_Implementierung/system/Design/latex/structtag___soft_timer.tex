@@ -1,0 +1,65 @@
+\hypertarget{structtag___soft_timer}{\section{tag\+\_\+\+Soft\+Timer Struct Reference}
+\label{structtag___soft_timer}\index{tag\+\_\+\+Soft\+Timer@{tag\+\_\+\+Soft\+Timer}}
+}
+
+
+Soft\+Timer data structure.  
+
+
+
+
+{\ttfamily \#include $<$Soft\+Timer.\+h$>$}
+
+\subsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_soft_timer_8h_a7f078e1503ae2d931bfbc6ada2145fed}{Soft\+Timer\+State} \hyperlink{structtag___soft_timer_af62379b52047ab99128f9a4b62905bc2}{state}
+\begin{DoxyCompactList}\small\item\em Soft\+Timer state. \end{DoxyCompactList}\item 
+volatile \hyperlink{_types_8h_aad0fc9943ec46ed9388d30c8ebe52b77}{U\+Int16} \hyperlink{structtag___soft_timer_ad35ffa049959bc406243952e7f3e738f}{counter}
+\begin{DoxyCompactList}\small\item\em The countdown counter. \end{DoxyCompactList}\item 
+\hyperlink{_types_8h_aad0fc9943ec46ed9388d30c8ebe52b77}{U\+Int16} \hyperlink{structtag___soft_timer_aa7b3fcf408e6ac60c9fc94ce0f202285}{thresh\+Hold}
+\begin{DoxyCompactList}\small\item\em The countdown start value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Soft\+Timer data structure. 
+
+\subsection{Field Documentation}
+\hypertarget{structtag___soft_timer_ad35ffa049959bc406243952e7f3e738f}{\index{tag\+\_\+\+Soft\+Timer@{tag\+\_\+\+Soft\+Timer}!counter@{counter}}
+\index{counter@{counter}!tag\+\_\+\+Soft\+Timer@{tag\+\_\+\+Soft\+Timer}}
+\subsubsection[{counter}]{\setlength{\rightskip}{0pt plus 5cm}volatile {\bf U\+Int16} tag\+\_\+\+Soft\+Timer\+::counter}}\label{structtag___soft_timer_ad35ffa049959bc406243952e7f3e738f}
+
+
+The countdown counter. 
+
+
+
+Referenced by Soft\+Timer\+\_\+get(), Soft\+Timer\+\_\+init(), Soft\+Timer\+\_\+start(), Soft\+Timer\+\_\+\+Update(), and Soft\+Timer\+Handler\+\_\+update().
+
+\hypertarget{structtag___soft_timer_af62379b52047ab99128f9a4b62905bc2}{\index{tag\+\_\+\+Soft\+Timer@{tag\+\_\+\+Soft\+Timer}!state@{state}}
+\index{state@{state}!tag\+\_\+\+Soft\+Timer@{tag\+\_\+\+Soft\+Timer}}
+\subsubsection[{state}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Soft\+Timer\+State} tag\+\_\+\+Soft\+Timer\+::state}}\label{structtag___soft_timer_af62379b52047ab99128f9a4b62905bc2}
+
+
+Soft\+Timer state. 
+
+
+
+Referenced by Soft\+Timer\+\_\+init(), Soft\+Timer\+\_\+start(), Soft\+Timer\+\_\+\+Stop(), Soft\+Timer\+\_\+\+Update(), Soft\+Timer\+Handler\+\_\+register(), and Soft\+Timer\+Handler\+\_\+update().
+
+\hypertarget{structtag___soft_timer_aa7b3fcf408e6ac60c9fc94ce0f202285}{\index{tag\+\_\+\+Soft\+Timer@{tag\+\_\+\+Soft\+Timer}!thresh\+Hold@{thresh\+Hold}}
+\index{thresh\+Hold@{thresh\+Hold}!tag\+\_\+\+Soft\+Timer@{tag\+\_\+\+Soft\+Timer}}
+\subsubsection[{thresh\+Hold}]{\setlength{\rightskip}{0pt plus 5cm}{\bf U\+Int16} tag\+\_\+\+Soft\+Timer\+::thresh\+Hold}}\label{structtag___soft_timer_aa7b3fcf408e6ac60c9fc94ce0f202285}
+
+
+The countdown start value. 
+
+
+
+Referenced by Soft\+Timer\+\_\+init(), Soft\+Timer\+\_\+restart(), and Soft\+Timer\+\_\+start().
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/os/\hyperlink{_soft_timer_8h}{Soft\+Timer.\+h}\end{DoxyCompactItemize}

@@ -1,0 +1,82 @@
+\hypertarget{_task_8c}{\section{src/os/\+Task.c File Reference}
+\label{_task_8c}\index{src/os/\+Task.\+c@{src/os/\+Task.\+c}}
+}
+
+
+Simple task scheduler.  
+
+
+{\ttfamily \#include $<$string.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}os/\+Task.\+h\char`\"{}}\\*
+Include dependency graph for Task.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=206pt]{_task_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5}{Task\+\_\+\+Ret} \hyperlink{_task_8c_a7826f67d79e978d4771d581421ba4210}{Task\+\_\+init} (\hyperlink{_task_8h_a77bbd51a2c7d34bd2aa764baadfb4b83}{Task} $\ast$p\+Task, \hyperlink{_task_8h_a8f3c61c0430299673ab83bf936073184}{Task\+Work\+Callback} callback, \hyperlink{_task_8h_a72a5e74cf680503ec09223c3cfdbf4e3}{Task\+State} state, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Initialize a task structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Simple task scheduler. 
+
+For a detailed description see the detailed description in \hyperlink{_scheduler_8h}{Scheduler.\+h}.
+
+\begin{DoxyVersion}{Version}
+\$\+Id\+: \hyperlink{_task_8c}{Task.\+c} 281 2024-\/01-\/12 12\+:09\+:03\+Z leglaz \$ 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{_task_8c_a7826f67d79e978d4771d581421ba4210}{\index{Task.\+c@{Task.\+c}!Task\+\_\+init@{Task\+\_\+init}}
+\index{Task\+\_\+init@{Task\+\_\+init}!Task.\+c@{Task.\+c}}
+\subsubsection[{Task\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Task\+\_\+\+Ret} Task\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{{\bf Task} $\ast$}]{task, }
+\item[{{\bf Task\+Work\+Callback}}]{callback, }
+\item[{{\bf Task\+State}}]{state, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{_task_8c_a7826f67d79e978d4771d581421ba4210}
+
+
+Initialize a task structure. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em task} & The task structure to initialize. \\
+\hline
+\mbox{\tt in}  & {\em callback} & The task work cycle function. \\
+\hline
+\mbox{\tt in}  & {\em state} & The task state. \\
+\hline
+\mbox{\tt in}  & {\em data} & Task context data that gets passed to the work cycle function.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Task\+\_\+\+Ret Status of operation. 
+\end{DoxyReturn}
+
+
+References tag\+\_\+\+Task\+::instance\+Data, N\+U\+L\+L, tag\+\_\+\+Task\+::state, T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L, T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S, and tag\+\_\+\+Task\+::work\+Callback.
+
+
+
+Referenced by Main\+Task\+\_\+init().
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{_task_8c_a7826f67d79e978d4771d581421ba4210_icgraph}
+\end{center}
+\end{figure}
+
+

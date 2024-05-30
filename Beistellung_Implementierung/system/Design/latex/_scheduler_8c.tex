@@ -1,0 +1,119 @@
+\hypertarget{_scheduler_8c}{\section{src/os/\+Scheduler.c File Reference}
+\label{_scheduler_8c}\index{src/os/\+Scheduler.\+c@{src/os/\+Scheduler.\+c}}
+}
+
+
+Simple task scheduler.  
+
+
+{\ttfamily \#include \char`\"{}os/\+Scheduler.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}os/\+Task.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}hal/\+Irq.\+h\char`\"{}}\\*
+Include dependency graph for Scheduler.\+c\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=270pt]{_scheduler_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_scheduler_8c_a54f0b21668ad0d2c4d08e91a4a9577bf}{\hyperlink{_scheduler_8h_a4986e815f32ca6e968f160f11807f3b5}{Scheduler\+\_\+\+Ret} \hyperlink{_scheduler_8c_a54f0b21668ad0d2c4d08e91a4a9577bf}{Scheduler\+\_\+init} (void)}\label{_scheduler_8c_a54f0b21668ad0d2c4d08e91a4a9577bf}
+
+\begin{DoxyCompactList}\small\item\em Initialize the scheduler module. \end{DoxyCompactList}\item 
+void \hyperlink{_scheduler_8c_ac8b5914b94644528eb5212cded91576b}{Scheduler\+\_\+execute} (void)
+\begin{DoxyCompactList}\small\item\em Execute one scheduler cycle. \end{DoxyCompactList}\item 
+\hyperlink{_scheduler_8h_a4986e815f32ca6e968f160f11807f3b5}{Scheduler\+\_\+\+Ret} \hyperlink{_scheduler_8c_ab4e5be8ef348eae3a0ce316a8fe07bef}{Scheduler\+\_\+add\+Task} (\hyperlink{_task_8h_a77bbd51a2c7d34bd2aa764baadfb4b83}{Task} $\ast$p\+New\+Task)
+\begin{DoxyCompactList}\small\item\em Add a task to the scheduler. \end{DoxyCompactList}\item 
+\hyperlink{_scheduler_8h_a4986e815f32ca6e968f160f11807f3b5}{Scheduler\+\_\+\+Ret} \hyperlink{_scheduler_8c_af000216881be045d8a8d4b934c7caf67}{Scheduler\+\_\+remove\+Task} (\hyperlink{_task_8h_a77bbd51a2c7d34bd2aa764baadfb4b83}{Task} $\ast$p\+Task\+To\+Remove)
+\begin{DoxyCompactList}\small\item\em Remove a task from the scheduler. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Simple task scheduler. 
+
+For a detailed description see the detailed description in \hyperlink{_scheduler_8h}{Scheduler.\+h}.
+
+\begin{DoxyVersion}{Version}
+\$\+Id\+: \hyperlink{_scheduler_8c}{Scheduler.\+c} 281 2024-\/01-\/12 12\+:09\+:03\+Z leglaz \$ 
+\end{DoxyVersion}
+
+
+\subsection{Function Documentation}
+\hypertarget{_scheduler_8c_ab4e5be8ef348eae3a0ce316a8fe07bef}{\index{Scheduler.\+c@{Scheduler.\+c}!Scheduler\+\_\+add\+Task@{Scheduler\+\_\+add\+Task}}
+\index{Scheduler\+\_\+add\+Task@{Scheduler\+\_\+add\+Task}!Scheduler.\+c@{Scheduler.\+c}}
+\subsubsection[{Scheduler\+\_\+add\+Task}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scheduler\+\_\+\+Ret} Scheduler\+\_\+add\+Task (
+\begin{DoxyParamCaption}
+\item[{{\bf Task} $\ast$}]{task}
+\end{DoxyParamCaption}
+)}}\label{_scheduler_8c_ab4e5be8ef348eae3a0ce316a8fe07bef}
+
+
+Add a task to the scheduler. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em task} & Pointer to task structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, false if no more space or task already added. 
+\end{DoxyReturn}
+
+
+References N\+U\+L\+L, S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+M\+A\+X\+\_\+\+T\+A\+S\+K\+S, S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+R\+E\+T\+\_\+\+N\+O\+M\+O\+R\+E\+T\+A\+S\+K\+S, S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S, and S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+R\+E\+T\+\_\+\+T\+A\+S\+K\+A\+D\+D\+E\+D\+T\+W\+I\+C\+E.
+
+
+
+Referenced by Main\+Task\+\_\+init().
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=295pt]{_scheduler_8c_ab4e5be8ef348eae3a0ce316a8fe07bef_icgraph}
+\end{center}
+\end{figure}
+
+
+\hypertarget{_scheduler_8c_ac8b5914b94644528eb5212cded91576b}{\index{Scheduler.\+c@{Scheduler.\+c}!Scheduler\+\_\+execute@{Scheduler\+\_\+execute}}
+\index{Scheduler\+\_\+execute@{Scheduler\+\_\+execute}!Scheduler.\+c@{Scheduler.\+c}}
+\subsubsection[{Scheduler\+\_\+execute}]{\setlength{\rightskip}{0pt plus 5cm}void Scheduler\+\_\+execute (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{_scheduler_8c_ac8b5914b94644528eb5212cded91576b}
+
+
+Execute one scheduler cycle. 
+
+Call the work function of all running tasks sequentially. 
+
+References N\+U\+L\+L, S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+M\+A\+X\+\_\+\+T\+A\+S\+K\+S, T\+A\+S\+K\+\_\+\+E\+X\+E\+C\+U\+T\+E, T\+A\+S\+K\+\_\+\+G\+E\+T\+\_\+\+S\+T\+A\+T\+E, and T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+N\+G.
+
+\hypertarget{_scheduler_8c_af000216881be045d8a8d4b934c7caf67}{\index{Scheduler.\+c@{Scheduler.\+c}!Scheduler\+\_\+remove\+Task@{Scheduler\+\_\+remove\+Task}}
+\index{Scheduler\+\_\+remove\+Task@{Scheduler\+\_\+remove\+Task}!Scheduler.\+c@{Scheduler.\+c}}
+\subsubsection[{Scheduler\+\_\+remove\+Task}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Scheduler\+\_\+\+Ret} Scheduler\+\_\+remove\+Task (
+\begin{DoxyParamCaption}
+\item[{{\bf Task} $\ast$}]{task}
+\end{DoxyParamCaption}
+)}}\label{_scheduler_8c_af000216881be045d8a8d4b934c7caf67}
+
+
+Remove a task from the scheduler. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em task} & Pointer to task structure.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if successful, falls if task not found. 
+\end{DoxyReturn}
+
+
+References N\+U\+L\+L, S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+M\+A\+X\+\_\+\+T\+A\+S\+K\+S, S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S, and S\+C\+H\+E\+D\+U\+L\+E\+R\+\_\+\+R\+E\+T\+\_\+\+U\+N\+K\+N\+O\+W\+N\+T\+A\+S\+K.
+

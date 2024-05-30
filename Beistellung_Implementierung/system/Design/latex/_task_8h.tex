@@ -1,0 +1,222 @@
+\hypertarget{_task_8h}{\section{src/os/\+Task.h File Reference}
+\label{_task_8h}\index{src/os/\+Task.\+h@{src/os/\+Task.\+h}}
+}
+
+
+Enter short description here.  
+
+
+{\ttfamily \#include \char`\"{}Types.\+h\char`\"{}}\\*
+Include dependency graph for Task.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=156pt]{_task_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_task_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structtag___task}{tag\+\_\+\+Task}
+\begin{DoxyCompactList}\small\item\em Task Structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \hyperlink{_task_8h_a1b1454a97d564dca99542ba060801e30}{T\+A\+S\+K\+\_\+\+G\+E\+T\+\_\+\+S\+T\+A\+T\+E}(task)~(task)-\/$>$state
+\begin{DoxyCompactList}\small\item\em Get state of a given task. \end{DoxyCompactList}\item 
+\#define \hyperlink{_task_8h_a4b05cd5351328ecb3a9ec9cbebd2ac77}{T\+A\+S\+K\+\_\+\+S\+E\+T\+\_\+\+S\+T\+A\+T\+E}(task, new\+State)~(task)-\/$>$state = (new\+State)
+\begin{DoxyCompactList}\small\item\em Set state of given task. \end{DoxyCompactList}\item 
+\#define \hyperlink{_task_8h_abab652c9af371c87e7a775e161ea80c5}{T\+A\+S\+K\+\_\+\+E\+X\+E\+C\+U\+T\+E}(task)~(task)-\/$>$work\+Callback((task-\/$>$instance\+Data))
+\begin{DoxyCompactList}\small\item\em Execute the task work cycle function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+\hypertarget{_task_8h_a72a5e74cf680503ec09223c3cfdbf4e3}{typedef enum \hyperlink{_task_8h_a729b795ce2389deacd8fbee97626723f}{tag\+\_\+\+Task\+State} \hyperlink{_task_8h_a72a5e74cf680503ec09223c3cfdbf4e3}{Task\+State}}\label{_task_8h_a72a5e74cf680503ec09223c3cfdbf4e3}
+
+\begin{DoxyCompactList}\small\item\em Possible Task States. \end{DoxyCompactList}\item 
+\hypertarget{_task_8h_a8f3c61c0430299673ab83bf936073184}{typedef void($\ast$ \hyperlink{_task_8h_a8f3c61c0430299673ab83bf936073184}{Task\+Work\+Callback} )(void $\ast$instance\+Data)}\label{_task_8h_a8f3c61c0430299673ab83bf936073184}
+
+\begin{DoxyCompactList}\small\item\em Type of task work cycle function. \end{DoxyCompactList}\item 
+\hypertarget{_task_8h_a77bbd51a2c7d34bd2aa764baadfb4b83}{typedef struct \hyperlink{structtag___task}{tag\+\_\+\+Task} \hyperlink{_task_8h_a77bbd51a2c7d34bd2aa764baadfb4b83}{Task}}\label{_task_8h_a77bbd51a2c7d34bd2aa764baadfb4b83}
+
+\begin{DoxyCompactList}\small\item\em Task Structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \hyperlink{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5}{Task\+\_\+\+Ret} \{ \hyperlink{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5ac6eaa84301a1ab2a52c6101b44c8a5d8}{T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L} = 0, 
+\hyperlink{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5a455a96c47d66f1cc26b316d2d05ace28}{T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S}
+ \}
+\begin{DoxyCompactList}\small\item\em Statuses of the task. \end{DoxyCompactList}\item 
+enum \hyperlink{_task_8h_a729b795ce2389deacd8fbee97626723f}{tag\+\_\+\+Task\+State} \{ \hyperlink{_task_8h_a729b795ce2389deacd8fbee97626723fac47ca944190c8714014acf6e55800747}{T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+E\+D} = 0, 
+\hyperlink{_task_8h_a729b795ce2389deacd8fbee97626723fa169adc0116f5c61af55d2dd88709ea4e}{T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+N\+G}
+ \}
+\begin{DoxyCompactList}\small\item\em Possible Task States. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5}{Task\+\_\+\+Ret} \hyperlink{_task_8h_a4b074cf85d0db22ecd5abd511c33a2c4}{Task\+\_\+init} (\hyperlink{_task_8h_a77bbd51a2c7d34bd2aa764baadfb4b83}{Task} $\ast$task, \hyperlink{_task_8h_a8f3c61c0430299673ab83bf936073184}{Task\+Work\+Callback} callback, \hyperlink{_task_8h_a72a5e74cf680503ec09223c3cfdbf4e3}{Task\+State} state, void $\ast$data)
+\begin{DoxyCompactList}\small\item\em Initialize a task structure. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Enter short description here. 
+
+Enter detailed description here.
+
+\begin{DoxyVersion}{Version}
+\$\+Id\+: \hyperlink{_task_8h}{Task.\+h} 281 2024-\/01-\/12 12\+:09\+:03\+Z leglaz \$ 
+\end{DoxyVersion}
+
+
+\subsection{Macro Definition Documentation}
+\hypertarget{_task_8h_abab652c9af371c87e7a775e161ea80c5}{\index{Task.\+h@{Task.\+h}!T\+A\+S\+K\+\_\+\+E\+X\+E\+C\+U\+T\+E@{T\+A\+S\+K\+\_\+\+E\+X\+E\+C\+U\+T\+E}}
+\index{T\+A\+S\+K\+\_\+\+E\+X\+E\+C\+U\+T\+E@{T\+A\+S\+K\+\_\+\+E\+X\+E\+C\+U\+T\+E}!Task.\+h@{Task.\+h}}
+\subsubsection[{T\+A\+S\+K\+\_\+\+E\+X\+E\+C\+U\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+A\+S\+K\+\_\+\+E\+X\+E\+C\+U\+T\+E(
+\begin{DoxyParamCaption}
+\item[{}]{task}
+\end{DoxyParamCaption}
+)~(task)-\/$>$work\+Callback((task-\/$>$instance\+Data))}}\label{_task_8h_abab652c9af371c87e7a775e161ea80c5}
+
+
+Execute the task work cycle function. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em task} & Pointer to task structure. \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by Scheduler\+\_\+execute().
+
+\hypertarget{_task_8h_a1b1454a97d564dca99542ba060801e30}{\index{Task.\+h@{Task.\+h}!T\+A\+S\+K\+\_\+\+G\+E\+T\+\_\+\+S\+T\+A\+T\+E@{T\+A\+S\+K\+\_\+\+G\+E\+T\+\_\+\+S\+T\+A\+T\+E}}
+\index{T\+A\+S\+K\+\_\+\+G\+E\+T\+\_\+\+S\+T\+A\+T\+E@{T\+A\+S\+K\+\_\+\+G\+E\+T\+\_\+\+S\+T\+A\+T\+E}!Task.\+h@{Task.\+h}}
+\subsubsection[{T\+A\+S\+K\+\_\+\+G\+E\+T\+\_\+\+S\+T\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+A\+S\+K\+\_\+\+G\+E\+T\+\_\+\+S\+T\+A\+T\+E(
+\begin{DoxyParamCaption}
+\item[{}]{task}
+\end{DoxyParamCaption}
+)~(task)-\/$>$state}}\label{_task_8h_a1b1454a97d564dca99542ba060801e30}
+
+
+Get state of a given task. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em task} & Pointer to task structure. \\
+\hline
+\end{DoxyParams}
+
+
+Referenced by Scheduler\+\_\+execute().
+
+\hypertarget{_task_8h_a4b05cd5351328ecb3a9ec9cbebd2ac77}{\index{Task.\+h@{Task.\+h}!T\+A\+S\+K\+\_\+\+S\+E\+T\+\_\+\+S\+T\+A\+T\+E@{T\+A\+S\+K\+\_\+\+S\+E\+T\+\_\+\+S\+T\+A\+T\+E}}
+\index{T\+A\+S\+K\+\_\+\+S\+E\+T\+\_\+\+S\+T\+A\+T\+E@{T\+A\+S\+K\+\_\+\+S\+E\+T\+\_\+\+S\+T\+A\+T\+E}!Task.\+h@{Task.\+h}}
+\subsubsection[{T\+A\+S\+K\+\_\+\+S\+E\+T\+\_\+\+S\+T\+A\+T\+E}]{\setlength{\rightskip}{0pt plus 5cm}\#define T\+A\+S\+K\+\_\+\+S\+E\+T\+\_\+\+S\+T\+A\+T\+E(
+\begin{DoxyParamCaption}
+\item[{}]{task, }
+\item[{}]{new\+State}
+\end{DoxyParamCaption}
+)~(task)-\/$>$state = (new\+State)}}\label{_task_8h_a4b05cd5351328ecb3a9ec9cbebd2ac77}
+
+
+Set state of given task. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em task} & Pointer to task structure. \\
+\hline
+\mbox{\tt in}  & {\em new\+State} & New task state. \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Enumeration Type Documentation}
+\hypertarget{_task_8h_a729b795ce2389deacd8fbee97626723f}{\index{Task.\+h@{Task.\+h}!tag\+\_\+\+Task\+State@{tag\+\_\+\+Task\+State}}
+\index{tag\+\_\+\+Task\+State@{tag\+\_\+\+Task\+State}!Task.\+h@{Task.\+h}}
+\subsubsection[{tag\+\_\+\+Task\+State}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf tag\+\_\+\+Task\+State}}}\label{_task_8h_a729b795ce2389deacd8fbee97626723f}
+
+
+Possible Task States. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+E\+D@{T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+E\+D}!Task.\+h@{Task.\+h}}\index{Task.\+h@{Task.\+h}!T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+E\+D@{T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+E\+D}}\item[{\em 
+\hypertarget{_task_8h_a729b795ce2389deacd8fbee97626723fac47ca944190c8714014acf6e55800747}{T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+S\+U\+S\+P\+E\+N\+D\+E\+D}\label{_task_8h_a729b795ce2389deacd8fbee97626723fac47ca944190c8714014acf6e55800747}
+}]Task is not allowed to run. \index{T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+N\+G@{T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+N\+G}!Task.\+h@{Task.\+h}}\index{Task.\+h@{Task.\+h}!T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+N\+G@{T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+N\+G}}\item[{\em 
+\hypertarget{_task_8h_a729b795ce2389deacd8fbee97626723fa169adc0116f5c61af55d2dd88709ea4e}{T\+A\+S\+K\+\_\+\+S\+T\+A\+T\+E\+\_\+\+R\+U\+N\+N\+I\+N\+G}\label{_task_8h_a729b795ce2389deacd8fbee97626723fa169adc0116f5c61af55d2dd88709ea4e}
+}]Task is allowed to run. \end{description}
+\end{Desc}
+\hypertarget{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5}{\index{Task.\+h@{Task.\+h}!Task\+\_\+\+Ret@{Task\+\_\+\+Ret}}
+\index{Task\+\_\+\+Ret@{Task\+\_\+\+Ret}!Task.\+h@{Task.\+h}}
+\subsubsection[{Task\+\_\+\+Ret}]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf Task\+\_\+\+Ret}}}\label{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5}
+
+
+Statuses of the task. 
+
+\begin{Desc}
+\item[Enumerator]\par
+\begin{description}
+\index{T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L@{T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L}!Task.\+h@{Task.\+h}}\index{Task.\+h@{Task.\+h}!T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L@{T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L}}\item[{\em 
+\hypertarget{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5ac6eaa84301a1ab2a52c6101b44c8a5d8}{T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L}\label{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5ac6eaa84301a1ab2a52c6101b44c8a5d8}
+}]Status\+: fail. \index{T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S@{T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S}!Task.\+h@{Task.\+h}}\index{Task.\+h@{Task.\+h}!T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S@{T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S}}\item[{\em 
+\hypertarget{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5a455a96c47d66f1cc26b316d2d05ace28}{T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S}\label{_task_8h_a37f1bd0af944415ae4fa0cf9574d3ad5a455a96c47d66f1cc26b316d2d05ace28}
+}]Status\+: success. \end{description}
+\end{Desc}
+
+
+\subsection{Function Documentation}
+\hypertarget{_task_8h_a4b074cf85d0db22ecd5abd511c33a2c4}{\index{Task.\+h@{Task.\+h}!Task\+\_\+init@{Task\+\_\+init}}
+\index{Task\+\_\+init@{Task\+\_\+init}!Task.\+h@{Task.\+h}}
+\subsubsection[{Task\+\_\+init}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Task\+\_\+\+Ret} Task\+\_\+init (
+\begin{DoxyParamCaption}
+\item[{{\bf Task} $\ast$}]{task, }
+\item[{{\bf Task\+Work\+Callback}}]{callback, }
+\item[{{\bf Task\+State}}]{state, }
+\item[{void $\ast$}]{data}
+\end{DoxyParamCaption}
+)}}\label{_task_8h_a4b074cf85d0db22ecd5abd511c33a2c4}
+
+
+Initialize a task structure. 
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\tt in}  & {\em task} & The task structure to initialize. \\
+\hline
+\mbox{\tt in}  & {\em callback} & The task work cycle function. \\
+\hline
+\mbox{\tt in}  & {\em state} & The task state. \\
+\hline
+\mbox{\tt in}  & {\em data} & Task context data that gets passed to the work cycle function.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Task\+\_\+\+Ret Status of operation. 
+\end{DoxyReturn}
+
+
+References tag\+\_\+\+Task\+::instance\+Data, N\+U\+L\+L, tag\+\_\+\+Task\+::state, T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+F\+A\+I\+L, T\+A\+S\+K\+\_\+\+R\+E\+T\+\_\+\+S\+U\+C\+C\+E\+S\+S, and tag\+\_\+\+Task\+::work\+Callback.
+
+
+
+Referenced by Main\+Task\+\_\+init().
+
+
+
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=249pt]{_task_8h_a4b074cf85d0db22ecd5abd511c33a2c4_icgraph}
+\end{center}
+\end{figure}
+
+
