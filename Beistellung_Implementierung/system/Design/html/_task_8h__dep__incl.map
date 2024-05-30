@@ -1,0 +1,8 @@
+<map id="src/os/Task.h" name="src/os/Task.h">
+<area shape="rect" id="node2" href="$_main_task_8c.html" title="Main Application task. " alt="" coords="60,155,196,181"/>
+<area shape="rect" id="node3" href="$_main_task_8h.html" title="The main application task. " alt="" coords="5,80,141,107"/>
+<area shape="rect" id="node4" href="$_scheduler_8c.html" title="Simple task scheduler. " alt="" coords="335,155,465,181"/>
+<area shape="rect" id="node5" href="$_scheduler_8h.html" title="Cooperative Round&#45;Robin Scheduler. " alt="" coords="216,80,347,107"/>
+<area shape="rect" id="node7" href="$_task_8c.html" title="Simple task scheduler. " alt="" coords="421,80,523,107"/>
+<area shape="rect" id="node6" href="$_os_8c.html" title="OS main module. " alt="" coords="220,155,311,181"/>
+</map>
