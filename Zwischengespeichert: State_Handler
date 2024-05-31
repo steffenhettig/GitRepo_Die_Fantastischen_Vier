@@ -51,7 +51,7 @@ if(button A pressed == 1)
     current_event = event_push_button_A_pressed;
 } */
 enum events current_event; 
-enum errror errorID;
+enum error errorID;
 
 /* EXTERNAL FUNCTIONS *****************************************************************************/
 enum events calibration_process(void);
@@ -59,6 +59,10 @@ enum events mode_switch_process(void);
 enum events start_race_process(void);
 enum events run_race_process(void);
 enum events redetect_track_process(void);
+void init_process(void);
+void wait_process(void);
+void race_done_process(void);
+void error_process(void);
 
 void StateHandler_process(void)
 {
