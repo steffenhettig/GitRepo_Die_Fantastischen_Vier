@@ -1,0 +1,137 @@
+/***************************************************************************************************
+  (c) NewTec GmbH 2024   -   www.newtec.de
+***************************************************************************************************/
+/**
+ * @file       StateHandler.c
+ *
+ * Module description comes here.
+ */
+/**************************************************************************************************/
+
+/* INCLUDES ***************************************************************************************/
+#include "app/StateHandler.h"
+
+
+/* CONSTANTS **************************************************************************************/
+
+/* MACROS *****************************************************************************************/
+
+/* TYPES ******************************************************************************************/
+
+/* PROTOTYPES *************************************************************************************/
+
+/* VARIABLES **************************************************************************************/
+States gCurrentState;
+Events gCurrentEvent;
+Errors gErrorID;
+
+/* EXTERNAL FUNCTIONS *****************************************************************************/
+Events Calibration_process(void);
+Events ModeSwitch_process(void);
+Events StartRace_process(void);
+Events RunRace_process(void);
+Events RedetectTrack_process(void);
+void Init_process(void);
+void Wait_process(void);
+void RaceDone_process(void);
+void Error_process(void);
+
+/* INTERNAL FUNCTIONS *****************************************************************************/
+void StateHandler_process(void);
+
+
+void StateHandler_process(void)
+{
+    switch (gCurrentState)
+    { 
+    case ST_INIT: 
+        Init_process(); //---------
+        gCurrentState = ST_CALIBRATION;
+        break;
+
+    case ST_WAIT:
+        Wait_process(); //---------
+        if(EV_PUSH_BUTTON_B_PRESSED == gCurrentEvent)
+        {
+            gCurrentState = ST_MODE_SWITCH;
+        }
+        if(EV_PUSH_BUTTON_A_PRESSED == gCurrentEvent)
+        {
+            gCurrentState = ST_START_RACE;
+        }
+        if(EV_PUSH_BUTTON_C_PRESSED == gCurrentEvent)
+        {
+            gCurrentState = ST_CALIBRATION;
+        }
+        break;
+
+    case ST_MODE_SWITCH:
+        if(ModeSwitch_process() == EV_MODE_SWITCH_SUCCESSFUL)//---------hier Rückgabewerte: mode_switch_successful
+        {
+            gCurrentState = ST_WAIT;
+        }
+        else
+        {
+            gCurrentState = ST_ERROR;
+        }
+        break;
+
+    case ST_CALIBRATION:
+        if(Calibration_process() == EV_CALIBRATION_SUCCESSFUL)//---------hier Rückgabewerte: calibration_successful
+        {
+            gCurrentState = ST_WAIT;
+        }
+        else
+        {
+            gCurrentState = ST_ERROR;
+        }
+        break;
+
+    case ST_RUN_RACE: 
+        switch (RunRace_process())
+        {
+            case EV_ENDLINE_DETECTED:
+                gCurrentState = ST_RACE_DONE;
+
+            case EV_TRACK_LOST:
+                gCurrentState = ST_REDETECT_TRACK;
+
+            default:
+                gCurrentState = ST_ERROR;
+        }     
+        break;
+
+    case ST_START_RACE:
+        if(StartRace_process() == EV_STARTLINE_DETECTED)//---------hier Rückgabewerte: EV_STARTLINE_DETECTED
+        {
+            gCurrentState = ST_RUN_RACE;
+        }
+        else
+        {
+            gCurrentState = ST_ERROR;
+        }
+        break;
+
+    case ST_RACE_DONE:
+        RaceDone_process();//---------
+      break;
+
+    case ST_ERROR:
+        Error_process();//---------
+        break;
+
+    case ST_REDETECT_TRACK:
+        if(RedetectTrack_process() == EV_TRACK_REDETECTED)//---------hier Rückgabewerte: EV_TRACK_REDETECTED
+        {
+            gCurrentState = ST_RUN_RACE;
+        }
+        else
+        {
+            gCurrentState = ST_ERROR;
+        }
+        break;
+
+    default:
+        break;
+  }
+}
