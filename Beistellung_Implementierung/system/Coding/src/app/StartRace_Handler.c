@@ -1,5 +1,5 @@
 /**
-@addtogroup Hal
+@addtogroup app
 @{
 @file       StartRace_Handler.c
 
