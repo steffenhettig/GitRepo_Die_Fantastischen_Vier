@@ -42,10 +42,7 @@
 #define CALIBRATION_NO_LINE_DETECTED_LIMIT 25U  /**< Max confidenc a line is under the sensor to determ no line is detected  */
 #define CALIBRATION_LINE_DETECTED_LIMIT 75U     /**< Min confidence a line is under the sensor */
 
-
-
-
-/** Definition of the Calibration_Handler class */
+/** Definition of the Calibration Handler class */
 typedef struct {
 
     // Methoden
