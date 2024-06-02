@@ -13,10 +13,26 @@
 /* INCLUDES ***************************************************************************************/
 
 /* CONSTANTS **************************************************************************************/
+#define SENSOR_WEIGHT_SCALE 1000
+#define CENTER_OF_LINE_POSITION 2000
+#define MAX_MOTOR_SPEED 400
 
 /* MACROS *****************************************************************************************/
 
 /* TYPES ******************************************************************************************/
+/*   Nur, damit es sich Compilieren lässt --> kommt wieder raus --> ist ja schon in StateHandler.h   */
+typedef enum {
+    EV_NO_EVENT,
+    EV_CALIBRATION_SUCCESSFUL,
+    EV_MODE_SWITCH_SUCCESSFUL,
+    EV_STARTLINE_DETECTED,
+    EV_ENDLINE_DETECTED,
+    EV_TRACK_LOST,
+    EV_TRACK_REDETECTED,
+    EV_PUSH_BUTTON_A_PRESSED,
+    EV_PUSH_BUTTON_B_PRESSED,
+    EV_PUSH_BUTTON_C_PRESSED,
+}Events;
 
 // Definition of the RunRace_Handler class
 typedef struct {
