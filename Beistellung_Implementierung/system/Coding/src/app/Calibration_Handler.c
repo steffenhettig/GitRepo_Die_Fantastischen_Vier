@@ -186,13 +186,16 @@ static Events Calibration_Process(void)
                     {
                         //Softtimer couldn't be stoped
                         //Jump in Error State
-                        
+                        gState = CALIBRATION_STATE_CALIBRATION_TIMEOUT;
+                    }
+                    else
+                    {
+                        gState = CALIBRATION_STATE_CALIBRATION_FINISHED;
+
+                        Display_clearLine();
+                        Display_write("Calibration finished", CALIBRATION_TEXTLENGTH);
                     }
 
-                    gState = CALIBRATION_STATE_CALIBRATION_FINISHED;
-
-                    Display_clearLine();
-                    Display_write("Calibration finished", CALIBRATION_TEXTLENGTH);
             
                 }
                 else
