@@ -92,12 +92,15 @@ void StateHandler_process(void)
         {
             case EV_ENDLINE_DETECTED:
                 gCurrentState = ST_RACE_DONE;
+                break;
 
             case EV_TRACK_LOST:
                 gCurrentState = ST_REDETECT_TRACK;
+                break;
 
             default:
                 gCurrentState = ST_ERROR;
+                break;
         }     
         break;
 
