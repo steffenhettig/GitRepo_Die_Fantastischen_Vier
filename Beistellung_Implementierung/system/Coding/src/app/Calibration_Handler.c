@@ -17,11 +17,11 @@
 #include <stdio.h>
 
 #include "app/Calibration_Handler.h"
-#include "service/Button.h"
 #include "service/LineSensor.h"
 #include "os/SoftTimer.h"
 #include "service/DriveControl.h"
 #include "service/Display.h"
+#include "app/StateHandler.h"
 
 
  /* CONSTANTS **************************************************************************************/
@@ -65,157 +65,171 @@ static SoftTimer gTimer;
 * This function contains the logic and the implementation for the diferent calibration states
 *
 */
-static void Calibration_Process(void) 
+static Events Calibration_Process(void) 
 {
     LineSensorValues SensorValues;
-    SoftTimer_Ret TimerReturn;
+    Events RetunrParameter = EV_NO_EVENT;
+    Bool CalibrationInProcess = true;
+    //SoftTimer_Ret TimerReturn;
 
-    switch (gState)
+    /**
+     * Calibration loop to handle the calibration process
+     * it will be repeatet until CalibrationInProcess is set false by the 
+     * Timeout or Calibration Finished state
+    */
+    while (CalibrationInProcess)
     {
-        case CALIBRATION_STATE_INIT:
-        
-            /** Clear Display and write current Calibration progress*/
-            Display_clear();/**< Maybe needs to get removed and put in the first transition to calib*/
-            Display_write("Calibration process 1 of 6 ", CALIBRATION_TEXTLENGTH);
-
-
-            if (SOFTTIMER_IS_EXPIRED(&gTimer))
-            {
-                gState = CALIBRATION_STATE_TURN_RIGHT_UNTIL_LEFT_SENSOR;
-                SoftTimer_start(&gTimer, CALIBRATION_MAX_CALIBRATIONTIME);
-                LineSensor_startCalibration();
-
-                //Update display
-                Display_clearLine();
-                Display_write("Calibration process 2 of 6 ", CALIBRATION_TEXTLENGTH);
-            }
-     
-            break;
-
-        case CALIBRATION_STATE_TURN_RIGHT_UNTIL_LEFT_SENSOR:
-
+        switch (gState)
+        {
+            case CALIBRATION_STATE_INIT:
             
-        
-            //Turns unitil the left sensor is over the line and calibrated
-            DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_FORWARD);
-            DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_BACKWARD);
-        
-            if (SOFTTIMER_IS_EXPIRED(&gTimer))
-            {
-                gState = CALIBRATION_STATE_CALIBRATION_TIMEOUT;
-                
-            }
-
-            LineSensor_read(&SensorValues);
-            if ((TRUE == SensorValues.calibrated[LINESENSOR_LEFT]) && (CALIBRATION_HANDLER_LINE_DETECTED(SensorValues.value[LINESENSOR_LEFT])))
-            {
-                //Left sensor is calibrated and over the Line
-                gState = CALIBRATION_STATE_TURN_LEFT_UNTIL_RIGHT_SENSOR;
-                SoftTimer_restart(&gTimer);
-
-                Display_clearLine();
-                Display_write("Calibration process 3 of 6 ", CALIBRATION_TEXTLENGTH);
-            }
-            break;
-
-        case CALIBRATION_STATE_TURN_LEFT_UNTIL_RIGHT_SENSOR:
-            DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_BACKWARD);
-            DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_FORWARD);
-
-            if (SOFTTIMER_IS_EXPIRED(&gTimer))
-            {
-                gState = CALIBRATION_STATE_CALIBRATION_TIMEOUT;
-                
-            }
-           
-            LineSensor_read(&SensorValues);
-            if ((TRUE == SensorValues.calibrated[LINESENSOR_RIGHT]) && (CALIBRATION_HANDLER_LINE_DETECTED(SensorValues.value[LINESENSOR_RIGHT])))
-            {
-                gState = CALIBRATION_STATE_CENTER_ON_LINE;
-                SoftTimer_restart(&gTimer);
-
-                Display_clearLine();
-                Display_write("Calibration process 4 of 6 ", CALIBRATION_TEXTLENGTH);
-            }
-
-            break;
-
-        case CALIBRATION_STATE_CENTER_ON_LINE:
-            DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_FORWARD);
-            DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_BACKWARD);
-
-            if (SOFTTIMER_IS_EXPIRED(&gTimer))
-            {
-                gState = CALIBRATION_STATE_CALIBRATION_TIMEOUT; 
-            }
-
-            LineSensor_read(&SensorValues);
-
-            /* stop and next state if robot is centered*/
-            if (CALIBRATION_HANDLER_NO_LINE_DETECTED(SensorValues.value[LINESENSOR_LEFT])
-                && NO_LINE_DETECTED(SensorValues.value[LINESENSOR_MIDDLE_LEFT])
-                && LINE_DETECTED(SensorValues.value[LINESENSOR_MIDDLE])
-                && NO_LINE_DETECTED(SensorValues.value[LINESENSOR_MIDDLE_RIGHT])
-                && NO_LINE_DETECTED(SensorValues.value[LINESENSOR_RIGHT]))
-            {
-                DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, 0U, DRIVE_CONTROL_FORWARD);
-                DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT,0U, DRIVE_CONTROL_FORWARD);
-                gState = CALIBRATION_STATE_CHECKING;
-
-                Display_clearLine();
-                Display_write("Calibration process 5 of 6 ", CALIBRATION_TEXTLENGTH);
-            }
-            break;
-
-        case CALIBRATION_STATE_CHECKING:
+                /** Clear Display and write current Calibration progress*/
+                Display_clear();/**< Maybe needs to get removed and put in the first transition to calib*/
+                Display_write("Calibration process 1 of 6 ", CALIBRATION_TEXTLENGTH);
 
 
-            if (!LineSensor_getCalibrationState)
-            {
-                /*stop softtimer and check if it was succesfull*/
-                if (SOFTTIMER_RET_SUCCESS != SoftTimer_Stop(&gTimer))
+                if (SOFTTIMER_IS_EXPIRED(&gTimer))
                 {
-                    //Softtimer couldn't be stoped
-                    //Jump in Error State
+                    gState = CALIBRATION_STATE_TURN_RIGHT_UNTIL_LEFT_SENSOR;
+                    SoftTimer_start(&gTimer, CALIBRATION_MAX_CALIBRATIONTIME);
+                    LineSensor_startCalibration();
+
+                    //Update display
+                    Display_clearLine();
+                    Display_write("Calibration process 2 of 6 ", CALIBRATION_TEXTLENGTH);
+                }
+        
+                break;
+
+            case CALIBRATION_STATE_TURN_RIGHT_UNTIL_LEFT_SENSOR:
+
+                
+            
+                //Turns unitil the left sensor is over the line and calibrated
+                DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_FORWARD);
+                DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_BACKWARD);
+            
+                if (SOFTTIMER_IS_EXPIRED(&gTimer))
+                {
+                    gState = CALIBRATION_STATE_CALIBRATION_TIMEOUT;
                     
                 }
 
+                LineSensor_read(&SensorValues);
+                if ((TRUE == SensorValues.calibrated[LINESENSOR_LEFT]) && (CALIBRATION_HANDLER_LINE_DETECTED(SensorValues.value[LINESENSOR_LEFT])))
+                {
+                    //Left sensor is calibrated and over the Line
+                    gState = CALIBRATION_STATE_TURN_LEFT_UNTIL_RIGHT_SENSOR;
+                    SoftTimer_restart(&gTimer);
 
-                gState = CALIBRATION_STATE_CALIBRATION_FINISHED;
+                    Display_clearLine();
+                    Display_write("Calibration process 3 of 6 ", CALIBRATION_TEXTLENGTH);
+                }
+                break;
 
-                Display_clearLine();
-                Display_write("Calibration finished", CALIBRATION_TEXTLENGTH);
-        
-            }
-            else
-            {
-                /*restart calibration if one sensor is not calibrated*/
-                gState = CALIBRATION_STATE_TURN_RIGHT_UNTIL_LEFT_SENSOR;
-                SoftTimer_restart(&gTimer);
+            case CALIBRATION_STATE_TURN_LEFT_UNTIL_RIGHT_SENSOR:
+                DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_BACKWARD);
+                DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_FORWARD);
+
+                if (SOFTTIMER_IS_EXPIRED(&gTimer))
+                {
+                    gState = CALIBRATION_STATE_CALIBRATION_TIMEOUT;
+                    
+                }
+            
+                LineSensor_read(&SensorValues);
+                if ((TRUE == SensorValues.calibrated[LINESENSOR_RIGHT]) && (CALIBRATION_HANDLER_LINE_DETECTED(SensorValues.value[LINESENSOR_RIGHT])))
+                {
+                    gState = CALIBRATION_STATE_CENTER_ON_LINE;
+                    SoftTimer_restart(&gTimer);
+
+                    Display_clearLine();
+                    Display_write("Calibration process 4 of 6 ", CALIBRATION_TEXTLENGTH);
+                }
+
+                break;
+
+            case CALIBRATION_STATE_CENTER_ON_LINE:
+                DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_FORWARD);
+                DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, CALIBRATION_SPEED_CALIBRATION, DRIVE_CONTROL_BACKWARD);
+
+                if (SOFTTIMER_IS_EXPIRED(&gTimer))
+                {
+                    gState = CALIBRATION_STATE_CALIBRATION_TIMEOUT; 
+                }
+
+                LineSensor_read(&SensorValues);
+
+                /* stop and next state if robot is centered*/
+                if (CALIBRATION_HANDLER_NO_LINE_DETECTED(SensorValues.value[LINESENSOR_LEFT])
+                    && CALIBRATION_HANDLER_NO_LINE_DETECTED(SensorValues.value[LINESENSOR_MIDDLE_LEFT])
+                    && CALIBRATION_HANDLER_LINE_DETECTED(SensorValues.value[LINESENSOR_MIDDLE])
+                    && CALIBRATION_HANDLER_NO_LINE_DETECTED(SensorValues.value[LINESENSOR_MIDDLE_RIGHT])
+                    && CALIBRATION_HANDLER_NO_LINE_DETECTED(SensorValues.value[LINESENSOR_RIGHT]))
+                {
+                    DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, 0U, DRIVE_CONTROL_FORWARD);
+                    DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT,0U, DRIVE_CONTROL_FORWARD);
+                    gState = CALIBRATION_STATE_CHECKING;
+
+                    Display_clearLine();
+                    Display_write("Calibration process 5 of 6 ", CALIBRATION_TEXTLENGTH);
+                }
+                break;
+
+            case CALIBRATION_STATE_CHECKING:
 
 
-                Display_clearLine();
-                Display_write("Calibration progress 2 of 6", CALIBRATION_TEXTLENGTH);
-            }
-            break;
+                if (LineSensor_getCalibrationState())
+                {
+                    /*stop softtimer and check if it was succesfull*/
+                    if (SOFTTIMER_RET_SUCCESS != SoftTimer_Stop(&gTimer))
+                    {
+                        //Softtimer couldn't be stoped
+                        //Jump in Error State
+                        
+                    }
 
-        case CALIBRATION_STATE_CALIBRATION_FINISHED:
+                    gState = CALIBRATION_STATE_CALIBRATION_FINISHED;
 
-            /* unregister softtimer and check if it was sucessfull*/
-            if (SOFTTIMER_RET_SUCCESS != SoftTimerHandler_unRegister(&gTimer))
-            {
-                //Softtimer couldn't be stoped
-                //Jump in error State
-            }
+                    Display_clearLine();
+                    Display_write("Calibration finished", CALIBRATION_TEXTLENGTH);
+            
+                }
+                else
+                {
+                    /*restart calibration if one sensor is not calibrated*/
+                    gState = CALIBRATION_STATE_TURN_RIGHT_UNTIL_LEFT_SENSOR;
+                    SoftTimer_restart(&gTimer);
 
 
-            //Enter State Wait
-            break;
+                    Display_clearLine();
+                    Display_write("Calibration progress 2 of 6", CALIBRATION_TEXTLENGTH);
+                }
+                break;
 
-        case CALIBRATION_STATE_CALIBRATION_TIMEOUT:
-            // Enter State Error
-            break;
+            case CALIBRATION_STATE_CALIBRATION_FINISHED:
+
+                /* unregister softtimer and check if it was sucessfull*/
+                if (SOFTTIMER_RET_SUCCESS != SoftTimerHandler_unRegister(&gTimer))
+                {
+                    //Softtimer couldn't be stoped
+                    //Jump in error State
+                }
+
+                CalibrationInProcess = false; //End CalibrationCycle
+
+                //Enter State Wait
+                break;
+
+            case CALIBRATION_STATE_CALIBRATION_TIMEOUT:
+                // Enter State Error
+                CalibrationInProcess = false; //End CalibrationCycle
+                RetunrParameter = EV_NO_EVENT;
+                break;
+        }
     }
+
+ return RetunrParameter;
 }
 
 /** Create and initialize Calibration_Handler instance */
