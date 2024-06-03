@@ -16,6 +16,7 @@
 #define SENSOR_WEIGHT_SCALE 1000
 #define CENTER_OF_LINE_POSITION 2000
 #define MAX_MOTOR_SPEED 400
+#define CALIB_OVER_LINE(value) ((value) > 500)
 
 /* MACROS *****************************************************************************************/
 
