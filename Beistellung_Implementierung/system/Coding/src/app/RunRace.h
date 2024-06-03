@@ -13,9 +13,6 @@
 /* INCLUDES ***************************************************************************************/
 
 /* CONSTANTS **************************************************************************************/
-#define SENSOR_WEIGHT_SCALE 1000
-#define CENTER_OF_LINE_POSITION 2000
-#define MAX_MOTOR_SPEED 400
 
 /* MACROS *****************************************************************************************/
 
@@ -25,8 +22,7 @@ typedef enum {
     EV_NO_EVENT,
     EV_CALIBRATION_SUCCESSFUL,
     EV_MODE_SWITCH_SUCCESSFUL,
-    EV_STARTLINE_DETECTED,
-    EV_ENDLINE_DETECTED,
+    EV_STARTENDLINE_DETECTED,
     EV_TRACK_LOST,
     EV_TRACK_REDETECTED,
     EV_PUSH_BUTTON_A_PRESSED,
@@ -35,14 +31,15 @@ typedef enum {
 }Events;
 
 // Definition of the RunRace_Handler class
+/*
 typedef struct {
     // Methoden
     void (*RunRace_Process)(void);
-} RunRace_Handler;
+} RunRace_Handler;*/
 
 /* PROTOTYPES *************************************************************************************/
 
 // External declaration of the RunRace_Handler instance
-extern RunRace_Handler RunRace_Handler_instance;
+//extern RunRace_Handler RunRace_Handler_instance;
 
 #endif /* RUNRACE_HANDLER_H */

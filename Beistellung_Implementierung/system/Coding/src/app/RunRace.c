@@ -19,6 +19,7 @@
 
 
  /* CONSTANTS **************************************************************************************/
+ #define TRESHOLD_LINE 500
 
  /* MACROS *****************************************************************************************/
 
@@ -41,106 +42,32 @@ const UInt32 gK_d = 6;
 
 
 // Implementation of the RunRace_Process method
-
-/* --> Schleife fehlt mit den jeweiligen Events als Rückgabewerte */
 static Events RunRace_process(void) 
 {
-    LineSensorValues SensorValues;
-    /* Vernüpfung mit Hardware fehlt --> Werte einlesen */
+    Events retEvent = EV_NO_EVENT;
 
-    Events RetEvent = EV_NO_EVENT;
+    while (retEvent == EV_NO_EVENT)
+    {   
+      LineSensorValues sensorValues;
+      LineSensor_read(&sensorValues);
+      Driving_followLine(&sensorValues);
 
-    LineSensor_read(&SensorValues);
-    UInt32 position = calculatePosition(&SensorValues);
-    UInt32 error = position - CENTER_OF_LINE_POSITION;
+      if (0) /* Timer Condition is missing, replace 0*/
+      {
 
-    UInt16 leftSpeed;
-    UInt16 rightSpeed;
+      }
+      if ((TRESHOLD_LINE < sensorValues.value[LINESENSOR_LEFT]) && (TRESHOLD_LINE < sensorValues.value[LINESENSOR_RIGHT])) /* if Endline detected */
+      {
+        retEvent =  EV_STARTENDLINE_DETECTED;
+      }
+      if ((TRESHOLD_LINE >= sensorValues.value[LINESENSOR_LEFT]) && (TRESHOLD_LINE >= sensorValues.value[LINESENSOR_MIDDLE_LEFT]) && (TRESHOLD_LINE >= sensorValues.value[LINESENSOR_MIDDLE]) && (TRESHOLD_LINE >= sensorValues.value[LINESENSOR_MIDDLE_RIGHT]) && (TRESHOLD_LINE >= sensorValues.value[LINESENSOR_RIGHT]))
+      {
+        retEvent = EV_TRACK_LOST;
+      }
 
-    regulateSpeed(error, &leftSpeed, &rightSpeed);
-
-    /* Vernüpfung mit Hardware fehlt --> Ausgeben auf die Motoren */
-
-
-    return RetEvent;
+    }
+    return retEvent;
 }
 
 
 /* INTERNAL FUNCTIONS *****************************************************************************/
-
-static void regulateSpeed(Int32 error, UInt16 * leftSpeed, UInt16 * rightSpeed)
-{
-    /* PID controller */
-    Int32 proportional = (Int32)(error * gK_p);
-    Int32 derivative   = (error - gLastError) * gK_d;
-    Int32 integral     = 0;  /* not needed */
-    Int32 speedDifference = proportional + derivative + integral;
-
-    Int32 left = MAX_MOTOR_SPEED + speedDifference;
-    Int32 right = MAX_MOTOR_SPEED - speedDifference;
-
-    if (left < 0)
-    {
-        left = 0;
-    }
-    if (right < 0)
-    {
-        right = 0;
-    }
-
-    if (left > MAX_MOTOR_SPEED)
-    {
-        left = MAX_MOTOR_SPEED;
-    }
-
-    if (right > MAX_MOTOR_SPEED)
-    {
-        right = MAX_MOTOR_SPEED;
-    }
-
-    *leftSpeed = left;
-    *rightSpeed = right;
-
-    gLastError = error;
-}
-
-static UInt32 calculatePosition(const LineSensorValues *sensorValues)
-{
-    UInt32 position = 0u;
-    UInt32 sum = 0u;
-    UInt32 weight = 0u;
-    bool foundLine = false;
-
-    for (UInt8 sensor = 0; sensor < LINESENSOR_COUNT; ++sensor)
-    {
-        UInt32 val = sensorValues->value[sensor];
-
-        if (CALIB_OVER_LINE(val))    /* <-- Was ist das für eine Funktion?? */
-        {
-            foundLine = true;
-        }
-
-        position += val * weight;
-        sum += val;
-
-        weight += SENSOR_WEIGHT_SCALE;
-    }
-
-    if (!foundLine)
-    {
-        position = glastPostion;
-    }
-    else
-    {
-        /* build weighted average */
-        position /= sum;
-        glastPostion = position;
-    }
-
-    return position;
-}
-
-// Create and initialize RunRace_Handler instance
-//RunRace_Handler RunRace_Handler_instance = {
-//    .RunRace_Process = RunRace_Process
-//};
