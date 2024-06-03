@@ -30,16 +30,10 @@ typedef enum {
     EV_PUSH_BUTTON_C_PRESSED,
 }Events;
 
-// Definition of the RunRace_Handler class
-/*
-typedef struct {
-    // Methoden
-    void (*RunRace_Process)(void);
-} RunRace_Handler;*/
-
-/* PROTOTYPES *************************************************************************************/
-
-// External declaration of the RunRace_Handler instance
-//extern RunRace_Handler RunRace_Handler_instance;
+/** contains the Race-Process
+* @param void
+* @param Events: report an event back to StateHandler
+*/
+Events RunRace_process(void);
 
 #endif /* RUNRACE_HANDLER_H */
