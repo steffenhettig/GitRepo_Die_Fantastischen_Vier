@@ -14,7 +14,7 @@ if the startline is not detected it'll jump in the error state
 
 @version    %$Id: StartRace_Handler.c Buehler
 * @}
- /**************************************************************************************************/
+ *************************************************************************************************/
 
  /* INCLUDES ***************************************************************************************/
 #include <stdio.h>
@@ -26,6 +26,7 @@ if the startline is not detected it'll jump in the error state
 #include "service/Buzzer.h"
 #include "service/Button.h"
 #include "app/StateHandler.h"
+#include "app/Driving.h"
 
  /* CONSTANTS **************************************************************************************/
 #define STARTTIME 3u
@@ -53,7 +54,7 @@ static Events StartRace_Process(void)
   SoftTimer StartTimer;
   SoftTimer StartLineTimer;
   LineSensorValues SensorValues;
-  Events ReturnVallue;
+  Events ReturnValue;
   Bool ErrorOccured = false;
   Bool StartLineDetected = true;
   
@@ -77,7 +78,7 @@ static Events StartRace_Process(void)
     ErrorOccured = true;
   }
 
-  //*************Start driving and search for starline*******************
+  //*************Start driving and search for starline*************************************
 
   //Start Starlinetimer
   if (SOFTTIMER_IS_EXPIRED(&StartLineTimer))
@@ -86,6 +87,9 @@ static Events StartRace_Process(void)
   }
   
   //Start driving
+
+  //Driving_driveForward()
+
   DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, START_SPEED, DRIVE_CONTROL_FORWARD);
   DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, START_SPEED, DRIVE_CONTROL_FORWARD);
 
@@ -123,6 +127,8 @@ static Events StartRace_Process(void)
 
   }
 
+/***************Startline is detected or timer is expired***********************************/
+
   //Stop Startlinetimer and checks for succes
   if (SOFTTIMER_RET_SUCCESS != SoftTimer_Stop(&StartLineTimer))
   {
@@ -137,13 +143,25 @@ static Events StartRace_Process(void)
     ErrorOccured = true;
   }
 
+
+/************************EXIT of Start Race State******************************************************
+ * There are to different outputs based on the Varibales ErrorOccured and StartLineDetected 
+ * 
+ * If ErrorOccured=ture and/Or StarlineDetected=false the programm will jump into the error state
+ * 
+ * if StartLineDetected = true AND ErrorOccured = false the program will start the exit logic:
+ * -Play Buzzer
+ * -Start Timer for time meassurement
+*/
+
   if (StartLineDetected && !ErrorOccured)
   {
+
     //Notify User with buzzer
     Buzzer_beep(BUZZER_NOTIFY);
 
     //Set return Vallue
-    ReturnVallue = EV_STARTLINE_DETECTED;
+    ReturnValue = EV_STARTENDLINE_DETECTED;
 
     /*Start Timemessure
     * Time messurement is started done by saving the current vallue of the tick Counter
@@ -158,11 +176,11 @@ static Events StartRace_Process(void)
   else
   {
     // to Error State
-    ReturnVallue = EV_NO_EVENT;
+    ReturnValue = EV_NO_EVENT;
   }
 
 
-  return ReturnVallue;   
+  return ReturnValue;   
 }
 
 
