@@ -24,7 +24,19 @@
 
 /* TYPES ******************************************************************************************/
 
+/** stops driving
+* @param void
+*/
 void Driving_stopDriving(void);
+
+/** drives directly forward with max speed
+* @param void
+*/
+void Driving_driveForward(void);
+
+/** contains the line following algorithm
+* @param void
+*/
 void Driving_followLine(LineSensorValues * SensorValues);
 
 /* PROTOTYPES *************************************************************************************/
