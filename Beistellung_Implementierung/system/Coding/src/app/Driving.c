@@ -41,7 +41,11 @@ void Driving_stopDriving(void)
     DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, 0, DRIVE_CONTROL_FORWARD);
     DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, 0, DRIVE_CONTROL_FORWARD);
 }
-
+void Driving_driveForward(void)
+{
+    DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, MAX_MOTOR_SPEED, DRIVE_CONTROL_FORWARD);
+    DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, MAX_MOTOR_SPEED, DRIVE_CONTROL_FORWARD);  
+}
 
 // Implementation of the RunRace_Process method
 void Driving_followLine(LineSensorValues * SensorValues) 
