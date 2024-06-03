@@ -13,7 +13,6 @@
 #include "Driving.h"
 
 // #include "app/StateHandler.h"
-#include "service/LineSensor.h"
 #include "service/DriveControl.h"
 //#include "DriveControl.h"
 //#include "TickTimer.h"
@@ -47,7 +46,7 @@ void Driving_stopDriving(void)
 // Implementation of the RunRace_Process method
 void Driving_followLine(LineSensorValues * SensorValues) 
 {
-    UInt32 position = calculatePosition(&SensorValues);
+    UInt32 position = calculatePosition(SensorValues);
     UInt32 error = position - CENTER_OF_LINE_POSITION;
 
     UInt16 leftSpeed;
@@ -98,7 +97,7 @@ static void regulateSpeed(Int32 error, UInt16 * leftSpeed, UInt16 * rightSpeed)
     gLastError = error;
 }
 
-static UInt32 calculatePosition(const LineSensorValues *sensorValues)
+static UInt32 calculatePosition(const LineSensorValues * sensorValues)
 {
     UInt32 position = 0u;
     UInt32 sum = 0u;
