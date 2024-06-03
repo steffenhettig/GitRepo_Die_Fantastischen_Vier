@@ -29,12 +29,6 @@
 
  /* VARIABLES **************************************************************************************/
 
-static void regulateSpeed(Int32 error, UInt16 * leftSpeed, UInt16 * rightSpeed);
-static UInt32 calculatePosition(const LineSensorValues *sensorValues);
-static UInt32 glastPostion = 0U;
-static UInt32 gLastError = 0U;
-const float gK_p = 0.25;
-const UInt32 gK_d = 6;
 
  /* EXTERNAL FUNCTIONS *****************************************************************************/
 
