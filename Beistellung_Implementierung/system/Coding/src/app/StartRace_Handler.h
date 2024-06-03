@@ -39,7 +39,7 @@ typedef struct StartRace_Start_and_Stoptime
   UInt64 StartTime; /**< is set by "StarRace.C"*/
   UInt64 StopTime;  /**< is set by "EndRace.C"*/
 
-} StartRace_Timemeassure;
+} StartRace_Timemeasureme;
 
 // Definition of the StartRace_Handler class
 typedef struct {
