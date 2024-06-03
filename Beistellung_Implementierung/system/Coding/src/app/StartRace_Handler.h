@@ -14,7 +14,7 @@ if the startline is not detected it'll jump in the error state
 
 @version    %$Id: StartRace_Handler.h Buehler
 * @}
- /**************************************************************************************************/
+**************************************************************************************************/
 #ifndef STARTRACE_HANDLER_H
 #define STARTRACE_HANDLER_H
 
