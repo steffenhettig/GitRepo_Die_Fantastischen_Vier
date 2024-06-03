@@ -49,6 +49,10 @@ typedef enum {
     ER_CALIBRATION,
 }Errors;
 
+/** contains the state machine handling of the zumo
+* @param void
+*/
+void StateHandler_process(void);
 
 /* PROTOTYPES *************************************************************************************/
 

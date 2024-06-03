@@ -37,7 +37,6 @@ void RaceDone_process(void);
 void Error_process(void);
 
 /* INTERNAL FUNCTIONS *****************************************************************************/
-void StateHandler_process(void);
 
 
 void StateHandler_process(void)
@@ -90,7 +89,7 @@ void StateHandler_process(void)
     case ST_RUN_RACE: 
         switch (RunRace_process())
         {
-            case EV_ENDLINE_DETECTED:
+            case EV_STARTENDLINE_DETECTED:
                 gCurrentState = ST_RACE_DONE;
                 break;
 
