@@ -36,7 +36,7 @@
 
 
 // Implementation of the RunRace_Process method
-static Events RunRace_process(void) 
+Events RunRace_process(void) 
 {
     Events retEvent = EV_NO_EVENT;
 
