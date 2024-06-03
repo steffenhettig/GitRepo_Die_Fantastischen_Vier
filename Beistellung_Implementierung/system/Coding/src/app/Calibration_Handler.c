@@ -10,9 +10,8 @@
 
  /* INCLUDES ***************************************************************************************/
 #include <stdio.h>
-#include "Calibration_Handler.h"
-#include "Button.h"
-#include "LineSensor.h"
+#include "app/Calibration_Handler.h"
+#include "serviceLineSensor.h"
 
 
  /* CONSTANTS **************************************************************************************/
