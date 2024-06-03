@@ -39,7 +39,7 @@ if the startline is not detected it'll jump in the error state
  /* PROTOTYPES *************************************************************************************/
 
  /* VARIABLES **************************************************************************************/
-StartRace_Timemeassure gRaceTime;
+StartRace_Timemeasure gRaceTime;
  /* EXTERNAL FUNCTIONS *****************************************************************************/
 
  /* INTERNAL FUNCTIONS *****************************************************************************/
