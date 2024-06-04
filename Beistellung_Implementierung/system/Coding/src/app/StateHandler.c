@@ -65,7 +65,7 @@ void StateHandler_process(void)
         break;
 
     case ST_MODE_SWITCH:
-        if(ModeSwitch_process() == EV_MODE_SWITCH_SUCCESSFUL)//---------hier Rückgabewerte: mode_switch_successful
+        if(EV_MODE_SWITCH_SUCCESSFUL == ModeSwitch_process())//---------hier Rückgabewerte: mode_switch_successful
         {
             gCurrentState = ST_WAIT;
         }
@@ -76,7 +76,7 @@ void StateHandler_process(void)
         break;
 
     case ST_CALIBRATION:
-        if(Calibration_process() == EV_CALIBRATION_SUCCESSFUL)//---------hier Rückgabewerte: calibration_successful
+        if(EV_CALIBRATION_SUCCESSFUL == Calibration_process())//---------hier Rückgabewerte: calibration_successful
         {
             gCurrentState = ST_WAIT;
         }
@@ -104,7 +104,7 @@ void StateHandler_process(void)
         break;
 
     case ST_START_RACE:
-        if(StartRace_process() == EV_STARTLINE_DETECTED)//---------hier Rückgabewerte: EV_STARTLINE_DETECTED
+        if(EV_STARTENDLINE_DETECTED == StartRace_process())//---------hier Rückgabewerte: EV_STARTLINE_DETECTED
         {
             gCurrentState = ST_RUN_RACE;
         }
@@ -123,7 +123,7 @@ void StateHandler_process(void)
         break;
 
     case ST_REDETECT_TRACK:
-        if(RedetectTrack_process() == EV_TRACK_REDETECTED)//---------hier Rückgabewerte: EV_TRACK_REDETECTED
+        if(EV_TRACK_REDETECTED == RedetectTrack_process())//---------hier Rückgabewerte: EV_TRACK_REDETECTED
         {
             gCurrentState = ST_RUN_RACE;
         }
