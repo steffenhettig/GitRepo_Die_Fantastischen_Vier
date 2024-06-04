@@ -14,6 +14,7 @@
 
 // #include "app/StateHandler.h"
 #include "service/LineSensor.h"
+#include "os/SoftTimer.h"
 //#include "DriveControl.h"
 //#include "TickTimer.h"
 
@@ -38,17 +39,19 @@
 Events RedetectTrack_process(void) 
 {
     Events retEvent = EV_NO_EVENT;
+    static SoftTimer gTimer;
+    SoftTimer_start(&gTimer, MAX_REDETECT_TRACK_TIME);
 
-    while (retEvent == EV_NO_EVENT)
+    while (EV_NO_EVENT == retEvent)
     {   
       LineSensorValues sensorValues;
       LineSensor_read(&sensorValues);
 
       Driving_driveForward();
 
-      if (0) /* Timer Condition for redetecting the track is missing, replace 0*/
+      if (SOFTTIMER_IS_EXPIRED(&gTimer))
       {
-
+        retEvent =  EV_REDETECT_TRACK_TIMEOUT;
       }
       if ((TRESHOLD_LINE < sensorValues.value[LINESENSOR_LEFT]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_MIDDLE_LEFT]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_MIDDLE]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_MIDDLE_RIGHT]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_RIGHT]))
       {

@@ -11,9 +11,8 @@
 #define REDETECTTRACK_H
 
 /* INCLUDES ***************************************************************************************/
-
 /* CONSTANTS **************************************************************************************/
-
+#define MAX_REDETECT_TRACK_TIME 5000
 /* MACROS *****************************************************************************************/
 
 /* TYPES ******************************************************************************************/
@@ -25,6 +24,7 @@ typedef enum {
     EV_STARTENDLINE_DETECTED,
     EV_TRACK_LOST,
     EV_TRACK_REDETECTED,
+    EV_REDETECT_TRACK_TIMEOUT,
     EV_PUSH_BUTTON_A_PRESSED,
     EV_PUSH_BUTTON_B_PRESSED,
     EV_PUSH_BUTTON_C_PRESSED,
