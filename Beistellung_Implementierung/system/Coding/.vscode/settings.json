@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "softtimer.h": "c",
+        "redetecttrack.h": "c"
+    }
+}

@@ -41,7 +41,7 @@ Events RunRace_process(void)
     static SoftTimer gTimer;
     SoftTimer_start(&gTimer, MAX_LAP_TIME);
 
-    while (retEvent == EV_NO_EVENT)
+    while (EV_NO_EVENT == retEvent)
     {   
       LineSensorValues sensorValues;
       LineSensor_read(&sensorValues);
