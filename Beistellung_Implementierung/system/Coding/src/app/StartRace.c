@@ -53,7 +53,7 @@ static Events StartRace_Process(void)
   SoftTimer StartTimer;
   SoftTimer StartLineTimer;
   LineSensorValues SensorValues;
-  Events ReturnVallue;
+  Events ReturnValue;
   Bool ErrorOccured = false;
   Bool StartLineDetected = true;
   
@@ -143,7 +143,7 @@ static Events StartRace_Process(void)
     Buzzer_beep(BUZZER_NOTIFY);
 
     //Set return Vallue
-    ReturnVallue = EV_STARTENDLINE_DETECTED;
+    ReturnValue = EV_STARTENDLINE_DETECTED;
 
     /*Start Timemessure
     * Time messurement is started done by saving the current vallue of the tick Counter
@@ -158,11 +158,11 @@ static Events StartRace_Process(void)
   else
   {
     // to Error State
-    ReturnVallue = EV_NO_EVENT;
+    ReturnValue = EV_NO_EVENT;
   }
 
 
-  return ReturnVallue;   
+  return ReturnValue;   
 }
 
 
