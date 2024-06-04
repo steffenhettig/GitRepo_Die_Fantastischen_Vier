@@ -2,7 +2,7 @@
   (c) NewTec GmbH 2024   -   www.newtec.de
 ***************************************************************************************************/
 /**
- * @file       Vorlage.c
+ * @file       RunRace.c
  *
  * Module description comes here.
  */
