@@ -13,7 +13,6 @@
 #include "RunRace.h"
 
 // #include "app/StateHandler.h"
-#include "service/LineSensor.h"
 //#include "DriveControl.h"
 //#include "TickTimer.h"
 
@@ -39,6 +38,8 @@
 Events RunRace_process(void) 
 {
     Events retEvent = EV_NO_EVENT;
+    static SoftTimer gTimer;
+    SoftTimer_start(&gTimer, MAX_LAP_TIME);
 
     while (retEvent == EV_NO_EVENT)
     {   
@@ -46,9 +47,9 @@ Events RunRace_process(void)
       LineSensor_read(&sensorValues);
       Driving_followLine(&sensorValues);
 
-      if (0) /* Timer Condition is missing, replace 0*/
+      if (SOFTTIMER_IS_EXPIRED(&gTimer))
       {
-
+        retEvent =  EV_LAPTIME_TIMEOUT;
       }
       if ((TRESHOLD_LINE < sensorValues.value[LINESENSOR_LEFT]) && (TRESHOLD_LINE < sensorValues.value[LINESENSOR_RIGHT])) /* if Endline detected */
       {
