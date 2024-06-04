@@ -12,6 +12,8 @@
 
 /* INCLUDES ***************************************************************************************/
 #include "service/LineSensor.h"
+
+#include "app/StateHandler.h"
 #include "os/SoftTimer.h"
 /* CONSTANTS **************************************************************************************/
 #define MAX_LAP_TIME 20000
@@ -19,18 +21,6 @@
 
 /* TYPES ******************************************************************************************/
 /*   Nur, damit es sich Compilieren lässt --> kommt wieder raus --> ist ja schon in StateHandler.h   */
-typedef enum {
-    EV_NO_EVENT,
-    EV_CALIBRATION_SUCCESSFUL,
-    EV_MODE_SWITCH_SUCCESSFUL,
-    EV_STARTENDLINE_DETECTED,
-    EV_TRACK_LOST,
-    EV_TRACK_REDETECTED,
-    EV_LAPTIME_TIMEOUT,
-    EV_PUSH_BUTTON_A_PRESSED,
-    EV_PUSH_BUTTON_B_PRESSED,
-    EV_PUSH_BUTTON_C_PRESSED,
-}Events;
 
 /** contains the Race-Process
 * @param void

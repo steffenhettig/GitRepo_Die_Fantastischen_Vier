@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "linesensor.h": "c",
+        "runrace.h": "c",
+        "calibration.h": "c"
+    }
+}

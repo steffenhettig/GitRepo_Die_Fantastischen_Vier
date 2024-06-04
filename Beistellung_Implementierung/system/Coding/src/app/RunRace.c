@@ -11,6 +11,8 @@
  /* INCLUDES ***************************************************************************************/
 #include <stdio.h>
 #include "RunRace.h"
+#include "app/StateHandler.h"
+#include "app/RedetectTrack.h"
 
 // #include "app/StateHandler.h"
 //#include "DriveControl.h"

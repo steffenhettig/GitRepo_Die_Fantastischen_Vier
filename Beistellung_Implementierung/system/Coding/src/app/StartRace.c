@@ -18,7 +18,7 @@ if the startline is not detected it'll jump in the error state
 
  /* INCLUDES ***************************************************************************************/
 #include <stdio.h>
-#include "app/StartRace_Handler.h"
+#include "app/StartRace.h"
 #include "service/LineSensor.h"
 #include "service/DriveControl.h"
 #include "os/SoftTimer.h"
@@ -143,7 +143,7 @@ static Events StartRace_Process(void)
     Buzzer_beep(BUZZER_NOTIFY);
 
     //Set return Vallue
-    ReturnVallue = EV_STARTLINE_DETECTED;
+    ReturnVallue = EV_STARTENDLINE_DETECTED;
 
     /*Start Timemessure
     * Time messurement is started done by saving the current vallue of the tick Counter

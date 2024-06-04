@@ -11,24 +11,15 @@
 #define REDETECTTRACK_H
 
 /* INCLUDES ***************************************************************************************/
+
+#include "app/StateHandler.h"
+#include "app/Driving.h"
 /* CONSTANTS **************************************************************************************/
 #define MAX_REDETECT_TRACK_TIME 5000
 /* MACROS *****************************************************************************************/
 
 /* TYPES ******************************************************************************************/
-/*   Nur, damit es sich Compilieren lässt --> kommt wieder raus --> ist ja schon in StateHandler.h   */
-typedef enum {
-    EV_NO_EVENT,
-    EV_CALIBRATION_SUCCESSFUL,
-    EV_MODE_SWITCH_SUCCESSFUL,
-    EV_STARTENDLINE_DETECTED,
-    EV_TRACK_LOST,
-    EV_TRACK_REDETECTED,
-    EV_REDETECT_TRACK_TIMEOUT,
-    EV_PUSH_BUTTON_A_PRESSED,
-    EV_PUSH_BUTTON_B_PRESSED,
-    EV_PUSH_BUTTON_C_PRESSED,
-}Events;
+
 
 /** Redetects the track when lost
 * @param void
