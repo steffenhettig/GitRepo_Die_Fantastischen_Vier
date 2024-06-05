@@ -1,0 +1,57 @@
+@startuml
+left to right direction
+actor "line sensor" as s1
+actor "motor" as a1
+actor "display" as a2
+actor "buzzer" as a3
+actor "push button A" as pA /'start race'/
+actor "push button B" as pB /'select parameters'/
+actor "push button C" as pC /'sensor calibration'/
+
+rectangle System-Software {
+  usecase "sensor calibration" as UC1
+  usecase "select parameters" as UC2
+  usecase "output information" as UC3
+  usecase "driving race" as UC4
+  usecase "error handling" as UC5
+  usecase "redetect track" as UC6
+  
+  usecase "start race" as UC7
+  usecase "end race" as UC8
+
+
+  
+  
+  
+pC --> UC1
+pB --> UC2
+UC2 --> a2
+UC5 --> a2
+UC5 --> a3
+UC4 --> a1
+UC7 --> a1
+UC8 --> a1
+UC3 --> a2
+UC3 --> a3
+s1 --> UC6
+s1 --> UC4
+s1 --> UC7
+s1 --> UC8
+pA --> UC7
+UC6 --> a1
+UC7 --> a3
+UC8 --> a2
+UC5 --> a1
+
+UC4 .> UC6 : include
+UC4 .> UC7 : include
+UC4 .> UC8 : include
+
+
+'UC6 .> UC7 : extends
+
+ 
+}
+
+
+@enduml 
