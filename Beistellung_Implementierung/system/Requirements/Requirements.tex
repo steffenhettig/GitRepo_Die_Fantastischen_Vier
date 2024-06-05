@@ -1,0 +1,819 @@
+\documentclass[
+	letterpaper, % Paper size, specify a4paper (A4) or letterpaper (US letter)
+	10pt, % Default font size, specify 10pt, 11pt or 12pt
+]{CSUniSchoolLabReport}
+
+\addbibresource{sample.bib} % Bibliography file (located in the same folder as the template)
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[ngerman]{babel}
+\usepackage{setspace}
+%\usepackage{xcolor}
+\usepackage[table]{xcolor}
+\usepackage{amsmath}
+\usepackage{circuitikz}
+\usepackage{listings}
+\usepackage{siunitx}
+%\usepackage[headsepline]{scrlayer-scrpage}
+\usepackage{hyperref}
+\usepackage{scrlayer-scrpage}
+\usepackage{icomma}
+\usepackage{pgfplots}
+\usepackage{graphicx}
+\usepackage[center]{caption}
+\usepackage{tabularx}
+\usepackage[euler]{textgreek}
+\usepackage{sourcecodepro}
+\usepackage{pdflscape}
+\usepackage{subcaption}
+\usepackage{sectsty}
+\usepackage{enumitem}
+
+
+\hypersetup{colorlinks=true, linkcolor=black, urlcolor=black, citecolor=black}
+\setkomafont{pagehead}{\normalfont \footnotesize}
+\setkomafont{pagefoot}{\normalfont \footnotesize}
+\pagestyle{scrheadings}
+\ohead{\textit{Specifications\\Pololu Zumo32U4}}
+\automark{section}
+\ihead{\includegraphics[height=35pt]{LogoHSO}}
+\ifoot{}
+\cfoot{\pagemark}
+\setlength{\footnotesep}{10pt}
+\setlength{\skip\footins}{10mm}     %space between footnote and text
+\pgfplotsset{compat=1.16}
+%\addbibresource{sample.bib} % Bibliography file (located in the same folder as the template)
+\definecolor{HSO_blue}{RGB}{23, 62, 94}
+\definecolor{VEGA_yellow}{RGB}{250, 225, 76}
+\definecolor{MyRed}{RGB}{216, 26, 96}
+\definecolor{MyGreen}{RGB}{0, 121, 106}
+\definecolor{MyYellow}{RGB}{255, 167, 39}
+
+% for references
+%\setlength{\bibitemsep}{1em}     % Abstand zwischen den Literaturangaben
+%\setlength{\bibhang}{2em}        % Einzug nach jeweils erster Zeile
+% Trennung von URLs im Literaturverzeichnis (große Werte [> 10000] verhindern die Trennung)
+%\defcounter{biburlnumpenalty}{10} % Strafe für Trennung in URL nach Zahl
+%\defcounter{biburlucpenalty}{500}  % Strafe für Trennung in URL nach Großbuchstaben
+%\defcounter{biburllcpenalty}{500}  % Strafe für Trennung in URL nach Kleinbuchstaben
+
+%------------------------------------------------------------------------------
+% Codestyle
+%------------------------------------------------------------------------------
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{RGB}{220,220,220}
+
+\lstdefinestyle{mystyle}{
+    backgroundcolor=\color{backcolour},   
+    commentstyle=\color{codegreen},
+    keywordstyle=\color{MyRed},
+    numberstyle=\footnotesize\color{codegray}\ttfamily,
+    stringstyle=\color{HSO_blue},
+    basicstyle=\ttfamily\small,
+    breakatwhitespace=true,         
+    breaklines=true,                 
+    captionpos=b,                    
+    keepspaces=true,                 
+    numbers=left,                    
+    numbersep=5pt,                  
+    showspaces=false,                
+    showstringspaces=false,
+    showtabs=false,                  
+    tabsize=2,
+    frame=leftline
+}
+\lstset{style=mystyle}
+%----------------------------------------------------------------------------------------
+%	REPORT INFORMATION
+%----------------------------------------------------------------------------------------
+
+\title{Erster Erfahrungsbericht (EB1)}
+\date{}
+
+%\author{Gruppe 15: \\ Marc \textsc{Leopold} \\ Steffen \textsc{Hettig} \\ Pascal \textsc{Hohlfeld}} % Author name(s), add additional authors like: '\& James \textsc{Smith}'
+
+%----------------------------------------------------------------------------------------
+
+%------------------------------------------------------------------------------
+% "Titelblatt"
+%------------------------------------------------------------------------------
+% Literatur-Datenbank
+
+\renewcommand{\figurename}{Abb.}
+\sectionfont{\huge \color{black}}
+\subsectionfont{\Large}
+\subsubsectionfont{\large}
+
+
+\begin{document}
+
+\thispagestyle{empty}
+\begin{spacing}{1.6}
+%\begin{center}
+
+    \begin{figure}[H]
+        \raggedleft
+        \includegraphics[width=0.4\textwidth]{LogoHSO.jpeg}
+    \end{figure}
+    \Huge \textbf{\\Specifications}
+    
+    %\huge \textbf{Versuch 1\\}
+    \Large
+    Line-Follower software for Pololu Zumo32U4
+    
+
+%\textcolor{HSO_blue}{\textit{überarbeitete Version}}
+%\linebreak
+$ $\\
+$ $\\
+$ $\\
+$ $\\
+\large 
+\begin{tabular}{l l}\\
+Doc.-Number:& Specifications\_V1\\
+Doc.-Version: & V1 \\
+\\
+Customer:\qquad \qquad & Martin Dembinsky, MSc\\
+& Niclas Heitz, MSc\\
+& Labor Software Engineering\\
+& Hochschule Offenburg\\
+\\
+Author/ Group: & Die Fantastischen Vier\\
+%Betreuer: &  \qquad Dipl.-Ing. Jörg \textsc{Börsig}\\
+\\
+Abgabedatum: & 02.04.2024\\
+\end{tabular}
+%\end{center}
+
+%----------------------------------------------------------------------------------------
+% Inhaltsverzeichnis
+%----------------------------------------------------------------------------------------
+\renewcommand{\tablename}{tab.}
+\section{Change History}
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \centering
+    \begin{tabular}{p{3cm} p{7cm} p{3cm}}
+        \hline
+        \textbf{Doc.-Version} & \textbf{Description of Modification} & \textbf{Date}\\
+        \hline
+        \hline
+        V1 & Initial revision & 02.04.2024\\
+        \hline
+        \\
+        \hline
+        \\
+        \hline
+        \\
+        \hline
+        \\
+    \end{tabular}
+    %\caption{Change History}
+\end{table}
+
+
+\section{Release}
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \centering
+    \begin{tabular}{p{2.5cm}| p{4cm}| p{3cm}| p{2.5cm}| p{2.5cm}}
+        \hline
+        \textbf{} & \textbf{Name} & \textbf{Responsibility} & \textbf{Date} & \textbf{Signature}\\
+        \hline
+        \hline
+        \textbf{Creation} & Die Fantastischen Vier & & 28.03.2024 & Fanta4Group\\
+        \hline
+        \textbf{Verification} & & & & \\
+        \hline
+        \textbf{Approval} & & & & \\
+        \hline
+        \textbf{Release} & & & & \\
+        \hline
+    \end{tabular}
+    %\caption{Change History}
+\end{table}
+
+\newpage
+\large
+\cfoot{\pagemark}
+\renewcommand{\contentsname}{Table of Contents}
+\tableofcontents
+\renewcommand{\listfigurename}{List of Figures}
+\renewcommand{\listtablename}{List of Tables}
+\renewcommand{\figurename}{fig.}
+\renewcommand{\tablename}{tab.}
+$ $
+\newpage 
+\listoftables
+\listoffigures
+
+\newpage
+\section{General}
+\subsection{Scope of Document}
+This document serves as a specification sheet for the customer order. It contains functional and non-functional requirements for the system. It also contains two use case diagrams of the robot and software system with detailed descriptions. This document comprises a total of 27 pages.
+
+\subsection{Abbreviations}
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \centering
+    \begin{tabular}{p{5cm} p{10cm}}
+        \hline
+        \textbf{Abbreviation} & \textbf{Description}\\
+        \hline
+        \hline
+        OLED & Organic light-emitting diode. In this document OLED refers as a short form for the OLED-display. \\
+        \hline
+    \end{tabular}
+    \caption{Abbreviations}
+\end{table}
+
+\subsection{Terminology}
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \centering
+    \begin{tabular}{p{5cm} p{10cm}}
+        \hline
+        \textbf{Term} & \textbf{Description}\\
+        \hline
+        \hline
+        \textit{Start line} & The start of the \textit{track} is crossed with a 90° crossbar\\
+        \textit{Stop line} & The end of the \textit{track} is crossed with a 90° crossbar. The system distinguish between Start- and Stop lines depending on the program state. If the race has started it shall take a Start- line as an Stop-line\\
+        \textit{track} & The \textit{track} is a black line which the robot is going to follow.\\
+        Standard \textit{track} & Is a pre-defined \textit{track}, given by the customer. \\
+        \textit{alarm tone} & A short sound to notify in an \textit{error state}. The sound shall follow the following schematic: 1/3 s sound 1/3 s silence 1/3 s sound at a frequency of 440 Hz. The sound shall be played with the maximum amplitude.\\
+        \textit{notification sound} & A short sound with a duration of 1 s at a frequency of 440 Hz. The sound shall be played with the maximum amplitude.\\
+        \textit{booting cycle} & After the robot is turned on or the reset button is pressed, the system starts the software.\\
+        \textit{error state} & The status the system jumps, after an error occurs. The system follows a strict procedure which is explained in the requirements. \\      
+        \textit{race mode}s & A selectable status of the system to change the behavior of the robot on the \textit{track}.\\
+
+    \end{tabular}
+\end{table}
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \centering
+    \begin{tabular}{p{5cm} p{10cm}}
+        \textit{safety mode} & The System drives slower than in the other modes to ensure the system loses the \textit{\textit{track}} less likely.\\
+        \textit{highspeed mode} & The system drives faster than in the other modes.\\
+        \textit{balanced mode} & This mode is compromise between the safety and \textit{highspeed mode}. \\
+        \hline
+    \end{tabular}
+    \caption{Terminology}
+\end{table}
+
+\subsection{Referenced Documents}
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \centering
+    \begin{tabular}{p{2cm} p{4.5cm} p{8cm}}
+        \hline
+        \textbf{Reference} & \textbf{Document-Identification} & \textbf{Description}\\
+        \hline
+        \hline
+        [1] & 11001\_0099\_0088\_RD &  Product specification for the Line-Follower Software for Pololu Zumo32U4 \\
+        \hline
+    \end{tabular}
+    \caption{Referenced Documents}
+\end{table}
+
+\subsection{Applicable Standards}
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \centering
+    \begin{tabular}{p{2cm} p{4.5cm} p{8cm}}
+        \hline
+        \textbf{Reference} & \textbf{Document-Identification} & \textbf{Description}\\
+        \hline
+        \hline
+        [1] & N/A &   N/A\\
+        \hline
+    \end{tabular}
+    \caption{Applicable Standards}
+\end{table}
+
+\section{Introduction}
+\subsection{System Overview}
+The overall system of the Pololu Zumo32u4 has an IR proximity sensor system, a line sensor array, a dual motor drive system with encider as well as an OLED display and buzzer also onboard a three-axis accelerometer, compass, and gyro.\\
+
+\subsection{Interface Overview}
+The board of the Arduino compatible ATmega32u4 microcontroller has a USB programming interface.\\
+
+\subsection{Scenarios}
+The Line-Follower software runs on the Zum32U4 robot platform from Pololu. The robot drives a defined \textit{\textit{track}} as fast as possible from the start area to the finish area. The \textit{track} is marked with a black line on white background. The team with the robot that drove the fastest complete round wins.
+
+\section{Requirements}
+\subsection{Functional Requirements}
+\begin{enumerate}[label=\arabic*.]
+    \setstretch{1}
+    \item If the system is turned on, the system shall display the teams name for 2 s.
+    \item If the user hasn’t started the calibration process with the push button “C”, the system shall inform the user to calibrate the sensor. 
+    \item The system shall have different sets of pre-defined parameters to change between different the following \textit{race mode}s:
+    \begin{itemize}
+        \item \textit{safety mode}
+        \item \textit{highspeed mode}
+        \item \textit{balanced mode}
+    \end{itemize}
+    \item If the push button “B” on the robot is pressed, the system shall change between the different \textit{race mode}s.
+    \item If the user hasn’t selected any \textit{race mode} the system shall use the \textit{balanced mode}.
+    \item If the push button “C” on the robot is pressed, the system shall start the calibration process of the line sensor.
+    \item If the calibration process has started the system shall define the color underneath the line sensor as the color black.
+    \item If the calibration process is running, the system shall disable all user inputs.
+    \item The system shall use his line sensors to detect a black line.
+    \item If the push button “A” on the system is pressed, the system shall start driving after 3 s.
+    \item f the Line sensor isn’t calibrated, the system shall not allow the user to start the race with the push button “A”.
+    \item The system shall follow the detected \textit{track}.
+    \item The system shall drives autonomously. 
+    \item The system must begin its run on the \textit{track} and at least 1 cm from the \textit{start line}.
+    \item If the \textit{track} in front of the robot ends, the system shall stop all movements and execute all of the following actions until one of them is true.
+    \begin{itemize}
+        \item The system shall turn 90° right and re-detect the \textit{track} every 10°.
+        \item The system shall turn 180° and re-detect the \textit{track} every 10°.
+        \item The system shall turn to 90° right and drive 10 cm straight forward while re-detecting the \textit{track}.
+        \item The system shall jump in an \textit{error state}.
+    \end{itemize}
+    \item If the \textit{start line} is detected, the system shall execute all of the following actions in the given order:
+    \begin{itemize}
+        \item start the time measurement for the lap.
+        \item notify the user with an \textit{notification sound}.
+    \end{itemize}
+    \item If the system detects an error, the system shall jump in an \textit{error state} and execute all of the following actions in the given order:
+    \begin{itemize}
+        \item Stop all movements,
+        \item Notify with an \textit{alarm tone}.
+        \item Display the error reason on the OLED.
+    \end{itemize}
+    \item If the system detects the \textit{stop line}, the system shall execute all of the following actions in the given order:
+    \begin{itemize}
+        \item Stop all movements
+        \item Stop time measurement
+        \item Notify with a \textit{notification sound}.
+        \item Display the measured time on the OLED
+    \end{itemize}
+    \item The system shall jump in an \textit{error state}, if either one of the following instances applies:
+    \begin{itemize}
+        \item The system can’t re-detect the \textit{track} within 5 s.
+        \item The system can’t complete one round on the standard \textit{track} in maximum 20 s.
+        \item The system couldn’t load the selected parameters correctly.
+        \item The system couldn’t finish the calibration process correctly.
+    \end{itemize}   
+\end{enumerate}
+
+\subsection{Non-Functional Requirements}
+\subsubsection{Safety \& Security}
+\textcolor{red}{none}\\
+
+\subsubsection{Data}
+\textcolor{red}{none}\\
+
+\subsubsection{Environmental Conditions}
+\begin{enumerate}[label=\arabic*.]
+    \setstretch{1}
+    \item The software shall work with normal daylight \& workplace light conditions.
+    \item The system shall work on a playfield with a white background.
+    \item The \textit{\textit{track}} shall not cross itself
+    \item The \textit{\textit{track}} shall not contain any gaps larger than 10 cm.
+    \item Every gap shall continue with an opening angle of 30°.
+    \item The start and \textit{stop line} are marked with 90° crossbeam.
+    \item The crossbeam are in a distance of 3.5 cm to the center line.
+    \item The crossbeam shall have a length of 5 cm.
+    \item The start and the stop are minimum 30 cm away from any gap in the \textit{track}.
+    \item The minimum distance between playfield border and the \textit{track} is 15 cm.
+    \item The minimum curve radius on a \textit{track} is 10 cm.
+\end{enumerate}
+
+\subsubsection{Quality}
+\begin{enumerate}[label=\arabic*.]
+    \setstretch{1}
+    \item The software shall work independently of the charge status of the batteries, unless the charge status is below 50\%.
+    \item The flash memory usage shall never exceed equal to 80\%.
+\end{enumerate}
+
+\subsubsection{Computer Resources}
+\begin{enumerate}[label=\arabic*.]
+    \setstretch{1}
+    \item The software shall run on the Zum32U4 robot platform from Pololu.
+    \item The software shall work in a way that allows to replace the hardware by e.g. a different robot or a hardware simulation. Unavailability of hardware features does not need to be considered.
+    \item The teams shall use the programming language C.
+\end{enumerate}
+
+\subsubsection{Design Constraints}
+\textcolor{red}{none}\\
+
+\subsubsection{Product Documentation}
+\begin{enumerate}[label=\arabic*.]
+    \setstretch{1}
+    \item The teams shall write their documentations in English.
+    \item The teams shall use English for commit messages of version control system interactions..
+    \item The teams shall write the commit messages of version control system interactions descriptive.
+\end{enumerate}
+
+\subsubsection{Production}
+\textcolor{red}{none}\\
+
+\subsubsection{Logistic}
+\textcolor{red}{none}\\
+
+\subsubsection{Commercial Requirements}
+\textcolor{red}{none}\\
+
+\subsubsection{Further Requirements}
+\begin{enumerate}[label=\arabic*.]
+    \setstretch{1}
+    \item The team shall not make any modifications on the hardware during executing the competition, except changing the batteries or small repairs. 
+    \item Each team is able to test the robot on the \textit{track} before the competition starts. During this phase the teams are allowed to change the software as well.
+    \item Each team shall have 3 attempts on the \textit{track}. It counts the fastest complete round. 
+    \item The system shall finish the race as fast as possible.
+\end{enumerate}
+
+\section{Interface}
+\subsection{External Interface}
+not further specified
+
+\section{Document Management}
+\subsection{Document Creation}
+All documents must be written in English.
+
+\newpage
+\section{Appendix}
+\subsection{Use Case Diagrams}
+\subsubsection{System Robot}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{UML_Robot}
+    \caption{Use case diagram System Robot}
+    \label{fig:UML_Robot}
+\end{figure}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{R01}\\
+        \textbf{Name} &  \textbf{select parameters}\\
+        \hline
+        Brief description & The users selects pre-defined parameters sets to change the behavior of the robot on the \textit{track}.\\
+        Preconditions & The system is not in the use case \grqq driving race\grqq.  \\
+        Postconditions & The desired \textit{driving mode} is set.\\
+        Failure scenarios & The parameters couldn’t be loaded correctly.\\
+        Actors & User\\
+        Trigger & User\\
+        Standard workflow & 1. User pushes the button B.\\
+        & 2. The \textit{driving mode} is switched between \textit{highspeed mode}, \textit{\textit{safety mode}} or \textit{\textit{balanced mode}}.\\
+        Alternative workflow\qquad \qquad & 2a. The robot notifies about an error.\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{R02}\\
+        \textbf{Name} & \textbf{output information} \\
+        \hline
+        Brief description & The robot supplies the user with information through the display and the buzzer.\\
+        Preconditions & The system is not in the use case \grqq driving race\grqq $ $ R03. \\
+        Postconditions & The OLED displays the refreshed parameters or the buzzer beeps.\\
+        Failure scenarios & The user couldn’t be provided with all information.\\
+        Actors & User\\
+        Trigger & The robot was powered on./\\
+        & The robot has passed the \textit{stop line}.\\
+        Standard workflow & 1. The robot is powered on.\\
+        & 2. The display shows the team name and the selected \textit{driving mode}.\\
+        & 3. The robot drives the race.\\
+        & 4. The robot finishes the race.\\
+        & 5. The display shows the race time.\\
+        \\
+        Alternative workflow\qquad \qquad & 3a. The robot gets into an error case. \\
+        & 4a. The error case is displayed and the buzzer beeps.\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{R03}\\
+        \textbf{Name} & \textbf{driving race} \\
+        \hline
+        Brief description & The user gives the command to start the race. The robot starts driving and follows the line.\\
+        Preconditions & Line sensor is calibrated, parameters are selected\\
+        Postconditions & Robot has passed the \textit{stop line}.\\
+        Failure scenarios & The robot loses the \textit{track}\\
+        Actors & User, \textit{track}\\
+        Trigger & User\\
+        Standard workflow & 1. User push the button A\\
+        & 2. Robot checks for \textit{start line}\\
+        & 3. Robot detects the \textit{start line}\\
+        & 4. Robot detects the \textit{track}\\
+        & 5. Robot follows the \textit{track}\\
+        & 6. Robot checks for end line\\
+        & 7. Robot stops driving\\
+        \\
+        Alternative workflow\qquad \qquad & 5a. The robot loses the \textit{track}.\\
+        & 6a. The robot redetects the \textit{track}.\\
+        & 7a. back to 6.\\
+        & 6b. The robot can’t find the \textit{track} within 5s.\\
+        & 7b. The robot stops driving.\\
+        & 8b. The robot notifies the user.\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{R04}\\
+        \textbf{Name} & \textbf{sensor calibration} \\
+        \hline
+        Brief description & The users pushes the button C to start the calibration process.\\
+        Preconditions & The system is not in the use case \grqq driving race\grqq. \\
+        Postconditions & The line sensor is calibrated.\\
+        Failure scenarios & The calibration wasn’t successful.\\
+        Actors & User, \textit{track}\\
+        Trigger & User\\
+        Standard workflow & 1. User lays the robot on the \textit{track}.\\
+        & 2. User pushes the button C.\\
+        & 3. The robot starts the calibration process.\\
+        & 4. Robot notifies after the process is done.\\
+        \\
+        Alternative workflow\qquad \qquad & 4a. The robot notifies that the calibration wasn’t successful.\\
+        & 5a. The user restarts the calibration process.\\
+        \hline
+    \end{tabular}
+\end{table}
+
+
+\subsubsection{System Software}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{UML_Software}
+    \caption{Use case diagram System Software}
+    \label{fig:UML_Robot}
+\end{figure}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{S01}\\
+        \textbf{Name} & \textbf{sensor calibration} \\
+        \hline
+        Brief description & By pushing the button C the calibration process is started.\\
+        Preconditions & The System is powered on.\\
+        Postconditions & The line sensor is calibrated to be able to detect the \textit{track}.\\
+        Failure scenarios & The sensor cannot be calibrated.\\
+        Actors & push button C\\
+        Trigger & The push button C is pressed.\\
+        Standard workflow & 1. The push button C is pressed.\\
+        & 2. The line sensor is calibrated.\\
+        Alternative workflow\qquad \qquad & 2a. The calibration process fails.\\
+        \hline
+    \end{tabular}
+\end{table}
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{S02}\\
+        \textbf{Name} & \textbf{select parameters} \\
+        \hline
+        Brief description & With push button B the software parameters can be switched between the parameter sets \textit{highspeed mode, \textit{safety mode}} or \textit{\textit{balanced mode}}.\\
+        Preconditions & The Software isn't in the use case \grqq driving race\grqq.\\
+        Postconditions & The desired parameter set is selected.\\
+        Failure scenarios & There is no possibility to switch between the parameter sets.\\
+        Actors & Push button B, display\\
+        Trigger & Push button B is pressed.\\
+        Standard workflow & 1. Push button B is pressed.\\
+        & 2. The system loads parameters.\\
+        & 3. The \textit{\textit{race mode}} is showed on the OLED.\\
+        \\
+        Alternative workflow\qquad \qquad & 2a. The system fails loading parameters.\\
+        & 3a. The \textit{\textit{race mode}} isn´t showed on the OLED.\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{S03}\\
+        \textbf{Name} & \textbf{output information} \\
+        \hline
+        Brief description & The software outputs information through the display and the buzzer.\\
+        Preconditions & The software isn't in the use case \grqq driving race\grqq.\\
+        Postconditions & The software outputs information through the display or the buzzer.\\
+        Failure scenarios & The display doesn't show information or the buzzer doesn't output a signal.\\
+        Actors & display, buzzer\\
+        Trigger & The system is powered on.\\
+        & The system is in an error case.\\
+        & The system finished use case \grqq driving race\grqq $ $ S04.\\
+        Standard workflow & 1. The software is powered on.\\
+        & 2. The display shows the team name and the selected \textit{driving mode}.\\
+        & 3. The software is in use case \grqq driving race\grqq $ $ S04.\\
+        & 4. The software is in use case \grqq end race\grqq $ $ S08.\\
+        & 5. The display shows the race time.\\
+        \\
+        Alternative workflow\qquad \qquad & 2a. The display doesn't show the team name and the selected \textit{driving mode} correctly.\\
+        & 5a. The display fails showing the race time.\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{S04}\\
+        \textbf{Name} &  \textbf{driving race}\\
+        \hline
+        Brief description & The system controls the robot to follow the line in the selected \textit{driving mode}.\\
+        Preconditions & use case \grqq start race\grqq $ $ S07 was ended successfully.\\
+        Postconditions & The system executes use case \grqq end race\grqq $ $ S08.\\
+        Failure scenarios & The software fails controlling the robot following the \textit{track}, so the robot leaves the \textit{track}.\\
+        Actors & line sensor, motor\\
+        Trigger & \grqq start race\grqq $ $ S07 is finished\\
+        Standard workflow & 1. \grqq start race\grqq $ $ S07 is finished\\
+        & 2. The line sensor detects the \textit{track}.\\
+        & 3. The software controls the motor.\\
+        & 4. The software is in use case \grqq end race\grqq $ $ S08.\\
+        \\
+        Alternative workflow\qquad \qquad & 2a. The line sensor doesn't detect the \textit{track}.\\
+        & 3a. The software is in use case \grqq error handling\grqq $ $ S05.\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{S05}\\
+        \textbf{Name} & \textbf{error handling} \\
+        \hline
+        Brief description & If an error occurs the system must handle it.\\
+        Preconditions & The system must detect an error.\\
+        Postconditions & The system stops the motor.\\
+        & The system outputs that an error occured through the display and the buzzer.\\
+        Failure scenarios & The system fails detecting the error.\\
+        Actors & motor, buzzer, display\\
+        Trigger & The system detects an error.\\
+        Standard workflow & 1. The system detects an error.\\
+        & 2. The system stops the motor.\\
+        & 3. The system outputs that an error occured.\\
+        & 4. The system will beep for 0,33s, pause for 0,33s, then beep again for 0,33s.\\
+        & 5. The system will be restarted.\\
+        \\
+        Alternative workflow\qquad \qquad & 2a. The system fails stopping the motor.\\
+        & 3a. The system fails displaying that an error occured.\\
+        & 4a. The system fails putting out the beep tone.\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{S06}\\
+        \textbf{Name} & \textbf{redetect \textit{track}} \\
+        \hline
+        Brief description & In case there is a gap in the line or the line isn't straight forward, the system must redetect the \textit{track}.\\
+        Preconditions & The line sensor can't detect the \textit{track}.\\
+        Postconditions & The line sensor redetects the \textit{track}.\\
+        & The software is in the use case \grqq driving race\grqq $ $ S04 again.\\
+        Failure scenarios & The line sensor cannot redetect the \textit{track}. The software is in the use case \grqq error handling\grqq \\
+        Actors & line sensor, motor\\
+        Trigger & The line sensor can't detect the \textit{track}.\\
+        Standard workflow & 1. The line sensor doesn't detect the \textit{track}.\\
+        & 2. The software controls the motor to turn the robot left and right to redetect the line.\\
+        & 3. The software redetects the line. Back to \grqq driving race\grqq $ $ S04.\\
+        \\
+        Alternative workflow\qquad \qquad & 3a. The software cannot redetect the line within 5s.\\
+        & 4a. The software stops the motor.\\
+        & 5a. The software is in use case \grqq error handling\grqq $ $ S05.\\ \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{S07}\\
+        \textbf{Name} & \textbf{start race} \\
+        \hline
+        Brief description & The system controls the robot to start the race.\\
+        Preconditions & The system is powered on.\\
+        & The line sensor is calibrated. The \textit{driving mode} is selected. \\
+        Postconditions & The system executes use case \grqq driving race\grqq $ $ S04.\\
+        Failure scenarios & The software fails detecting the \textit{start line}.\\
+        Actors & push button A, line sensor, motor\\
+        Trigger & push button A\\
+        Standard workflow & 1. The push button A is pressed.\\
+        & 2. The system waits for 3s.\\
+        & 3. The system controls the motor to drive forward.\\
+        & 4. The system detects the \textit{start line}.\\
+        & 5. The system outputs a short beep through the buzzer for 1s.\\
+        & 6. The system starts measuring the time.\\
+        & 7. The system executes use case \grqq driving race\grqq $ $ S04.\\
+        \\
+        Alternative workflow\qquad \qquad & 2a. The system fails the time measurement.\\
+        & 4a. The system executes use case \grqq error handling\grqq $ $ S05.\\
+        & 4b. The system fails detecting the \textit{start line}.\\
+        & 5b. The system executes use case \grqq error handling\grqq $ $ S05.\\
+        & 5c. The system fails putting out the beep tone.\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{S08}\\
+        \textbf{Name} & \textbf{end race} \\
+        \hline
+        Brief description & The system controls the robot to end the race.\\
+        Preconditions & The system is powered on.\\
+        & The system executes use case \grqq driving race\grqq $ $ S04.\\
+        Postconditions & The system displays the measured time.\\
+        Failure scenarios & The software fails detecting the \textit{stop line}.\\
+        Actors & line sensor, motor, display\\
+        Trigger & The \textit{stop line} is detected.\\
+        Standard workflow & 1. The system detects the \textit{stop line}.\\
+        & 2. The system controls the motor to stop.\\
+        & 3. The system stops measuring the time.\\
+        & 4. The system outputs the measured time through the display.\\
+        & 5. The system outputs a short beep through the buzzer for 1s.\\
+        \\
+        Alternative workflow\qquad \qquad & 1a. The system fails detecting the \textit{stop line}.\\
+        & 2a. The system fails controlling the motor to stop.\\
+        & 3a. The system fails stopping measuring the time.\\
+        & 4a. The system fails putting out the measured time through the display.\\
+        & 5a. The system fails putting out a short beep through the buzzer.\\
+        \hline
+    \end{tabular}
+\end{table}
+
+\end{spacing}
+\end{document}
+
+%------------------------------------------------------------------------------
+% Schaubild template
+%------------------------------------------------------------------------------
+\renewcommand{\figurename}{Abb.}
+\renewcommand{\tablename}{Tab.}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.7\textwidth]{placeholder.png}
+    \caption{placeholder}
+    \label{fig:placeholder}
+\end{figure}
+
+
+%Use case template
+\begin{table}[H]
+    \large
+    \setstretch{1.5}
+    \begin{tabular}{p{5cm} p{10cm}}\\
+        \hline
+        \textbf{Identifier} & \textbf{xx}\\
+        \textbf{Name} & \textbf{} \\
+        \hline
+        Brief description & \\
+        Preconditions & \\
+        Postconditions & \\
+        Failure scenarios & \\
+        Actors & \\
+        Trigger & \\
+        Standard workflow & \\
+        Alternative workflow\qquad \qquad & \\
+        \hline
+    \end{tabular}
+\end{table}
