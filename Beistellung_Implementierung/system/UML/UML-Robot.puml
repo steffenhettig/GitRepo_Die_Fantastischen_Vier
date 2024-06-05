@@ -1,0 +1,23 @@
+@startuml
+left to right direction
+actor "user" as h
+actor "track" as t
+
+rectangle System-Robot {
+  usecase "driving race" as UC1
+  usecase "select parameters" as UC2
+  usecase "sensor calibration" as UC3
+  usecase "output information" as UC4
+  
+h --> UC1 : starts
+UC4 --> h
+h --> UC2
+UC1 --> t
+
+t --> UC3
+h --> UC3
+
+}
+
+
+@enduml 
