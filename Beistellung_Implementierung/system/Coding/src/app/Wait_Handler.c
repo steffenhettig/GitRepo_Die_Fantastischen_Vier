@@ -2,17 +2,19 @@
   (c) NewTec GmbH 2024   -   www.newtec.de
 ***************************************************************************************************/
 /**
- * @file       Vorlage.c
+ * @file       Wait.c
  *
- * Module description comes here.
+ * After setting the global event variable gCurrent to status code 100, the WaitHandler runs 
+ * through a loop in which the button states of buttons A, B, C are queried. 
+ * If the status code changes, the loop is exited and the return to the StateHandler follows.
  */
  /**************************************************************************************************/
 
  /* INCLUDES ***************************************************************************************/
 #include <stdio.h>
-#include "Wait_Handler.h"
-#include "Button.h"
 
+#include "app/Wait.h"
+#include "service/Button.h"
 
  /* CONSTANTS **************************************************************************************/
 
@@ -28,16 +30,33 @@
 
  /* INTERNAL FUNCTIONS *****************************************************************************/
 
-// Implementation of the Wait_NotifyStateHandler method
-static void Wait_NotifyStateHandler(void) {
+void Wait_process(void) {
 
-    //The Button function must be called up here / Variables Return parameters still need to be added
+    int gCurrentEvent = 100;
 
-    printf("Notifying Scheduler from Wait_Handler...\n");
+do 
+{
 
-}
+    if (3 == Button_getState(0))
+    {
+        gCurrentEvent = 0;
+    }
+   
+    
+    if (3 == Button_getState(1))
+    { 
+        gCurrentEvent = 1;
+    }
 
-// Create and initialize Wait_Handler instance
-Wait_Handler Wait_Handler_instance = {
-    .Wait_NotifyStateHandler = Wait_NotifyStateHandler
+
+    if (3 == Button_getState(2))
+    {
+        gCurrentEvent = 2;
+    }
+
+} while (100 == gCurrentEvent);
+
+   
+    return;
+
 };
