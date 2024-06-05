@@ -1,0 +1,202 @@
+@startuml
+
+top to bottom direction
+
+package App 
+{
+  class StateHandler
+  {
+    StateHandler_init(void): void
+    StateHandler_EnterState(enum state): void
+  }
+  class Main
+  {
+      Enter_StateHandler(void): void
+  }
+  class Driving
+  {
+    FollowingLine(void): void
+  }
+  package States
+  {
+    class SystemStart_Handler
+    {
+    
+    }
+    class Wait_Handler
+    {
+      Wait_NotifyStateHandler(void): void
+    }
+    class Calibration_Handler
+    {
+      Calibration_Process(void): void
+    }
+    class ModeSwitch_Handler
+    {
+      ModeSwitch_SwitchToNextParameterSet(void) : void
+    }
+    class StartRace_Handler
+    {
+      StartRace_Process(void): void
+    }
+    class RunRace_Handler
+    {
+      RunRace_Process(void): void
+    }
+    class RaceDone_Handler
+    {
+      RaceDone_Process(void): void
+    }
+    class Error_Handler
+    {
+      Error_Process(void): void
+    }
+  }
+}
+
+package Service
+{
+    class PushButton
+    {
+      +get_ButtonState(enum button): Int8
+    }
+
+    class LED
+    {
+        +setState(enum led, Int8 state): void
+    }
+
+    class Buzzer
+    {
+      +init_Buzzer(void): Int8
+      +set_AlarmTone(void): void
+      +set_StandardTone(void): void
+    }
+    
+    class Display
+    {
+      +init_Display(void): void
+      +output_Display(char* TeamName, char* MeasuredTime): void
+      +reset_Display(void): void
+    }
+    
+    class LineSensor
+    {
+      IsVerticalLineDetected(void): BOOL
+      IsStartStopLineDetected(void): BOOL
+    }
+
+    class Motor
+    {
+      +set_TurningDirection(enum motor, enum direction): Int8
+      +get_TurningDirection(void): enum direction
+      +set_MotorSpeed(enum motor, enum direction): Int8
+      +get_MotorSpeed(void): enum direction
+    }
+    
+  note top of LED
+        Provides methods to enable/disable
+        the LED, via I/O.
+    end note
+    
+  note top of PushButton
+        Provides the button state,
+        derived from I/O.
+  end note
+  
+
+  class Clock
+  {
+    +get_Time(void): Int8
+    +set_Time(Int8 minutes, Int8 seconds, Int8 milliseconds): Int8
+    +reset_Time(void): Int8
+    +start_Measurement(void): void
+    +stop_Measurement(void): void
+  }
+
+}
+
+package HAL
+{
+  class GPIO
+  {
+    +GPIO_Init(Int8 port, Int8 pin): void
+    +GPIO_Write(Int8 port, Int8 pin, Int8 state): void
+    +GPIO_Read(Int8 port, Int8 pin): void
+  }
+  class SPI
+  {
+    +SPI_Init(void): void
+    +SPI_Transmit(): void
+    +SPI_Receive(): void
+  }
+  class AVRTimer0
+  {
+    +init(void): void
+    millis(void): void
+  }
+  note bottom of AVRTimer0
+    is used for timing-related functions
+  end note
+  class AVRTimer4
+  {
+    +init(void): void
+    +set_SoundFrequency(Int8 frequency): void
+  }
+  note bottom of AVRTimer4
+    is used for controlling the buzzer
+  end note
+  
+  class PWM_Timer1
+  {
+    +init(void): void
+    +set_PWMFreq(Int8 frequency): void
+  }
+}
+StateHandler --> SystemStart_Handler
+StateHandler --> Wait_Handler
+StateHandler --> Calibration_Handler
+StateHandler --> ModeSwitch_Handler
+StateHandler --> StartRace_Handler
+StateHandler --> RunRace_Handler
+StateHandler --> RaceDone_Handler
+StateHandler --> Error_Handler
+
+SystemStart_Handler --> Clock
+SystemStart_Handler --> Display
+Calibration_Handler --> LineSensor 
+Calibration_Handler --> PushButton
+ModeSwitch_Handler --> PushButton
+StartRace_Handler --> Clock
+StartRace_Handler --> Buzzer
+StartRace_Handler --> Motor
+StartRace_Handler --> PushButton 
+RunRace_Handler --> Clock
+RunRace_Handler --> Motor
+RaceDone_Handler --> Clock
+RaceDone_Handler --> Buzzer
+RaceDone_Handler --> Motor
+RaceDone_Handler --> Display
+Error_Handler --> Buzzer
+Error_Handler --> Clock
+Wait_Handler --> PushButton
+
+Main --> StateHandler
+PushButton --> GPIO
+LED --> GPIO
+Display --> SPI
+Buzzer --> AVRTimer4
+Motor --> GPIO
+Motor --> PWM_Timer1
+LineSensor --> GPIO
+Clock --> AVRTimer0
+Display --> GPIO
+StartRace_Handler --> LineSensor
+RunRace_Handler --> LineSensor
+RaceDone_Handler --> LineSensor
+
+StartRace_Handler --> Driving
+RunRace_Handler --> Driving
+
+
+@enduml
