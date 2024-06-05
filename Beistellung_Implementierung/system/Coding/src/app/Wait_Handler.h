@@ -18,11 +18,11 @@
 
 /* TYPES ******************************************************************************************/
 
-// Definition of the Wait_Handler class
-typedef struct {
-    // Methoden
-    void (*Wait_NotifyStateHandler)(void);
-} Wait_Handler;
+/* PROTOTYPES *************************************************************************************/
+
+void Wait_process(void);
+
+#endif /* WAIT_H */
 
 /* PROTOTYPES *************************************************************************************/
 
