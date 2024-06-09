@@ -34,9 +34,7 @@ Events RedetectTrack_process(void);
 void Init_process(void);
 void Wait_process(void);
 void RaceDone_process(void);
-void Error_process(void);
-
-/* INTERNAL FUNCTIONS *****************************************************************************/
+void Error_process(Errors errorID);
 
 
 void StateHandler_process(void)
@@ -50,39 +48,41 @@ void StateHandler_process(void)
 
     case ST_WAIT:
         Wait_process(); //---------
-        if(EV_PUSH_BUTTON_B_PRESSED == gCurrentEvent)
+        if (EV_PUSH_BUTTON_B_PRESSED == gCurrentEvent)
         {
             gCurrentState = ST_MODE_SWITCH;
         }
-        if(EV_PUSH_BUTTON_A_PRESSED == gCurrentEvent)
+        if (EV_PUSH_BUTTON_A_PRESSED == gCurrentEvent)
         {
             gCurrentState = ST_START_RACE;
         }
-        if(EV_PUSH_BUTTON_C_PRESSED == gCurrentEvent)
+        if (EV_PUSH_BUTTON_C_PRESSED == gCurrentEvent)
         {
             gCurrentState = ST_CALIBRATION;
         }
         break;
 
     case ST_MODE_SWITCH:
-        if(EV_MODE_SWITCH_SUCCESSFUL == ModeSwitch_process())//---------hier Rückgabewerte: mode_switch_successful
+        if (EV_MODE_SWITCH_SUCCESSFUL == ModeSwitch_process())//---------hier Rückgabewerte: mode_switch_successful
         {
             gCurrentState = ST_WAIT;
         }
-        else
+        if (EV_MODE_SWITCH_FAILED == ModeSwitch_process())
         {
             gCurrentState = ST_ERROR;
+            gErrorID = ER_PARAMETER;
         }
         break;
 
     case ST_CALIBRATION:
-        if(EV_CALIBRATION_SUCCESSFUL == Calibration_process())//---------hier Rückgabewerte: calibration_successful
+        if (EV_CALIBRATION_SUCCESSFUL == Calibration_process())//---------hier Rückgabewerte: calibration_successful
         {
             gCurrentState = ST_WAIT;
         }
-        else
+        if (EV_CALIBRATION_FAILED == Calibration_process())
         {
             gCurrentState = ST_ERROR;
+            gErrorID = ER_CALIBRATION;
         }
         break;
 
@@ -97,20 +97,25 @@ void StateHandler_process(void)
                 gCurrentState = ST_REDETECT_TRACK;
                 break;
 
-            default:
+            case EV_LAPTIME_TIMEOUT:
                 gCurrentState = ST_ERROR;
+                gErrorID = ER_RACETIME;
+                break;
+
+            default:
                 break;
         }     
         break;
 
     case ST_START_RACE:
-        if(EV_STARTENDLINE_DETECTED == StartRace_process())//---------hier Rückgabewerte: EV_STARTLINE_DETECTED
+        if (EV_STARTENDLINE_DETECTED == StartRace_process())//---------hier Rückgabewerte: EV_STARTLINE_DETECTED
         {
             gCurrentState = ST_RUN_RACE;
         }
-        else
+        if (EV_STARTENDLINE_DETECTED_TIMEOUT == StartRace_process())
         {
             gCurrentState = ST_ERROR;
+            gErrorID = ER_STARTLINE_TIMER;
         }
         break;
 
@@ -119,7 +124,7 @@ void StateHandler_process(void)
       break;
 
     case ST_ERROR:
-        Error_process();//---------
+        Error_process(gErrorID);//---------
         break;
 
     case ST_REDETECT_TRACK:
@@ -127,9 +132,10 @@ void StateHandler_process(void)
         {
             gCurrentState = ST_RUN_RACE;
         }
-        else
+        if(EV_TRACK_REDETECTED_TIMEOUT == RedetectTrack_process())
         {
             gCurrentState = ST_ERROR;
+            gErrorID = ER_REDETECT_LINE;
         }
         break;
 
@@ -137,3 +143,5 @@ void StateHandler_process(void)
         break;
   }
 }
+
+/* INTERNAL FUNCTIONS *****************************************************************************/
