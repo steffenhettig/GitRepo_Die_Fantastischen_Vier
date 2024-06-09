@@ -14,9 +14,13 @@
 #include <stdio.h>
 
 #include "app/Wait.h"
+#include "app/StateHandler.h"
 #include "service/Button.h"
 
+
  /* CONSTANTS **************************************************************************************/
+
+#define STATUSCODE 100
 
  /* MACROS *****************************************************************************************/
 
@@ -26,35 +30,35 @@
 
  /* VARIABLES **************************************************************************************/
 
+    int gCurrentEvent = 100;  /**<Global variable from StateHandler with current StatusCode 100*/
+
  /* EXTERNAL FUNCTIONS *****************************************************************************/
 
  /* INTERNAL FUNCTIONS *****************************************************************************/
 
 void Wait_process(void) {
 
-    int gCurrentEvent = 100;
-
-do 
-{
-
-    if (3 == Button_getState(0))
+    do 
     {
-        gCurrentEvent = 0;
-    }
+
+        if (BUTTON_STATE_TRIGGERED == Button_getState(BUTTON_ID_A))
+        {
+            gCurrentEvent = EV_PUSH_BUTTON_A_PRESSED;
+        }
    
     
-    if (3 == Button_getState(1))
-    { 
-        gCurrentEvent = 1;
-    }
+        if (BUTTON_STATE_TRIGGERED == Button_getState(BUTTON_ID_B))
+        { 
+            gCurrentEvent = EV_PUSH_BUTTON_B_PRESSED;
+        }
 
 
-    if (3 == Button_getState(2))
-    {
-        gCurrentEvent = 2;
-    }
+        if (BUTTON_STATE_TRIGGERED == Button_getState(BUTTON_ID_C))
+        {
+            gCurrentEvent = EV_PUSH_BUTTON_C_PRESSED;
+        }
 
-} while (100 == gCurrentEvent);
+    } while (STATUSCODE == gCurrentEvent);
 
    
     return;
