@@ -11,6 +11,15 @@
 /* INCLUDES ***************************************************************************************/
 #include "app/StateHandler.h"
 
+#include "app/Calibration.h"
+//#include "app/Error.h"
+//#include "app/Init.h"
+//#include "app/ModeSwitch.h"
+//#include "app/RaceDone.h"
+#include "app/RedetectTrack.h"
+#include "app/RunRace.h"
+#include "app/StartRace.h"
+//#include "app/Wait.h"
 
 /* CONSTANTS **************************************************************************************/
 
@@ -26,15 +35,6 @@ Events gCurrentEvent;
 Errors gErrorID;
 
 /* EXTERNAL FUNCTIONS *****************************************************************************/
-Events Calibration_process(void);
-Events ModeSwitch_process(void);
-Events StartRace_process(void);
-Events RunRace_process(void);
-Events RedetectTrack_process(void);
-void Init_process(void);
-void Wait_process(void);
-void RaceDone_process(void);
-void Error_process(Errors errorID);
 
 
 void StateHandler_process(void)
