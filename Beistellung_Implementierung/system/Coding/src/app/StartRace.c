@@ -158,7 +158,8 @@ static Events StartRace_Process(void)
   else
   {
     // to Error State
-    ReturnValue = EV_NO_EVENT;
+    //ReturnValue = EV_NO_EVENT;
+    ReturnValue = EV_STARTENDLINE_DETECTED_TIMEOUT;
   }
 
 

@@ -42,24 +42,21 @@ Events RedetectTrack_process(void)
     Events retEvent = EV_NO_EVENT;
     static SoftTimer gTimer;
     SoftTimer_start(&gTimer, MAX_REDETECT_TRACK_TIME);
+  
+    LineSensorValues sensorValues;
+    LineSensor_read(&sensorValues);
 
-    while (EV_NO_EVENT == retEvent)
-    {   
-      LineSensorValues sensorValues;
-      LineSensor_read(&sensorValues);
+    Driving_driveForward();
 
-      Driving_driveForward();
-
-      if (SOFTTIMER_IS_EXPIRED(&gTimer))
-      {
-        retEvent =  EV_REDETECT_TRACK_TIMEOUT;
-      }
-      if ((TRESHOLD_LINE < sensorValues.value[LINESENSOR_LEFT]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_MIDDLE_LEFT]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_MIDDLE]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_MIDDLE_RIGHT]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_RIGHT]))
-      {
-        retEvent = EV_TRACK_REDETECTED;
-      }
-
+    if (SOFTTIMER_IS_EXPIRED(&gTimer))
+    {
+      retEvent =  EV_REDETECT_TRACK_TIMEOUT;
     }
+    if ((TRESHOLD_LINE < sensorValues.value[LINESENSOR_LEFT]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_MIDDLE_LEFT]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_MIDDLE]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_MIDDLE_RIGHT]) || (TRESHOLD_LINE < sensorValues.value[LINESENSOR_RIGHT]))
+    {
+      retEvent = EV_TRACK_REDETECTED;
+    }
+
     return retEvent;
 }
 
