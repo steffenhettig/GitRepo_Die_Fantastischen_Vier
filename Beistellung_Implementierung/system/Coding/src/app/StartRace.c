@@ -29,7 +29,7 @@ if the startline is not detected it'll jump in the error state
 
  /* CONSTANTS **************************************************************************************/
 #define STARTTIME 3u
-#define STARTLINETIME 3u
+#define STARTLINETIME 2u
 
  /* MACROS *****************************************************************************************/
 
