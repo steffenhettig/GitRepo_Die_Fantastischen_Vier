@@ -4,19 +4,19 @@
 /**
  * @addtogroup app
  * @{
- * @file       CALIBRATION_HANDLER.h
+ * @file       CALIBRATION.h
  *
  * The Calibration_Handler handles the calibration process of the 5 Line Sensors.
  * If the process is started the system has to be placed over the Line
  * The System will start a sweeping motion over the Line until all Sensors are calibrated
  *
  *
- * @version    %$Id: Calibration_Handler.h Buehler
+ * @version    %$Id: Calibration.h Buehler
  * @}
  */
  /**************************************************************************************************/
-#ifndef CALIBRATION_HANDLER_H
-#define CALIBRATION_HANDLER_H
+#ifndef CALIBRATION_H
+#define CALIBRATION_H
 
 /* INCLUDES ***************************************************************************************/
 #include "app/StateHandler.h"
