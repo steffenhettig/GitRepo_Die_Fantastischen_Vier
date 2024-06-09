@@ -16,6 +16,8 @@ Wait-->Calibration : [pushbutton C]
 
 Wait-->ModeSwitch : [pushbutton B]
 
+ModeSwitch : Display current parameter stats
+
 
 ModeSwitch-->Error : [Loading parameters failed]
 
@@ -45,12 +47,13 @@ RedetectTrack-->RunRace : [track redeteckted]
 
 RunRace-->Error :[timer for racetime > 20 s]
 
-StartRace : On Entry / wait 3 s \n do / start driving \n do / start Startline timer\n On exit / Start timer for racetime \n + notify user with buzzer \n + Stop Starline timer
+StartRace : On Entry / wait 3 s \n do / start driving \n do / start Startline timer\n On exit / Stop Starline timer
 
-RunRace : follow track
-Error : On Entry / Stop all movements \n do / notify user with alarm tone \n do / display Error reason
+RunRace : On Entry / Start timer for racetime if not already done \n + notify user with buzzer if not already done once \n do / follow track
 
-RaceDone : On Entry / Stop timer for racetime \n do / Stop all movements \n do / Notify unser with notification sound \n do / display value of timer for racetime 
+Error : On Entry / Stop all movements \n +  notify user with alarm tone \n do / display Error reason
+
+RaceDone : On Entry / Stop timer for racetime \n + Stop all movements \n + Notify unser with notification sound \n do / display value of timer for racetime 
 
 
 @enduml
