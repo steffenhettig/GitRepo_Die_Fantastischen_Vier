@@ -23,10 +23,3 @@
 void Wait_process(void);
 
 #endif /* WAIT_H */
-
-/* PROTOTYPES *************************************************************************************/
-
-// External declaration of the Wait_Handler instance
-extern Wait_Handler Wait_Handler_instance;
-
-#endif /* WAIT_H */
