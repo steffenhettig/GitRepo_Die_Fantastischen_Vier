@@ -13,18 +13,24 @@
 /* INCLUDES ***************************************************************************************/
 #include "Common/Types.h"
 
+#include "app/ModeSwitch.h"
+#include "app/StateHandler.h"
+#include "service/Button.h"
+#include "service/Buzzer.h"
+#include "service/Display.h"
+
+
+
 /* CONSTANTS **************************************************************************************/
+/* VARIABLES **************************************************************************************/
+
+ int GlobalVelocity = 0;
+
 /* MACROS *****************************************************************************************/
 /* TYPES ******************************************************************************************/
 /* PROTOTYPES *************************************************************************************/
 
-void ModeSwitch_process(void);
+Events ModeSwitch_process(void);
 
 #endif /* MODESWITCH_HANDLER_H */
 
-/* PROTOTYPES *************************************************************************************/
-
-// External declaration of the ModeSwitch_Handler instance
-extern ModeSwitch_Handler ModeSwitch_Handler_instance;
-
-#endif /* MODESWITCH_HANDLER_H */
