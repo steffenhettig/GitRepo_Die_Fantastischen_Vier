@@ -1,7 +1,7 @@
 /**
 @addtogroup app
 @{
-@file       StartRace_Handler.c
+@file       StartRace.c
 
 Handles the complete start Race process
 
@@ -12,7 +12,7 @@ if the starline is detected it'll jump to the run Race state and start time mess
 
 if the startline is not detected it'll jump in the error state
 
-@version    %$Id: StartRace_Handler.c Buehler
+@version    %$Id: StartRace.c Buehler
 * @}
  /**************************************************************************************************/
 
@@ -165,9 +165,3 @@ static Events StartRace_Process(void)
 
   return ReturnValue;   
 }
-
-
-// Create and initialize StartRace_Handler instance
-StartRace_Handler StartRace_Handler_instance = {
-    .StartRace_Process = StartRace_Process
-};
