@@ -12,7 +12,7 @@
 /* INCLUDES ***************************************************************************************/
 #include <stdio.h>
 
-#include "app/EndRace.h"
+#include "app/RaceDone.h"
 #include "service/LineSensor.h"
 #include "service/DriveControl.h"
 #include "hal/TickTimer.h"
