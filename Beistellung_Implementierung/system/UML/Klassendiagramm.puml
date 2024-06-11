@@ -127,6 +127,9 @@ package "Application"  {
     
     class "StateHandler" {
         + StateHandler_process(void) : void
+        - gCurrentState : States
+        - gCurrenEvent : Events
+        - gErrorID : Errors
     }
     
     class "Calibration" {
