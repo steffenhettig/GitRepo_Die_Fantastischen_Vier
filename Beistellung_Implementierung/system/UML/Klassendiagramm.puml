@@ -1,202 +1,280 @@
-@startuml
+@startuml class_diagram
 
-top to bottom direction
-
-package App 
-{
-  class StateHandler
-  {
-    StateHandler_init(void): void
-    StateHandler_EnterState(enum state): void
-  }
-  class Main
-  {
-      Enter_StateHandler(void): void
-  }
-  class Driving
-  {
-    FollowingLine(void): void
-  }
-  package States
-  {
-    class SystemStart_Handler
-    {
-    
-    }
-    class Wait_Handler
-    {
-      Wait_NotifyStateHandler(void): void
-    }
-    class Calibration_Handler
-    {
-      Calibration_Process(void): void
-    }
-    class ModeSwitch_Handler
-    {
-      ModeSwitch_SwitchToNextParameterSet(void) : void
-    }
-    class StartRace_Handler
-    {
-      StartRace_Process(void): void
-    }
-    class RunRace_Handler
-    {
-      RunRace_Process(void): void
-    }
-    class RaceDone_Handler
-    {
-      RaceDone_Process(void): void
-    }
-    class Error_Handler
-    {
-      Error_Process(void): void
-    }
-  }
-}
-
-package Service
-{
-    class PushButton
-    {
-      +get_ButtonState(enum button): Int8
+package "Provision" {
+package "OS" #DDDDDD {
+    class Scheduler {
+        + Scheduler_init(void) : SchedulerRet
+        + Scheduler_execute(void) : void
+        + Scheduler_addTask(Task*) : Scheduler_Ret
+        + Scheduler_removeTask(Task*) : Scheduler_Ret
     }
 
-    class LED
-    {
-        +setState(enum led, Int8 state): void
+    class Task {
+        + Task_init(Task*, TaskWorkCallback, TaskState, void*) : Task_Ret
     }
 
-    class Buzzer
-    {
-      +init_Buzzer(void): Int8
-      +set_AlarmTone(void): void
-      +set_StandardTone(void): void
-    }
-    
-    class Display
-    {
-      +init_Display(void): void
-      +output_Display(char* TeamName, char* MeasuredTime): void
-      +reset_Display(void): void
-    }
-    
-    class LineSensor
-    {
-      IsVerticalLineDetected(void): BOOL
-      IsStartStopLineDetected(void): BOOL
+    class SoftTimer{
+        + SoftTimer_init(SoftTimer*) : void
+        + SoftTimer_start(SoftTimer*, UInt16) : SoftTimer_Ret
+        + SoftTimer_Stop(SoftTImer*) : SoftTimer_Ret
+        + SoftTimer_Update(SoftTimer*) : void
+        + SoftTimer_restart(SoftTimer*) : SoftTimer_Ret
+        + SoftTimer_get(SoftTimer*) : UInt16
+        + SoftTimerHandler_init(void) : void
+        + SoftTimerHandler_register(SoftTimer*) : SoftTimer_Ret
+        + SoftTimerHandler_unRegister(SoftTimer*) : SoftTimer_Ret
+        + SoftTimerHandler_update(void) : void
+        + SoftTimer_getTimeStampMs(void) : UInt64
     }
 
-    class Motor
-    {
-      +set_TurningDirection(enum motor, enum direction): Int8
-      +get_TurningDirection(void): enum direction
-      +set_MotorSpeed(enum motor, enum direction): Int8
-      +get_MotorSpeed(void): enum direction
+    class ErrorHandler {
+        + ErrorHandler_show(ErrorHandlerErrorCode) : void
+        + ErrorHandler_halt(ErrorHandlerErrorCode) : void
+        + ErrorHandler_setErrorCallback(ErrorCallback) : void
+        + ErrorHandler_setPrintCallback(PrintCallback) : void
     }
-    
-  note top of LED
-        Provides methods to enable/disable
-        the LED, via I/O.
-    end note
-    
-  note top of PushButton
-        Provides the button state,
-        derived from I/O.
-  end note
-  
 
-  class Clock
-  {
-    +get_Time(void): Int8
-    +set_Time(Int8 minutes, Int8 seconds, Int8 milliseconds): Int8
-    +reset_Time(void): Int8
-    +start_Measurement(void): void
-    +stop_Measurement(void): void
-  }
+
+    Scheduler -[hidden]-> ErrorHandler
+    ErrorHandler -[hidden]-> SoftTimer
 
 }
+package "Service" #DDDDDD {
+    class Button {
+        + Button_init(void) : void
+        + Button_getState(ButtonID) : ButtonState
+    }
 
-package HAL
-{
-  class GPIO
-  {
-    +GPIO_Init(Int8 port, Int8 pin): void
-    +GPIO_Write(Int8 port, Int8 pin, Int8 state): void
-    +GPIO_Read(Int8 port, Int8 pin): void
-  }
-  class SPI
-  {
-    +SPI_Init(void): void
-    +SPI_Transmit(): void
-    +SPI_Receive(): void
-  }
-  class AVRTimer0
-  {
-    +init(void): void
-    millis(void): void
-  }
-  note bottom of AVRTimer0
-    is used for timing-related functions
-  end note
-  class AVRTimer4
-  {
-    +init(void): void
-    +set_SoundFrequency(Int8 frequency): void
-  }
-  note bottom of AVRTimer4
-    is used for controlling the buzzer
-  end note
-  
-  class PWM_Timer1
-  {
-    +init(void): void
-    +set_PWMFreq(Int8 frequency): void
-  }
+    class Buzzer {
+        + Buzzer_init(void) : void
+        + Buzzer_beep(BuzzerID) : void
+    }
+
+    class Display {
+        + Display_init(void) : void
+        + Display_clear(void) : void
+        + Display_clearLine(void) : void
+        + Display_home(void) : void
+        + Display_gotoxy(UInt8, UInt8) : void
+        + Display_write(char*, UInt8) : void
+        + Display_writeBar(UInt8) : void
+    }
+
+    class LED {
+        + Led_init(void) : void
+        + Led_switchOn(Led_Led) : void
+        + Led_switchOff(Led_Led) : void
+    }
+
+    class DriveControl {
+        + DriveControl_init(void) : void
+        + DriveControl_drive(DriveControlMotorID, UInt8, DriveControl_Direction) : void
+        + DriveControl_getMileage(void) : Int32
+        + DriveControl_resetMileage(void) : void
+    }
+
+    class LineSensor {
+        + LineSensor_init(void) : void
+        + LineSensor_startCalibration(void) : void
+        + LineSensor_stopCalibration(void) : void
+        + LineSensor_getCalibrationState(void) : bool
+        + LineSensor_read(LineSensorValues*) : void
+        + LineSensor_enableEmitter(void)
+        + LineSensor_disableEmitter(void) : void
+    }
 }
-StateHandler --> SystemStart_Handler
-StateHandler --> Wait_Handler
-StateHandler --> Calibration_Handler
-StateHandler --> ModeSwitch_Handler
-StateHandler --> StartRace_Handler
-StateHandler --> RunRace_Handler
-StateHandler --> RaceDone_Handler
-StateHandler --> Error_Handler
 
-SystemStart_Handler --> Clock
-SystemStart_Handler --> Display
-Calibration_Handler --> LineSensor 
-Calibration_Handler --> PushButton
-ModeSwitch_Handler --> PushButton
-StartRace_Handler --> Clock
-StartRace_Handler --> Buzzer
-StartRace_Handler --> Motor
-StartRace_Handler --> PushButton 
-RunRace_Handler --> Clock
-RunRace_Handler --> Motor
-RaceDone_Handler --> Clock
-RaceDone_Handler --> Buzzer
-RaceDone_Handler --> Motor
-RaceDone_Handler --> Display
-Error_Handler --> Buzzer
-Error_Handler --> Clock
-Wait_Handler --> PushButton
+package "HAL" #DDDDDD {
 
-Main --> StateHandler
-PushButton --> GPIO
-LED --> GPIO
-Display --> SPI
-Buzzer --> AVRTimer4
-Motor --> GPIO
-Motor --> PWM_Timer1
-LineSensor --> GPIO
-Clock --> AVRTimer0
-Display --> GPIO
-StartRace_Handler --> LineSensor
-RunRace_Handler --> LineSensor
-RaceDone_Handler --> LineSensor
+    class GPIO{
+        + Gpio_init(void) : Gpio_Ret
+        + Gpio_write(Gpio_ID, Gpio_State) : Gpio_Ret
+        + Gpio_read(Gpio_ID, Gpio_State* : Gpio_Ret
+        + Gpio_alloc(Gpio_ID, UInt8*) : Gpio_Ret
+        + Gpio_free(Gpio_ID, UInt8) : Gpio_Ret
+    }
+    class PWM{
+        + Pwm_init(void) : void
+        + Pwm_setDutyCycle(PwmID, UInt8) : void
+    }
+    class TickTimer{
+        + TickTimer_init(void) : void
+        + TickTimer_setCallback(TimerTickCallback) : void
+        + TickTimer_get(void) : UInt64
+        + TickTimer_delay(UInt8) : void
+    }
+    class IRQ{
+        + Irq_init(void) : void
+        + Irq_enable(IrqID) : void
+        + Irq_disable(IrqID) : void
+        + Irq_setCallback(IrqID, IrqCallback) : void
+    }
+}
+    class main {
 
-StartRace_Handler --> Driving
-RunRace_Handler --> Driving
+    }
+    main ..> Scheduler
 
+}
+
+package "Application"  {
+
+    class "MainTask" {
+        + MainTask_init(void) : MainTask_Ret
+    }
+
+    Scheduler <.up.. MainTask : register
+    
+    class "StateHandler" {
+        + StateHandler_process(void) : void
+    }
+    
+    class "Calibration" {
+        + Calibration_process(void) : Events
+    }
+    
+    class "Error" {
+        + Error_process(Errors errorID) : void
+    }
+    
+    class "Init" {
+        + Init_process(void) : void
+    }
+    
+    class "ModeSwitch" {
+        + ModeSwitch_process(void) : Events
+    }
+    
+    class "RaceDone" {
+        + RaceDone_process(void) : Events
+    }
+    
+    class "RedetectTrack" {
+        + RedetectTrack_process(void) : Events
+    }
+    
+    class "RunRace" {
+        + RunRace_process(void) : Events
+    }
+    
+     class "StartRace" {
+        + StartRace_process(void) : Events
+    }
+    
+     class "Wait" {
+        + Wait_process(void) : void
+    }
+    
+     class "Driving" {
+        + Driving_stopDriving(void) : void
+        + Driving_driveForward(void) : void
+        + Driving_followLine(LineSensorValues* SensorValues) : void
+        - regulateSpeed(Int32, UInt16*, UInt16) : void
+        - calculatePosition(LineSensorValues* sensorValues) : UInt32
+    }
+}
+
+note top of Application #99FF99 {
+    Update with your Application content here
+
+}
+
+' ++++++++++++++++++++++++++++++++
+' Application
+MainTask ..> StateHandler
+
+StateHandler ..> Calibration
+StateHandler ..> ModeSwitch
+StateHandler ..> Error
+StateHandler ..> Init
+StateHandler ..> RaceDone
+StateHandler ..> RedetectTrack
+StateHandler ..> RunRace
+StateHandler ..> StartRace
+StateHandler ..> Wait
+
+Calibration ..> LineSensor
+Calibration ..> SoftTimer
+Calibration ..> DriveControl
+Calibration ..> Display
+Calibration ..> StateHandler
+
+Error ..> StateHandler
+Error ..> ModeSwitch
+Error ..> Button
+Error ..> Buzzer
+Error ..> Display
+Error ..> DriveControl
+
+Init ..> HAL
+Init ..> OS
+Init ..> Service
+
+ModeSwitch ..> StateHandler
+ModeSwitch ..> Button
+ModeSwitch ..> Buzzer
+ModeSwitch ..> Display
+
+RaceDone ..> LineSensor
+RaceDone ..> DriveControl
+RaceDone ..> TickTimer
+RaceDone ..> Buzzer
+RaceDone ..> LED
+RaceDone ..> StateHandler
+RaceDone ..> Driving
+
+RedetectTrack ..> StateHandler
+RedetectTrack ..> LineSensor
+RedetectTrack ..> SoftTimer
+RedetectTrack ..> Driving
+RaceDone ..> Driving
+
+RunRace ..> StateHandler
+RunRace ..> LineSensor
+RunRace ..> SoftTimer
+
+StartRace ..> StateHandler
+StartRace ..> SoftTimer
+StartRace ..> DriveControl
+StartRace ..> LineSensor
+StartRace ..> TickTimer
+
+Wait ..> StateHandler
+Wait ..>Button
+
+' Service
+
+Button ..> GPIO
+Button ..> SoftTimer
+
+Buzzer ..> PWM
+Buzzer ..> SoftTimer
+
+Display ..> GPIO
+Display ..> TickTimer
+Display ..> ErrorHandler
+
+DriveControl ..> GPIO
+DriveControl ..> PWM
+DriveControl ..> IRQ
+
+LED ..> GPIO
+
+LineSensor ..> SoftTimer
+LineSensor ..> GPIO
+LineSensor ..> TickTimer
+LineSensor .r.> Display
+
+
+
+' ++++++++++++++++++++++++++++++++
+' OS
+
+' ErrorHandler ..> HAL
+
+SoftTimer ..> TickTimer
+
+Scheduler ..> Task
+Scheduler ..> IRQ
 
 @enduml
