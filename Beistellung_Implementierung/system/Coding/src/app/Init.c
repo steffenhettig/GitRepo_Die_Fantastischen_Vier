@@ -11,6 +11,10 @@
 /* INCLUDES ***************************************************************************************/
 #include "app/Init.h"
 
+//for debugging
+#include "service/Display.h"
+#include "service/Button.h"
+
 /* CONSTANTS **************************************************************************************/
 
 /* MACROS *****************************************************************************************/
@@ -25,9 +29,15 @@
 
 void Init_process(void)
 {
-  Hal_init();
-  OS_init();
-  Service_init();
+  //Hal_init();
+  //OS_init();
+  //Service_init();
+
+  //for debugging
+    //Display_gotoxy(0, 0);
+    Display_write("Init", 4);
+    //Display_gotoxy(0, 1);
+    //Display_write("Test", 4);
 }
 
 /* INTERNAL FUNCTIONS *****************************************************************************/
