@@ -26,19 +26,39 @@ if the startline is not detected it'll jump in the error state
 #include "service/Buzzer.h"
 #include "service/Button.h"
 #include "app/StateHandler.h"
+#include "app/Driving.h"
+#include "service/Display.h"
+
+#include "app/CalibrationXXX.h"
 
  /* CONSTANTS **************************************************************************************/
-#define STARTTIME 3u
+#define STARTTIME 3000U
 #define STARTLINETIME 2u
-
+#define START_RACE_SPEED 20U
+#define START_RACE_OVER_LINE_THRESHOLD 180U
+#define START_RACE_NO_LINE_THRESHOLD 90U
  /* MACROS *****************************************************************************************/
 
  /* TYPES ******************************************************************************************/
 
  /* PROTOTYPES *************************************************************************************/
+/** This function is used to check if a sensor is over a line
+* @param[in] value sensor values
+* @param[in] *parameterSet Passes the struct with the set parameters
+* @return Bool true if sucessfull
+*/
+static Bool sensorOverLine(UInt16 value);
 
+/** This function is used to check if a sensor is not over a line 
+* @param[in] value sensor values
+* @param[in] *parameterSet Passes the struct with the set parameters
+* @return Bool true if sucessfull
+*/
+static Bool sensorNoLine(UInt16 value);
  /* VARIABLES **************************************************************************************/
 StartRace_Timemeassure gRaceTime;
+static SoftTimer gStartTimer;
+
  /* EXTERNAL FUNCTIONS *****************************************************************************/
 
  /* INTERNAL FUNCTIONS *****************************************************************************/
@@ -47,58 +67,50 @@ StartRace_Timemeassure gRaceTime;
 /**
  * Implementation of the StartRace_Process method
 */
-static Events StartRace_Process(void) 
+Events StartRace_process(void) 
 {
 
-  SoftTimer StartTimer;
-  SoftTimer StartLineTimer;
+  //SoftTimer gStartTimer;
+  static int Test = 0;
+  static int driveForwardFlag = 0;
+
+  if(!Test){
+      SoftTimer_init(&gStartTimer);
+      SoftTimerHandler_register(&gStartTimer);
+      SoftTimer_start(&gStartTimer, STARTTIME);
+
+      Test = 1;
+  }
+
+  //SoftTimer StartLineTimer;
   LineSensorValues SensorValues;
-  Events ReturnValue;
+  Events ReturnValue = EV_NO_EVENT;
   Bool ErrorOccured = false;
   Bool StartLineDetected = true;
   
   //**********Entry: Wait 3s*****************
   //Start Timer 
-  if (SOFTTIMER_IS_EXPIRED(&StartTimer))
+  if (SOFTTIMER_IS_EXPIRED(&gStartTimer) && !driveForwardFlag)
   {
-      SoftTimer_start(&StartTimer, STARTTIME);   
-  }
-  
-  while (!SOFTTIMER_IS_EXPIRED(&StartTimer))
-  {
-    //do nothing 
-    //wait 3s
-  }
+      //SoftTimer_start(&gStartTimer, STARTTIME);
+      driveForwardFlag = 1;
+      SoftTimer_Stop(&gStartTimer);
 
-  //Unregister Timer
-  if (SOFTTIMER_RET_SUCCESS != SoftTimerHandler_unRegister(&StartTimer))
-  {
-    //Jump in Error
-    ErrorOccured = true;
-  }
+      Display_gotoxy(0, 2);
+      Display_write("TimExpired", 10);
 
-  //*************Start driving and search for starline*******************
-
-  //Start Starlinetimer
-  if (SOFTTIMER_IS_EXPIRED(&StartLineTimer))
-  {
-    SoftTimer_start(&StartLineTimer, STARTLINETIME);  
+      if (SOFTTIMER_RET_SUCCESS != SoftTimerHandler_unRegister(&gStartTimer))
+      {
+        ErrorOccured = true;
+        Display_gotoxy(0, 3);
+        Display_write("ErrRet", 10);
+      }
   }
-  
   //Start driving
-  DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, START_SPEED, DRIVE_CONTROL_FORWARD);
-  DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, START_SPEED, DRIVE_CONTROL_FORWARD);
-
-  //Drive until the startline is detected or the timer is expired
-  while (!ErrorOccured && !StartLineDetected)
+  if (driveForwardFlag)
   {
-
-    //Checks if timer is expired
-    if (SOFTTIMER_IS_EXPIRED(&StartLineTimer))
-    {
-      //Timer is expired
-      ErrorOccured = true;
-    }
+      DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, START_RACE_SPEED, DRIVE_CONTROL_FORWARD);
+      DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, START_RACE_SPEED, DRIVE_CONTROL_FORWARD);
 
     LineSensor_read(&SensorValues);
 
@@ -109,32 +121,18 @@ static Events StartRace_Process(void)
     * Starline:  -|- 
     * notice the gap between those two lines 
     */
-    if (CALIBRATION_HANDLER_LINE_DETECTED(SensorValues.value[LINESENSOR_LEFT])
-                  && CALIBRATION_HANDLER_NO_LINE_DETECTED(SensorValues.value[LINESENSOR_MIDDLE_LEFT])
-                  && CALIBRATION_HANDLER_LINE_DETECTED(SensorValues.value[LINESENSOR_MIDDLE])
-                  && CALIBRATION_HANDLER_NO_LINE_DETECTED(SensorValues.value[LINESENSOR_MIDDLE_RIGHT])
-                  && CALIBRATION_HANDLER_LINE_DETECTED(SensorValues.value[LINESENSOR_RIGHT]))
+    if ((START_RACE_OVER_LINE_THRESHOLD < SensorValues.value[LINESENSOR_LEFT]) && (START_RACE_OVER_LINE_THRESHOLD < SensorValues.value[LINESENSOR_RIGHT])) /* if Startline detected */
     {
+      //retEvent =  EV_STARTENDLINE_DETECTED;
 
       StartLineDetected = true;
-
+      driveForwardFlag = 0;
+      //Driving_stopDriving();
+      DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, 0u, DRIVE_CONTROL_FORWARD);
+      DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, 0u, DRIVE_CONTROL_BACKWARD);
+      // Display_gotoxy(0, 4);
+      // Display_write("StopDriv", 10);
     }
-
-
-  }
-
-  //Stop Startlinetimer and checks for succes
-  if (SOFTTIMER_RET_SUCCESS != SoftTimer_Stop(&StartLineTimer))
-  {
-    //Jump in Error State
-    ErrorOccured = true;
-  }
-      
-  //Free StartLineTimer
-  if (SOFTTIMER_RET_SUCCESS != SoftTimerHandler_unRegister(&StartLineTimer))
-  {
-    //Jump in Error
-    ErrorOccured = true;
   }
 
   if (StartLineDetected && !ErrorOccured)
@@ -142,18 +140,16 @@ static Events StartRace_Process(void)
     //Notify User with buzzer
     Buzzer_beep(BUZZER_NOTIFY);
 
-    //Set return Vallue
+    //Set return Value
     ReturnValue = EV_STARTENDLINE_DETECTED;
+    Test = 0;
 
-    /*Start Timemessure
-    * Time messurement is started done by saving the current vallue of the tick Counter
-    * At the end of the race 
-    * 
-    */
-    gRaceTime.StartTime = TickTimer_get();
-    
-
-
+  //   /*Start Timemessure
+  //   * Time messurement is started done by saving the current vallue of the tick Counter
+  //   * At the end of the race 
+  //   * 
+  //   */
+  //   //gRaceTime.StartTime = TickTimer_get();
   }
   else
   {
