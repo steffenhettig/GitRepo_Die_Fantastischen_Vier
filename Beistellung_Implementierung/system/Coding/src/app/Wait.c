@@ -30,37 +30,33 @@
 
  /* VARIABLES **************************************************************************************/
 
-    int gCurrentEvent = 100;  /**<Global variable from StateHandler with current StatusCode 100*/
+//    int gCurrentEvent = 100;  /**<Global variable from StateHandler with current StatusCode 100*/
 
  /* EXTERNAL FUNCTIONS *****************************************************************************/
 
  /* INTERNAL FUNCTIONS *****************************************************************************/
 
-void Wait_process(void) {
+Events Wait_process(void) {
 
-    do 
+    Events retEv = EV_NO_EVENT;
+
+    if (BUTTON_STATE_PRESSED == Button_getState(BUTTON_ID_A))
     {
-
-        if (BUTTON_STATE_TRIGGERED == Button_getState(BUTTON_ID_A))
-        {
-            gCurrentEvent = EV_PUSH_BUTTON_A_PRESSED;
-        }
+            retEv = EV_PUSH_BUTTON_A_PRESSED;
+    }
    
     
-        if (BUTTON_STATE_TRIGGERED == Button_getState(BUTTON_ID_B))
-        { 
-            gCurrentEvent = EV_PUSH_BUTTON_B_PRESSED;
-        }
+    if (BUTTON_STATE_PRESSED == Button_getState(BUTTON_ID_B))
+    { 
+            retEv = EV_PUSH_BUTTON_B_PRESSED;
+    }
 
 
-        if (BUTTON_STATE_TRIGGERED == Button_getState(BUTTON_ID_C))
-        {
-            gCurrentEvent = EV_PUSH_BUTTON_C_PRESSED;
-        }
-
-    } while (STATUSCODE == gCurrentEvent);
+    if (BUTTON_STATE_PRESSED == Button_getState(BUTTON_ID_C))
+    {
+            retEv = EV_PUSH_BUTTON_C_PRESSED;
+    }
 
    
-    return;
-
-};
+    return retEv;
+}
