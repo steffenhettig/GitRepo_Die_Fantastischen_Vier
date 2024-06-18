@@ -1,59 +1,43 @@
 /***************************************************************************************************
-  (c) NewTec GmbH 2024   -   www.newtec.de
+  (c) FantaVier
 ***************************************************************************************************/
 /**
- * @addtogroup app
- * @{
- * @file       CALIBRATION.h
+ * @file       Calibration.h
  *
- * The Calibration_Handler handles the calibration process of the 5 Line Sensors.
- * If the process is started the system has to be placed over the Line
- * The System will start a sweeping motion over the Line until all Sensors are calibrated
- *
- *
- * @version    %$Id: Calibration.h Buehler
- * @}
+ * Calibrates the robot's line sensor
  */
- /**************************************************************************************************/
+/**************************************************************************************************/
 #ifndef CALIBRATION_H
 #define CALIBRATION_H
 
 /* INCLUDES ***************************************************************************************/
+#include "Common/Types.h"
+#include "os/ErrorHandler.h"
 #include "app/StateHandler.h"
+
 /* CONSTANTS **************************************************************************************/
 
 /* MACROS *****************************************************************************************/
 
-/** Checks if a Line is detected under the given sensor*/
-#define CALIBRATION_HANDLER_LINE_DETECTED(SensorValue) \
-    (SensorValue>=CALIBRATION_LINE_DETECTED_LIMIT)
-
-/** Checks if no is Line detected under the given sensor */
-#define CALIBRATION_HANDLER_NO_LINE_DETECTED(SensorValue) \
-    (SensorValue<=CALIBRATION_NO_LINE_DETECTED_LIMIT)
-
 
 /* TYPES ******************************************************************************************/
 
-//Those values may be changed with the parameter sets
-#define CALIBRATION_MAX_CALIBRATIONTIME 5000U   /**< Maximum of time for every calibration step */
-#define CALIBRATION_SPEED_CALIBRATION 33U       /**< Motorspeed during the calibrationprocess in % */
-#define CALIBRATION_SPEED_CENTERING 25U         /**< Motorspeed while centering in % */
-#define CALIBRATION_NO_LINE_DETECTED_LIMIT 25U  /**< Max confidenc a line is under the sensor to determ no line is detected  */
-#define CALIBRATION_LINE_DETECTED_LIMIT 75U     /**< Min confidence a line is under the sensor */
-
-/** Definition of the Calibration Handler class */
-typedef struct {
-
-    // Methoden
-    Events (*Calibration_Process)(void);
-
-} Calibration_Handler;
-
-
 /* PROTOTYPES *************************************************************************************/
+/**
+ * This function performs the calibration process (do function of State) and manages any errors that 
+ * may occur during the calibration by updating the error handler message and return the EV_ERROR Event.
+ *
+ * @param[out] currentErrorHandlerMsg A pointer to an ErrorHandlerErrorCode 
+ *                                       that will be updated with any error 
+ *                                       codes encountered during the calibration process.
+ *
+ * @return FsmRobotEvent The event that the FSM (Finite State Machine) should 
+ *                        handle next, based on the internal results of the Calibrate State.
+ */
+Events CalibrationXXX_process(void);
+/** This function will be used to initalize the internal static variables*/
+void CalibrateState_initVariables(void);
+/** This will update the current selected parameterset pointer*/
+//void CalibrateState_updateParameters(void);
 
-/** Instance to start the calibration process */
-extern Calibration_Handler Calibration_Handler_instance;
-
-#endif /* CALIBRATION_HANDLER_H */
+#endif /* CALIBRATION_H */
