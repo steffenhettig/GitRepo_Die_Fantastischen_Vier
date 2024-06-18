@@ -11,15 +11,20 @@
 /* INCLUDES ***************************************************************************************/
 #include "app/StateHandler.h"
 
-#include "app/Calibration.h"
-//#include "app/Error.h"
-//#include "app/Init.h"
-//#include "app/ModeSwitch.h"
-//#include "app/RaceDone.h"
+//#include "app/Calibration.h"
+#include "app/Error.h"
+#include "app/Init.h"
+#include "app/ModeSwitch.h"
+#include "app/RaceDone.h"
 #include "app/RedetectTrack.h"
 #include "app/RunRace.h"
 #include "app/StartRace.h"
-//#include "app/Wait.h"
+#include "app/Wait.h"
+#include "app/CalibrationXXX.h"
+
+//for debugging
+#include "service/Display.h"
+#include "service/Button.h"
 
 /* CONSTANTS **************************************************************************************/
 
@@ -30,24 +35,28 @@
 /* PROTOTYPES *************************************************************************************/
 
 /* VARIABLES **************************************************************************************/
-States gCurrentState;
-Events gCurrentEvent;
-Errors gErrorID;
+static States gCurrentState = ST_INIT;
+static Events gCurrentEvent = EV_NO_EVENT;
+static Errors gErrorID;
 
 /* EXTERNAL FUNCTIONS *****************************************************************************/
 
 
 void StateHandler_process(void)
 {
+    Events RetEv;
+    Events DumEv;
+
     switch (gCurrentState)
     { 
     case ST_INIT: 
-        Init_process(); //---------
+        Init_process();
         gCurrentState = ST_CALIBRATION;
+
         break;
 
     case ST_WAIT:
-        Wait_process(); //---------
+        gCurrentEvent = Wait_process();
         if (EV_PUSH_BUTTON_B_PRESSED == gCurrentEvent)
         {
             gCurrentState = ST_MODE_SWITCH;
@@ -63,11 +72,12 @@ void StateHandler_process(void)
         break;
 
     case ST_MODE_SWITCH:
-        if (EV_MODE_SWITCH_SUCCESSFUL == ModeSwitch_process())//---------hier Rückgabewerte: mode_switch_successful
+        RetEv = ModeSwitch_process();
+        if (EV_MODE_SWITCH_SUCCESSFUL == RetEv)
         {
             gCurrentState = ST_WAIT;
         }
-        if (EV_MODE_SWITCH_FAILED == ModeSwitch_process())
+        if (EV_MODE_SWITCH_FAILED == RetEv)
         {
             gCurrentState = ST_ERROR;
             gErrorID = ER_PARAMETER;
@@ -75,18 +85,25 @@ void StateHandler_process(void)
         break;
 
     case ST_CALIBRATION:
-        if (EV_CALIBRATION_SUCCESSFUL == Calibration_process())//---------hier Rückgabewerte: calibration_successful
+        RetEv = CalibrationXXX_process();
+        if (EV_CALIBRATION_SUCCESSFUL == RetEv)
         {
             gCurrentState = ST_WAIT;
+            //Display_gotoxy(0, 6);
+            //Display_write("Calib success", 14);
         }
-        if (EV_CALIBRATION_FAILED == Calibration_process())
+        if (EV_CALIBRATION_FAILED == RetEv)
         {
-            gCurrentState = ST_ERROR;
+            //gCurrentState = ST_ERROR;
             gErrorID = ER_CALIBRATION;
+            //Display_gotoxy(0, 6);
+            //Display_write("Calib error", 12);
         }
         break;
 
     case ST_RUN_RACE: 
+            Display_gotoxy(0, 1);
+            Display_write("enterRunRace", 13);
         switch (RunRace_process())
         {
             case EV_STARTENDLINE_DETECTED:
@@ -108,11 +125,14 @@ void StateHandler_process(void)
         break;
 
     case ST_START_RACE:
-        if (EV_STARTENDLINE_DETECTED == StartRace_process())//---------hier Rückgabewerte: EV_STARTLINE_DETECTED
+        Display_gotoxy(0, 1);
+        Display_write("entStRace", 10);
+        RetEv = StartRace_process();
+        if (EV_STARTENDLINE_DETECTED == RetEv)
         {
             gCurrentState = ST_RUN_RACE;
         }
-        if (EV_STARTENDLINE_DETECTED_TIMEOUT == StartRace_process())
+        if (EV_STARTENDLINE_DETECTED_TIMEOUT == RetEv)
         {
             gCurrentState = ST_ERROR;
             gErrorID = ER_STARTLINE_TIMER;
@@ -120,19 +140,20 @@ void StateHandler_process(void)
         break;
 
     case ST_RACE_DONE:
-        RaceDone_process();//---------
-      break;
+        DumEv = RaceDone_process();
+        break;
 
     case ST_ERROR:
-        Error_process(gErrorID);//---------
+        Error_process(gErrorID);
         break;
 
     case ST_REDETECT_TRACK:
-        if(EV_TRACK_REDETECTED == RedetectTrack_process())//---------hier Rückgabewerte: EV_TRACK_REDETECTED
+    RetEv = RedetectTrack_process();
+        if(EV_TRACK_REDETECTED == RetEv)
         {
             gCurrentState = ST_RUN_RACE;
         }
-        if(EV_TRACK_REDETECTED_TIMEOUT == RedetectTrack_process())
+        if(EV_TRACK_REDETECTED_TIMEOUT == RetEv)
         {
             gCurrentState = ST_ERROR;
             gErrorID = ER_REDETECT_LINE;
