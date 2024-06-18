@@ -17,8 +17,12 @@
 /* CONSTANTS **************************************************************************************/
 #define SENSOR_WEIGHT_SCALE 1000
 #define CENTER_OF_LINE_POSITION 2000
-#define MAX_MOTOR_SPEED 400U
+#define MAX_MOTOR_SPEED 200U
 #define CALIB_OVER_LINE(value) ((value) > 500)
+#define PROP_DENOM 40
+#define PROP_NUM 1
+#define DERIV_DENOM 1000
+#define DERIV_NUM 5
 
 /* MACROS *****************************************************************************************/
 
