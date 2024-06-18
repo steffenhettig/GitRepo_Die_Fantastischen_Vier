@@ -22,6 +22,7 @@ For a detailed description see the detailed description in @ref MainTask.h.
 #include "os/Task.h"
 #include "os/Scheduler.h"
 #include "service/Button.h"
+#include "app/StateHandler.h"
 
 /* CONSTANTS **************************************************************************************/
 
@@ -76,4 +77,5 @@ static void mainTaskWork(void * data)
     (void)data;
 
     /* TODO: Add your application here. */
+    StateHandler_process();
 }
