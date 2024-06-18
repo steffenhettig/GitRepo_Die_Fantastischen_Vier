@@ -48,6 +48,7 @@ typedef enum {
 }Events;
 
 typedef enum {
+    ER_NO_ERROR,
     ER_PARAMETER,
     ER_STARTLINE_TIMER,
     ER_RACETIME,
@@ -59,57 +60,6 @@ typedef enum {
 * @param void
 */
 void StateHandler_process(void);
-
-/** contains the calibration handling of the zumo
-* @param void
-* @param Events: report an event back to StateHandler
-*/
-Events Calibration_process(void);
-
-/** contains the parameter change algorithm of the zumo
-* @param void
-* @param Events: report an event back to StateHandler
-*/
-Events ModeSwitch_process(void);
-
-/** contains the start handling of the zumo
-* @param void
-* @param Events: report an event back to StateHandler
-*/
-Events StartRace_process(void);
-
-/** contains the Race-Process
-* @param void
-* @param Events: report an event back to StateHandler
-*/
-Events RunRace_process(void);
-
-/** redetect the track when lost (gap handling)
-* @param void
-* @param Events: report an event back to StateHandler
-*/
-Events RedetectTrack_process(void);
-
-/** calls the init methods of the used modules
-* @param void
-*/
-void Init_process(void);
-
-/** contains the waiting process (state: ready/ idle)
-* @param void
-*/
-void Wait_process(void);
-
-/** contains the end race handling of the zumo
-* @param void
-*/
-void RaceDone_process(void);
-
-/** contains the error handling of the zumo
-* @param void
-* @param Errors: receives the error ID
-*/
-void Error_process(Errors errorID);
 
 /* PROTOTYPES *************************************************************************************/
 
