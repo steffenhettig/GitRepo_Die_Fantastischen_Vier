@@ -27,7 +27,6 @@
  /* PROTOTYPES *************************************************************************************/
 
  /* VARIABLES **************************************************************************************/
-
 static void regulateSpeed(Int32 error, UInt16 * leftSpeed, UInt16 * rightSpeed);
 static UInt32 calculatePosition(const LineSensorValues *sensorValues);
 static UInt32 glastPostion = 0U;
@@ -43,15 +42,16 @@ void Driving_stopDriving(void)
 }
 void Driving_driveForward(void)
 {
-    DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, MAX_MOTOR_SPEED, DRIVE_CONTROL_FORWARD);
-    DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, MAX_MOTOR_SPEED, DRIVE_CONTROL_FORWARD);  
+    DriveControl_drive(DRIVE_CONTROL_MOTOR_LEFT, 30U, DRIVE_CONTROL_FORWARD);
+    DriveControl_drive(DRIVE_CONTROL_MOTOR_RIGHT, 30U, DRIVE_CONTROL_FORWARD);  
 }
 
 // Implementation of the RunRace_Process method
 void Driving_followLine(LineSensorValues * SensorValues) 
 {
     UInt32 position = calculatePosition(SensorValues);
-    UInt32 error = position - CENTER_OF_LINE_POSITION;
+    //UInt32 error = position - CENTER_OF_LINE_POSITION;
+    UInt32 error = position - ((LINESENSOR_COUNT - 1) * SENSOR_WEIGHT_SCALE / 2);
 
     UInt16 leftSpeed;
     UInt16 rightSpeed;
@@ -68,8 +68,8 @@ void Driving_followLine(LineSensorValues * SensorValues)
 static void regulateSpeed(Int32 error, UInt16 * leftSpeed, UInt16 * rightSpeed)
 {
     /* PID controller */
-    Int32 proportional = (Int32)(error * gK_p);
-    Int32 derivative   = (error - gLastError) * gK_d;
+    Int32 proportional = (Int32)((error * PROP_NUM) / PROP_DENOM);
+    Int32 derivative   = (error - gLastError) * DERIV_NUM / DERIV_DENOM;
     Int32 integral     = 0;  /* not needed */
     Int32 speedDifference = proportional + derivative + integral;
 
