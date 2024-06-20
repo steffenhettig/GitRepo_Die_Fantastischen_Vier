@@ -296,7 +296,7 @@ static void calibrationTaskWorker(void *data)
             {
                 UInt16 range = caldata->maxVal - caldata->minVal;
             
-                if (range >= (LINESENSOR_READ_TIMEOUT_US / 4u))
+                if (range >= (LINESENSOR_NORMALIZED_RANGE / 4u))
                 {
                     caldata->range = (UInt16)range;
                 }
@@ -309,7 +309,7 @@ static void resetCalibration(void)
 {
     for (UInt8 idx = 0; idx < LINESENSOR_COUNT; ++idx)
     {
-        gCalibrationData[idx].minVal = LINESENSOR_READ_TIMEOUT_US;
+        gCalibrationData[idx].minVal = LINESENSOR_NORMALIZED_RANGE;
         gCalibrationData[idx].maxVal = 0u;
         gCalibrationData[idx].range  = 0u;
     }
