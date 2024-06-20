@@ -25,7 +25,7 @@
 
 
  /* CONSTANTS **************************************************************************************/
-
+ int GlobalVelocity = 0;
  /* MACROS *****************************************************************************************/
 
  /* TYPES ******************************************************************************************/
@@ -58,7 +58,7 @@ Events ModeSwitch_process(void) {
     Display_write("Switch the Mode with Button B",MODESWITCH_TEXTLENGTH);
     
 
-    sleep(ONE_SECOND);
+    //------sleep(ONE_SECOND);
     
 
     Display_write("You have 5 Sec after the Beep",MODESWITCH_TEXTLENGTH);
@@ -88,7 +88,7 @@ Events ModeSwitch_process(void) {
             break;
         }
       
-        sleep(ONE_SECOND);       /**<Wait a second */ 
+        //-----sleep(ONE_SECOND);       /**<Wait a second */ 
     }
 
 
