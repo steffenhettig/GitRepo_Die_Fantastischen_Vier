@@ -12,7 +12,7 @@
 #include "app/StateHandler.h"
 
 //#include "app/Calibration.h"
-#include "app/Error.h"
+#include "app/ErrorHandler.h"
 #include "app/Init.h"
 #include "app/ModeSwitch.h"
 #include "app/RaceDone.h"
@@ -20,7 +20,7 @@
 #include "app/RunRace.h"
 #include "app/StartRace.h"
 #include "app/Wait.h"
-#include "app/CalibrationXXX.h"
+#include "app/Calibration.h"
 
 //for debugging
 #include "service/Display.h"
