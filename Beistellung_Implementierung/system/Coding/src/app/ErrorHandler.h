@@ -23,6 +23,6 @@
 
 /* PROTOTYPES *************************************************************************************/
 
-void Error_process(Error errorID);
+void Error_process(Errors errorID);
 
 #endif /* ERRORHANDLER_H */
