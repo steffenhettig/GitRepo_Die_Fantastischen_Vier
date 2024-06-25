@@ -4,24 +4,22 @@ actor "line sensor" as s1
 actor "motor" as a1
 actor "display" as a2
 actor "buzzer" as a3
-actor "push button A" as pA /'start race'/
-actor "push button B" as pB /'select parameters'/
-actor "push button C" as pC /'sensor calibration'/
+actor "push button A" as pA /'StartRace'/
+actor "push button B" as pB /'ModeSwitch'/
+actor "push button C" as pC /'Calibration'/
 
 rectangle System-Software {
-  usecase "sensor calibration" as UC1
-  usecase "select parameters" as UC2
+  usecase "Calibration" as UC1
+  usecase "ModeSwitch" as UC2
   usecase "output information" as UC3
-  usecase "driving race" as UC4
-  usecase "error handling" as UC5
-  usecase "redetect track" as UC6
+  usecase "RunRace" as UC4
+  usecase "ErrorHandler" as UC5
+  usecase "RedetectTrack" as UC6
   
-  usecase "start race" as UC7
-  usecase "end race" as UC8
+  usecase "StartRace" as UC7
+  usecase "RaceDone" as UC8
 
 
-  
-  
   
 pC --> UC1
 pB --> UC2
