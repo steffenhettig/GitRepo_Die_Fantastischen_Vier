@@ -4,23 +4,25 @@ actor "line sensor" as s1
 actor "motor" as a1
 actor "display" as a2
 actor "buzzer" as a3
-actor "push button A" as pA /'StartRace'/
-actor "push button B" as pB /'ModeSwitch'/
-actor "push button C" as pC /'Calibration'/
+actor "push button A" as pA /'Start Race'/
+actor "push button B" as pB /'Mode Switch'/
+actor "push button C" as pC /'Calibrate Sensors'/
+actor "power switch" as a4
+
 
 rectangle System-Software {
-  usecase "Calibration" as UC1
-  usecase "ModeSwitch" as UC2
+  usecase "Calibrate Sensors" as UC1
+  usecase "Mode Switch" as UC2
   usecase "output information" as UC3
-  usecase "RunRace" as UC4
-  usecase "ErrorHandler" as UC5
-  usecase "RedetectTrack" as UC6
+  usecase "Run Race" as UC4
+  usecase "Handle Error" as UC5
+  usecase "Redetect Track" as UC6
   
-  usecase "StartRace" as UC7
-  usecase "RaceDone" as UC8
+  usecase "Start Race" as UC7
+  usecase "Race Done" as UC8
+  usecase "Init" as UC9
 
 
-  
 pC --> UC1
 pB --> UC2
 UC2 --> a2
@@ -31,6 +33,7 @@ UC7 --> a1
 UC8 --> a1
 UC3 --> a2
 UC3 --> a3
+s1 --> UC1
 s1 --> UC6
 s1 --> UC4
 s1 --> UC7
@@ -40,15 +43,23 @@ UC6 --> a1
 UC7 --> a3
 UC8 --> a2
 UC5 --> a1
+a4 --> UC9
 
 UC4 .> UC6 : include
 UC4 .> UC7 : include
 UC4 .> UC8 : include
 
+UC1 .> UC3
+UC2 .> UC3
+UC4 .> UC3
+UC5 .> UC3
+UC6 .> UC3
+UC7 .> UC3
+UC8 .> UC3
+UC9 .> UC1
 
 'UC6 .> UC7 : extends
 
- 
 }
 
 
