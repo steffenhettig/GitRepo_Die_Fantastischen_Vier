@@ -4,8 +4,8 @@ actor "user" as h
 actor "track" as t
 
 rectangle System-Robot {
-  usecase "RunRace" as UC1
-  usecase "ModeSwitch" as UC2
+  usecase "Run Race" as UC1
+  usecase "Mode Switch" as UC2
   usecase "Calibration" as UC3
   usecase "output information" as UC4
   
