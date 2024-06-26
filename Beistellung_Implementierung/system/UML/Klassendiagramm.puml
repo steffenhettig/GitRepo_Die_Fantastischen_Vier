@@ -172,8 +172,6 @@ package "Application"  {
         + Driving_stopDriving(void) : void
         + Driving_driveForward(void) : void
         + Driving_followLine(LineSensorValues* SensorValues) : void
-        - regulateSpeed(Int32, UInt16*, UInt16) : void
-        - calculatePosition(LineSensorValues* sensorValues) : UInt32
     }
 }
 
@@ -208,6 +206,7 @@ Error ..> Button
 Error ..> Buzzer
 Error ..> Display
 Error ..> DriveControl
+Error ..> Calibration
 
 Init ..> HAL
 Init ..> OS
@@ -222,7 +221,6 @@ RaceDone ..> LineSensor
 RaceDone ..> DriveControl
 RaceDone ..> TickTimer
 RaceDone ..> Buzzer
-RaceDone ..> LED
 RaceDone ..> StateHandler
 RaceDone ..> Driving
 
@@ -230,7 +228,6 @@ RedetectTrack ..> StateHandler
 RedetectTrack ..> LineSensor
 RedetectTrack ..> SoftTimer
 RedetectTrack ..> Driving
-RaceDone ..> Driving
 
 RunRace ..> StateHandler
 RunRace ..> LineSensor
@@ -241,9 +238,15 @@ StartRace ..> SoftTimer
 StartRace ..> DriveControl
 StartRace ..> LineSensor
 StartRace ..> TickTimer
+StartRace ..> Calibration
+StartRace ..> Buzzer
+StartRace ..> Button
 
 Wait ..> StateHandler
 Wait ..>Button
+
+Driving ..> LineSensor
+Driving ..> DriveControl
 
 ' Service
 
