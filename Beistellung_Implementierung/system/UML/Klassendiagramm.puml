@@ -134,10 +134,12 @@ package "Application"  {
     
     class "Calibration" {
         + Calibration_process(void) : Events
+        + Calibration_entry(void) : void
     }
     
     class "Error" {
-        + Error_process(Errors errorID) : void
+        + Error_entry(Errors errorID) : void
+        + Error_process(void) : void
     }
     
     class "Init" {
@@ -158,10 +160,12 @@ package "Application"  {
     
     class "RunRace" {
         + RunRace_process(void) : Events
+        + RunRace_entry(void) : void
     }
     
      class "StartRace" {
         + StartRace_process(void) : Events
+        + StartRace_entry(void) : void
     }
     
      class "Wait" {
@@ -197,7 +201,7 @@ StateHandler ..> Wait
 Calibration ..> LineSensor
 Calibration ..> SoftTimer
 Calibration ..> DriveControl
-Calibration ..> Display
+Calibration ..> Driving
 Calibration ..> StateHandler
 
 Error ..> StateHandler
@@ -206,16 +210,12 @@ Error ..> Button
 Error ..> Buzzer
 Error ..> Display
 Error ..> DriveControl
-Error ..> Calibration
 
-Init ..> HAL
-Init ..> OS
-Init ..> Service
+Init ..> StateHandler
+Init ..> Display
 
 ModeSwitch ..> StateHandler
-ModeSwitch ..> Button
-ModeSwitch ..> Buzzer
-ModeSwitch ..> Display
+ModeSwitch ..> Driving
 
 RaceDone ..> LineSensor
 RaceDone ..> DriveControl
@@ -223,6 +223,7 @@ RaceDone ..> TickTimer
 RaceDone ..> Buzzer
 RaceDone ..> StateHandler
 RaceDone ..> Driving
+RaceDone ..> Display
 
 RedetectTrack ..> StateHandler
 RedetectTrack ..> LineSensor
@@ -232,6 +233,11 @@ RedetectTrack ..> Driving
 RunRace ..> StateHandler
 RunRace ..> LineSensor
 RunRace ..> SoftTimer
+RunRace ..> Display
+RunRace ..> StartRace
+RunRace ..> TickTimer
+RunRace ..> Driving
+RunRace ..> DriveControl
 
 StartRace ..> StateHandler
 StartRace ..> SoftTimer
@@ -240,10 +246,12 @@ StartRace ..> LineSensor
 StartRace ..> TickTimer
 StartRace ..> Calibration
 StartRace ..> Buzzer
-StartRace ..> Button
+StartRace ..> Driving
 
 Wait ..> StateHandler
-Wait ..>Button
+Wait ..> Button
+Wait ..> ModeSwitch
+Wait ..> Display
 
 Driving ..> LineSensor
 Driving ..> DriveControl
