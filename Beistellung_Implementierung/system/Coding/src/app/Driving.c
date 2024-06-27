@@ -13,10 +13,7 @@
 #include <stdio.h>
 
 #include "Driving.h"
-// #include "app/StateHandler.h"
 #include "service/DriveControl.h"
-//#include "DriveControl.h"
-//#include "TickTimer.h"
 
  /* CONSTANTS **************************************************************************************/
 
